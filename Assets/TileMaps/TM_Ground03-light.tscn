@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnal4ve0rnx33"]
+
+[ext_resource type="TileSet" uid="uid://crg10ga7d13xa" path="res://Assets/TileMaps/TS_Ground02.tres" id="1_8b4jo"]
+
+[node name="TM_Ground02" type="TileMap"]
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("1_8b4jo")
+format = 2

@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cpimw8vqgavqq"]
+
+[ext_resource type="AudioStream" uid="uid://dg8t3r300agxt" path="res://Audio/SFX/BubblePop1.wav" id="1_r8mt5"]
+[ext_resource type="AudioStream" uid="uid://8mdcygajpeh0" path="res://Audio/SFX/BubblePop2.wav" id="2_ievp3"]
+[ext_resource type="AudioStream" uid="uid://big0yhkelj1j8" path="res://Audio/SFX/BubblePop3.wav" id="3_ii7a7"]
+
+[resource]
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("1_r8mt5")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ievp3")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_ii7a7")
+stream_2/weight = 1.0

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="KeybindsResource" load_steps=8 format=3 uid="uid://4obk0ot5h5eh"]
+
+[ext_resource type="Script" path="res://Scripts/KeybindsResource.gd" id="1_4ir3c"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_u4tbd"]
+device = -1
+keycode = 66
+unicode = 98
+
+[sub_resource type="InputEventKey" id="InputEventKey_tmme7"]
+device = -1
+keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_dlc17"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_mqtc2"]
+device = -1
+keycode = 65
+physical_keycode = 65
+key_label = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_xuje4"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_esc8y"]
+device = -1
+keycode = 4194305
+
+[resource]
+script = ExtResource("1_4ir3c")
+DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_mqtc2")
+DEFAULT_MOVE_RIGHT_KEY = SubResource("InputEventKey_xuje4")
+DEFAULT_JUMP_KEY = SubResource("InputEventKey_dlc17")
+DEFAULT_BUBBLE_KEY = SubResource("InputEventKey_u4tbd")
+DEFAULT_DASH_KEY = SubResource("InputEventKey_tmme7")
+DEFAULT_PAUSE_KEY = SubResource("InputEventKey_esc8y")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://m0mvemcwg0hq"]
+
+[ext_resource type="Material" uid="uid://crepj1cxu38xp" path="res://Assets/Particles/PM_SnowSmall.tres" id="1_svnnw"]
+[ext_resource type="Texture2D" uid="uid://p3x1spnkn4hi" path="res://Sprites/ParticleSprites/Snow_Particle.png" id="2_dmuij"]
+
+[node name="P_Snow_Small" type="GPUParticles2D"]
+amount = 500
+process_material = ExtResource("1_svnnw")
+texture = ExtResource("2_dmuij")
+lifetime = 60.0
+preprocess = 10.0
+speed_scale = 0.8
+randomness = 0.32
+visibility_rect = Rect2(-1500, -100, 3000, 2500)
+local_coords = true

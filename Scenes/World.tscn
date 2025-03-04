@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://dydbd83ukbpfm"]
+
+[ext_resource type="PackedScene" uid="uid://b3dyldw0fs3lh" path="res://Levels/Fabrizio/Level1.tscn" id="1_lv24l"]
+[ext_resource type="PackedScene" uid="uid://wmcbv806wxwa" path="res://Levels/Fabrizio/Level2.tscn" id="2_agu5a"]
+[ext_resource type="PackedScene" uid="uid://vignen0by1p6" path="res://Levels/Fabrizio/Level3.tscn" id="3_jn5dl"]
+[ext_resource type="PackedScene" uid="uid://cvopxte0hseeu" path="res://Levels/Fabrizio/Level4.tscn" id="4_thaeh"]
+[ext_resource type="PackedScene" uid="uid://cly1oy42yp8gw" path="res://Levels/Fabrizio/Level5.tscn" id="5_dfea1"]
+[ext_resource type="PackedScene" uid="uid://ceibr8v44kal" path="res://Levels/Fabrizio/Level6.tscn" id="6_3r255"]
+[ext_resource type="PackedScene" uid="uid://d0pcc4f228b3v" path="res://Levels/Fabrizio/Level7.tscn" id="7_s0h8n"]
+[ext_resource type="PackedScene" uid="uid://bcjf6lh64crqp" path="res://Levels/Fabrizio/Level8.tscn" id="8_i3e2j"]
+
+[node name="World" type="Node2D"]
+
+[node name="Level1" parent="." instance=ExtResource("1_lv24l")]
+
+[node name="Level2" parent="." instance=ExtResource("2_agu5a")]
+position = Vector2(9177, -1054)
+
+[node name="Level3" parent="." instance=ExtResource("3_jn5dl")]
+position = Vector2(17621, -981)
+
+[node name="Level4" parent="." instance=ExtResource("4_thaeh")]
+position = Vector2(29641, -2123)
+
+[node name="Level5" parent="." instance=ExtResource("5_dfea1")]
+position = Vector2(64416, -1234)
+
+[node name="Level6" parent="." instance=ExtResource("6_3r255")]
+position = Vector2(71441, -8093)
+
+[node name="Level7" parent="." instance=ExtResource("7_s0h8n")]
+position = Vector2(154714, 873)
+
+[node name="Level8" parent="." instance=ExtResource("8_i3e2j")]
+position = Vector2(168059, -9306)

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbnivfx1tguxl"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_eprtb"]
+[ext_resource type="Texture2D" uid="uid://brfgspgxofrf2" path="res://Sprites/191109_Djinn.png" id="2_1usgx"]
+[ext_resource type="Script" path="res://Scripts/BubbleHandler.gd" id="3_4djj1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_608su"]
+radius = 111.0
+height = 622.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwvey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1usgx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_eprtb")
+speed = 1900.0
+jump_velocity = -1200.0
+jump_power = 66.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_608su")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gwvey")
+
+[node name="BubbleHolder" type="Node2D" parent="."]
+script = ExtResource("3_4djj1")
+
+[node name="BubbleCooldown" type="Timer" parent="BubbleHolder"]
+one_shot = true
+
+[connection signal="timeout" from="BubbleHolder/BubbleCooldown" to="BubbleHolder" method="_on_bubble_cooldown_timeout"]

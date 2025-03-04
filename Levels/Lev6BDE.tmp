@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://qrvcl4xrahxh"]
+
+[ext_resource type="Texture2D" uid="uid://evexfhpox2kb" path="res://Sprites/BG Sky.png" id="1_v8cb5"]
+[ext_resource type="Texture2D" uid="uid://bf3ryrnrbr6cu" path="res://Sprites/BG Mountains.png" id="2_nqmox"]
+[ext_resource type="Texture2D" uid="uid://baf0ol5eyf126" path="res://Sprites/BG Middle.png" id="3_lque5"]
+[ext_resource type="Texture2D" uid="uid://d3lkhdxcyk5g6" path="res://Sprites/BG Fog.png" id="4_foadj"]
+[ext_resource type="PackedScene" path="res://Assets/plattform_small_1.tscn" id="5_qaf6w"]
+[ext_resource type="PackedScene" path="res://Assets/plattform_small_2.tscn" id="6_jn4be"]
+[ext_resource type="PackedScene" path="res://Assets/platform_middle.tscn" id="7_j4a1m"]
+[ext_resource type="PackedScene" uid="uid://ht72fhsatpgo" path="res://Assets/Platform.tscn" id="8_4sxfo"]
+[ext_resource type="PackedScene" path="res://Assets/platform_huge.tscn" id="9_ovmoe"]
+[ext_resource type="PackedScene" uid="uid://1t4lcnbhn5wf" path="res://Assets/Player.tscn" id="10_78d3p"]
+[ext_resource type="Texture2D" uid="uid://b8hdas7cyr2xy" path="res://Sprites/EuleSpirit.png" id="11_81qeo"]
+[ext_resource type="Script" path="res://Scripts/DeathZone.gd" id="13_gbyiq"]
+[ext_resource type="PackedScene" uid="uid://be2rhe17mtbj7" path="res://Assets/Wind.tscn" id="13_p7w3v"]
+[ext_resource type="PackedScene" uid="uid://bxljgvjuyew87" path="res://Assets/FlyingEnemy.tscn" id="14_l5d2h"]
+[ext_resource type="PackedScene" uid="uid://s5ud2c73aio5" path="res://Assets/Enemy.tscn" id="15_tt73l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_siufk"]
+size = Vector2(1721.87, 169)
+
+[node name="LevelMain" type="Node2D"]
+
+[node name="BgSky" type="Sprite2D" parent="."]
+position = Vector2(960, 538.5)
+scale = Vector2(0.407771, 0.389294)
+texture = ExtResource("1_v8cb5")
+
+[node name="BgMountains" type="Sprite2D" parent="."]
+position = Vector2(957.5, 538)
+scale = Vector2(0.410547, 0.390386)
+texture = ExtResource("2_nqmox")
+
+[node name="BgMiddle" type="Sprite2D" parent="."]
+position = Vector2(960, 535)
+scale = Vector2(0.408625, 0.390386)
+texture = ExtResource("3_lque5")
+
+[node name="BgFog" type="Sprite2D" parent="."]
+position = Vector2(959.5, 537)
+scale = Vector2(0.408839, 0.391114)
+texture = ExtResource("4_foadj")
+
+[node name="PlattformSmall1" parent="." instance=ExtResource("5_qaf6w")]
+position = Vector2(179, 941)
+scale = Vector2(0.578777, 0.43608)
+
+[node name="PlattformSmall2" parent="." instance=ExtResource("5_qaf6w")]
+position = Vector2(205, 725)
+scale = Vector2(0.578777, 0.43608)
+
+[node name="plattform_small_2" parent="." instance=ExtResource("6_jn4be")]
+position = Vector2(78, 902)
+scale = Vector2(0.6, 0.639999)
+
+[node name="plattform_small_6" parent="." instance=ExtResource("6_jn4be")]
+position = Vector2(776, 417)
+scale = Vector2(0.6, 0.639999)
+
+[node name="plattform_small_5" parent="." instance=ExtResource("6_jn4be")]
+position = Vector2(1249, 916)
+scale = Vector2(0.6, 0.639999)
+
+[node name="plattform_small_3" parent="." instance=ExtResource("6_jn4be")]
+position = Vector2(984, 864)
+scale = Vector2(0.4875, 0.519999)
+
+[node name="PlatformMiddle" parent="." instance=ExtResource("7_j4a1m")]
+position = Vector2(433, 695)
+scale = Vector2(0.82334, 0.6052)
+
+[node name="PlatformMiddle2" parent="." instance=ExtResource("7_j4a1m")]
+position = Vector2(331, 330)
+scale = Vector2(0.551252, 0.4052)
+
+[node name="Platform" parent="." instance=ExtResource("8_4sxfo")]
+position = Vector2(1725, 264)
+scale = Vector2(0.4, 0.4)
+
+[node name="platform_huge" parent="." instance=ExtResource("9_ovmoe")]
+position = Vector2(621, 312)
+
+[node name="Player" parent="." instance=ExtResource("10_78d3p")]
+position = Vector2(287, 916)
+scale = Vector2(0.2, 0.2)
+speed = 400.0
+jump_velocity = -800.0
+
+[node name="EuleSpirit" type="Sprite2D" parent="."]
+position = Vector2(1721, 902)
+scale = Vector2(0.0750733, 0.074585)
+texture = ExtResource("11_81qeo")
+
+[node name="DeathZone" type="Area2D" parent="."]
+position = Vector2(905, 1131)
+scale = Vector2(1.2289, 0.50296)
+collision_layer = 3
+collision_mask = 31
+script = ExtResource("13_gbyiq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(87.0697, -30.8176)
+shape = SubResource("RectangleShape2D_siufk")
+
+[node name="Wind" parent="." instance=ExtResource("13_p7w3v")]
+position = Vector2(1315, 233)
+scale = Vector2(1.2289, 0.50296)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("14_l5d2h")]
+position = Vector2(2108, 581)
+
+[node name="Enemy" parent="." instance=ExtResource("15_tt73l")]
+position = Vector2(770, 515)
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]

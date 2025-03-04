@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://3q6y2mcj3vqn"
+path="res://.godot/imported/Level7_EvilWindIntro.dialogue-5591968e3165f316c7d34759ec6f95bb.tres"
+
+[deps]
+
+source_file="res://Dialogues/Level7_EvilWindIntro.dialogue"
+dest_files=["res://.godot/imported/Level7_EvilWindIntro.dialogue-5591968e3165f316c7d34759ec6f95bb.tres"]
+
+[params]
+
+defaults=true

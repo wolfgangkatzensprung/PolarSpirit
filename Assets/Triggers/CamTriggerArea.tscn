@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dts0nopsl0bmr"]
+
+[ext_resource type="Script" path="res://Scripts/CamTriggerArea.gd" id="1_0c7kr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl2dh"]
+size = Vector2(320.667, 154)
+
+[node name="CamTriggerArea" type="Area2D"]
+scale = Vector2(0.96, 1)
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_0c7kr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-18.6667, -3)
+shape = SubResource("RectangleShape2D_rl2dh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

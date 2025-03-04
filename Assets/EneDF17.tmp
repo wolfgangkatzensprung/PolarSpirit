@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://s5ud2c73aio5"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_gl12g"]
+[ext_resource type="Texture2D" uid="uid://di58q7glhn0up" path="res://PlaceholderSprites/orc.png" id="2_i5kkh"]
+[ext_resource type="Texture2D" uid="uid://c5y3bifhdaa8f" path="res://PlaceholderSprites/Bubble.png" id="3_jgq5t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dc1yn"]
+radius = 162.0
+height = 620.0
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(-1546, 2493)
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_gl12g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-64, 78)
+texture = ExtResource("2_i5kkh")
+
+[node name="Sprite2D_Bubble" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-95, 102)
+scale = Vector2(0.279999, 0.279999)
+texture = ExtResource("3_jgq5t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-60, 95)
+scale = Vector2(1, 0.8)
+shape = SubResource("CapsuleShape2D_dc1yn")
+
+[node name="DebubbleTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RayCast2D_Vertical" type="RayCast2D" parent="."]
+target_position = Vector2(0, 500)
+
+[node name="RayCast2D_Horizontal" type="RayCast2D" parent="."]
+target_position = Vector2(400, 0)
+
+[connection signal="timeout" from="DebubbleTimer" to="." method="_on_debubble_timer_timeout"]

@@ -1,0 +1,404 @@
+[gd_scene load_steps=32 format=3 uid="uid://bo6a4lwnjed"]
+
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_006cj"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="2_0v61m"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_qckn1"]
+[ext_resource type="PackedScene" uid="uid://dts0nopsl0bmr" path="res://Assets/Triggers/CamTriggerArea.tscn" id="4_34vd2"]
+[ext_resource type="Texture2D" uid="uid://c2fw14fga7808" path="res://Sprites/Mock-up_Klappe_3_4.png" id="5_ja4kg"]
+[ext_resource type="PackedScene" uid="uid://1t4lcnbhn5wf" path="res://Assets/Player.tscn" id="6_gpuak"]
+[ext_resource type="Script" path="res://Scripts/ToggleVisibilityOnPlay.gd" id="6_w4gii"]
+[ext_resource type="Texture2D" uid="uid://b2ld1mn2vlgvh" path="res://Sprites/Background.png" id="7_aucf6"]
+[ext_resource type="PackedScene" uid="uid://dss1gihla88ut" path="res://Assets/Triggers/DeathZone.tscn" id="7_ldwd1"]
+[ext_resource type="TileSet" uid="uid://bd8jx3nw5txdd" path="res://Assets/TileMaps/TS_CrystalSpikes_FG.tres" id="7_pxjjy"]
+[ext_resource type="Texture2D" uid="uid://dkt1ghqdahy6l" path="res://Sprites/Wind2.png" id="9_4vwbj"]
+[ext_resource type="PackedScene" uid="uid://c2egmae43km3g" path="res://Assets/Triggers/EndPoint.tscn" id="10_frtb7"]
+[ext_resource type="PackedScene" uid="uid://ceglybjolpngb" path="res://Assets/TileMaps/TM_CrystalSpikes.tscn" id="11_7wcxa"]
+[ext_resource type="Environment" uid="uid://bph6286acx2hj" path="res://Scenes/CaveEnvironment.tres" id="11_11c46"]
+[ext_resource type="PackedScene" uid="uid://dv58m5ajcxgvq" path="res://Assets/TM_Ground.tscn" id="11_817b1"]
+[ext_resource type="Script" path="res://Scripts/PlayAnimBySignal.gd" id="14_bry1t"]
+[ext_resource type="Script" path="res://Scripts/FrozenPenguin.gd" id="16_pd35d"]
+[ext_resource type="Texture2D" uid="uid://cj0k35ofxlosg" path="res://Sprites/pingucube/pingucube01_f01.png" id="18_0akvn"]
+[ext_resource type="Texture2D" uid="uid://b54g2enu3gtm3" path="res://Sprites/pingucube/pingucube01_f02.png" id="19_e16il"]
+[ext_resource type="Texture2D" uid="uid://bc610wfcv3n82" path="res://Sprites/pingucube/pingucube01_f03.png" id="20_47otq"]
+[ext_resource type="Texture2D" uid="uid://bux6hrgy7d208" path="res://Sprites/pingucube/pingucube01_crack.png" id="21_n7jr5"]
+
+[sub_resource type="Resource" id="Resource_p1qy2"]
+script = ExtResource("3_qckn1")
+duration = 1.0
+transition = 7
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yb5hd"]
+size = Vector2(15, 1181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wb85"]
+size = Vector2(34, 1278)
+
+[sub_resource type="Animation" id="Animation_iwosx"]
+resource_name = "EnterCave"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.7, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasModulate:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.7, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasModulate:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.7, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lx6gm"]
+_data = {
+"EnterCave": SubResource("Animation_iwosx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdyc8"]
+size = Vector2(82, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8lrg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_0akvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_e16il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_47otq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_w8pn5"]
+resource_name = "CracklesModulation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.568627, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.929412, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.960784, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 1.5, 2.6, 3.4, 4.2, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.364706, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.486275, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 1.5, 2.6, 3.4, 4.2, 5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.364706, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.309804, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.227451, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 1.5, 2.6, 3.4, 4.2, 5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.423529, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.592157, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.490196, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 1.5, 2.6, 3.4, 4.2, 5)
+}
+
+[sub_resource type="Animation" id="Animation_dn6rm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.631373, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.603922, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fn48v"]
+_data = {
+"CracklesModulation": SubResource("Animation_w8pn5"),
+"RESET": SubResource("Animation_dn6rm")
+}
+
+[node name="Level1" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_006cj")
+
+[node name="pcam1" type="Node2D" parent="."]
+position = Vector2(960, 534)
+script = ExtResource("2_0v61m")
+priority_override = false
+priority = 10
+zoom = Vector2(1, 1)
+follow_mode = 0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = SubResource("Resource_p1qy2")
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="pcam2" type="Node2D" parent="."]
+position = Vector2(1653, 614)
+script = ExtResource("2_0v61m")
+priority_override = false
+priority = 0
+zoom = Vector2(1.5, 1.5)
+follow_mode = 0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = SubResource("Resource_p1qy2")
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="pcam3" type="Node2D" parent="."]
+position = Vector2(2878, 469)
+script = ExtResource("2_0v61m")
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = SubResource("Resource_p1qy2")
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="Cam and Cave Trigger" parent="." node_paths=PackedStringArray("pcam") instance=ExtResource("4_34vd2")]
+position = Vector2(2530, 1051)
+scale = Vector2(8.45457, 7.23308)
+collision_layer = 32
+pcam = NodePath("../pcam2")
+permanentCameraSwap = false
+spawnLevelBorder = false
+
+[node name="CamTrigger3" parent="." node_paths=PackedStringArray("pcam") instance=ExtResource("4_34vd2")]
+position = Vector2(1970, 840)
+scale = Vector2(0.560002, 1)
+pcam = NodePath("../pcam3")
+camPriority = 21
+spawnLevelBorder = false
+
+[node name="Parallax Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer_BG_Back" type="ParallaxLayer" parent="Parallax Background"]
+z_index = -100
+motion_scale = Vector2(0.01, 0.01)
+
+[node name="BG" type="Sprite2D" parent="Parallax Background/ParallaxLayer_BG_Back"]
+visible = false
+z_index = -12
+position = Vector2(960, 538.5)
+scale = Vector2(0.407771, 0.389294)
+texture = ExtResource("5_ja4kg")
+script = ExtResource("6_w4gii")
+
+[node name="Parallax Foreground" type="ParallaxBackground" parent="."]
+layer = 100
+
+[node name="ParallaxLayer_FG" type="ParallaxLayer" parent="Parallax Foreground"]
+light_mask = 4
+visibility_layer = 4
+z_index = 55
+position = Vector2(1241, 340)
+motion_scale = Vector2(1.6, 1.6)
+
+[node name="TM_CrystalSpikes2" parent="Parallax Foreground/ParallaxLayer_FG" instance=ExtResource("11_7wcxa")]
+modulate = Color(0.0392157, 0.0392157, 0.0392157, 1)
+light_mask = 4
+visibility_layer = 4
+position = Vector2(-4640, -2707)
+scale = Vector2(2, 2)
+tile_set = ExtResource("7_pxjjy")
+layer_0/tile_data = PackedInt32Array(524300, 0, 0, 524301, 65536, 1, 524302, 131072, 1, 524303, 0, 1342177280, 524304, 0, 0, 524305, 65536, 0, 524306, 131072, 0, 524307, 0, 1)
+
+[node name="CaveBG" type="Sprite2D" parent="."]
+modulate = Color(0.254902, 0.219608, 0.2, 1)
+z_index = -90
+position = Vector2(1441.23, 880.047)
+scale = Vector2(0.445028, 0.344532)
+texture = ExtResource("7_aucf6")
+
+[node name="Player" parent="." instance=ExtResource("6_gpuak")]
+position = Vector2(39, 867)
+jumpPower = 7000.0
+
+[node name="DeathZone" parent="." instance=ExtResource("7_ldwd1")]
+scale = Vector2(5.4689, 0.50296)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.309804)
+position = Vector2(1347.5, -58)
+scale = Vector2(1.25201, 0.43101)
+texture = ExtResource("9_4vwbj")
+
+[node name="EndPoint" parent="." instance=ExtResource("10_frtb7")]
+position = Vector2(2806, 886)
+
+[node name="Level Boundaries" type="Node2D" parent="."]
+
+[node name="Boundary_Left" type="StaticBody2D" parent="Level Boundaries"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Boundaries/Boundary_Left"]
+position = Vector2(-6.5, 516.5)
+shape = SubResource("RectangleShape2D_yb5hd")
+
+[node name="Boundary_Right" type="StaticBody2D" parent="Level Boundaries"]
+position = Vector2(1920, 0)
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Boundaries/Boundary_Right"]
+position = Vector2(1153, 457)
+shape = SubResource("RectangleShape2D_6wb85")
+
+[node name="TileMap" parent="." instance=ExtResource("11_817b1")]
+layer_0/tile_data = PackedInt32Array(1179654, 131072, 0, 1179653, 65536, 0, 1179652, 65536, 0, 1179651, 65536, 0, 1179650, 65536, 0, 1179649, 65536, 0, 1245184, 65536, 1, 1179655, 65536, 0, 1179656, 65536, 0, 1179657, 131072, 0, 1179658, 65536, 0, 1179659, 65536, 0, 1245195, 131072, 1, 1245194, 65536, 1, 1245193, 131072, 1, 1245192, 65536, 1, 1245191, 131072, 1, 1245190, 131072, 1, 1245189, 65536, 1, 1245188, 131072, 1, 1245187, 131072, 1, 1245186, 131072, 1, 1245185, 65536, 1, 1310722, 131072, 2, 1310723, 131072, 2, 1310724, 131072, 2, 1310725, 131072, 2, 1310730, 131072, 2, 1310729, 65536, 2, 1310728, 131072, 2, 1310727, 65536, 2, 1310726, 131072, 2, 1310721, 131072, 2, 1310720, 65536, 2, 1179648, 65536, 0, 1310731, 131072, 2, 1245183, 0, 0, 1376255, 0, 2, 1310719, 0, 1, 1179660, 65536, 0, 1179661, 65536, 0, 1179662, 65536, 0, 1179663, 65536, 0, 1179664, 65536, 0, 1179665, 131072, 0, 1179666, 65536, 0, 1245196, 65536, 1, 1245197, 65536, 1, 1245198, 65536, 1, 1245199, 65536, 1, 1245200, 131072, 1, 1245201, 131072, 1, 1245202, 131072, 1, 1310732, 65536, 2, 1310733, 65536, 2, 1310734, 131072, 2, 1310735, 65536, 2, 1310736, 65536, 2, 1310737, 131072, 2, 1310738, 131072, 2, 1310739, 196608, 2, 1245203, 196608, 1, 1179667, 131072, 0, 1179668, 65536, 0, 1179669, 65536, 0, 1179670, 65536, 0, 1179671, 131072, 0, 1179672, 65536, 0, 1179673, 131072, 0, 1179674, 65536, 0, 1179675, 65536, 0, 1179676, 65536, 0, 1179677, 65536, 0, 1179678, 131072, 0, 1179679, 65536, 0, 1179680, 65536, 0, 1179681, 131072, 0, 1179682, 131072, 0, 983060, 0, 2, 720916, 0, 1, 786452, 0, 1, 851988, 0, 1, 917524, 0, 1, 655380, 0, 1, 589844, 0, 0, 589845, 65536, 0, 589846, 65536, 0, 589847, 65536, 0, 589848, 65536, 0, 589849, 65536, 0, 589850, 65536, 0, 589851, 65536, 0, 589852, 65536, 0, 589853, 131072, 0, 589854, 65536, 0, 983061, 131072, 2, 983062, 131072, 2, 983063, 131072, 2, 983064, 65536, 2, 983065, 131072, 2, 983066, 65536, 2, 983067, 131072, 2, 983068, 131072, 2, 983069, 131072, 2, 983070, 131072, 2, 655381, 65536, 1, 720917, 65536, 1, 786453, 65536, 1, 851989, 65536, 1, 917525, 131072, 1, 655382, 131072, 1, 720918, 131072, 1, 786454, 131072, 1, 851990, 131072, 1, 917526, 131072, 1, 655383, 131072, 1, 720919, 131072, 1, 786455, 131072, 1, 851991, 131072, 1, 917527, 131072, 1, 655384, 131072, 1, 720920, 131072, 1, 786456, 65536, 1, 851992, 65536, 1, 917528, 131072, 1, 655385, 65536, 1, 720921, 65536, 1, 786457, 131072, 1, 851993, 131072, 1, 917529, 65536, 1, 655386, 131072, 1, 720922, 65536, 1, 786458, 65536, 1, 851994, 131072, 1, 917530, 131072, 1, 655387, 131072, 1, 720923, 131072, 1, 786459, 131072, 1, 851995, 65536, 1, 917531, 65536, 1, 655388, 65536, 1, 720924, 65536, 1, 786460, 131072, 1, 851996, 131072, 1, 917532, 131072, 1, 655389, 65536, 1, 720925, 65536, 1, 786461, 65536, 1, 851997, 65536, 1, 917533, 131072, 1, 655390, 131072, 1, 720926, 65536, 1, 786462, 131072, 1, 851998, 65536, 1, 917534, 131072, 1, 589855, 131072, 0, 589856, 131072, 0, 589857, 65536, 0, 1179683, 65536, 0, 1179684, 131072, 0, 1179685, 65536, 0, 1179686, 65536, 0, 1179687, 65536, 0, 1179688, 196608, 0, 1179695, 0, 0, 1179696, 131072, 0, 1245224, 196608, 1, 1245231, 0, 1, 1245232, 196608, 1, 1245239, 0, 0, 1245240, 131072, 0)
+
+[node name="TM_CrystalSpikes" parent="." instance=ExtResource("11_7wcxa")]
+layer_0/tile_data = PackedInt32Array(589844, 0, 0, 589845, 65536, 1, 589846, 131072, 1, 589847, 0, 1342177280, 589848, 0, 0, 589849, 65536, 0, 589850, 131072, 0, 589851, 0, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("11_11c46")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="WorldEnvironment"]
+energy = 0.5
+range_item_cull_mask = 7
+shadow_enabled = true
+shadow_item_cull_mask = 7
+height = 0.07
+
+[node name="CanvasModulate" type="CanvasModulate" parent="WorldEnvironment"]
+modulate = Color(255, 255, 255, 1)
+color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment"]
+libraries = {
+"": SubResource("AnimationLibrary_lx6gm")
+}
+script = ExtResource("14_bry1t")
+firstAnimation = "EnterCave"
+secondAnimation = "LeaveCave"
+
+[node name="FrozenPenguin" type="StaticBody2D" parent="."]
+position = Vector2(648, 781)
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("16_pd35d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrozenPenguin"]
+shape = SubResource("RectangleShape2D_wdyc8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FrozenPenguin"]
+scale = Vector2(0.36, 0.36)
+sprite_frames = SubResource("SpriteFrames_e8lrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="FrozenPenguin"]
+modulate = Color(0.631373, 0.603922, 0, 1)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("21_n7jr5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FrozenPenguin"]
+libraries = {
+"": SubResource("AnimationLibrary_fn48v")
+}
+
+[connection signal="body_entered" from="Cam and Cave Trigger" to="WorldEnvironment/AnimationPlayer" method="PlayFirstAnimation" unbinds=1]
+[connection signal="body_exited" from="Cam and Cave Trigger" to="WorldEnvironment/AnimationPlayer" method="PlayFirstAnimationBackward" unbinds=1]

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="SS2D_Material_Shape" load_steps=10 format=3 uid="uid://dsl8svt5htmvo"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="1_t88t0"]
+[ext_resource type="Texture2D" uid="uid://ti6supeih7n1" path="res://Sprites/Smart Shape/icesmall_blur.png" id="2_pcj6n"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="3_7t587"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="4_2hgj4"]
+[ext_resource type="Texture2D" uid="uid://k3b281tweb1e" path="res://Sprites/Smart Shape/smartshape_fill.png" id="5_bugwk"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="6_6kv0m"]
+
+[sub_resource type="Resource" id="Resource_73pxd"]
+script = ExtResource("1_t88t0")
+textures = Array[Texture2D]([ExtResource("2_pcj6n")])
+textures_corner_outer = Array[Texture2D]([])
+textures_corner_inner = Array[Texture2D]([])
+textures_taper_left = Array[Texture2D]([])
+textures_taper_right = Array[Texture2D]([])
+randomize_texture = false
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id="Resource_vbesy"]
+script = ExtResource("3_7t587")
+begin = 0.0
+distance = 360.0
+edgeRendering = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_xgo70"]
+script = ExtResource("4_2hgj4")
+edge_material = SubResource("Resource_73pxd")
+normal_range = SubResource("Resource_vbesy")
+weld = true
+render = true
+z_index = 1
+z_as_relative = true
+offset = 0.0
+
+[resource]
+script = ExtResource("6_6kv0m")
+_edge_meta_materials = Array[ExtResource("4_2hgj4")]([SubResource("Resource_xgo70")])
+fill_textures = Array[Texture2D]([ExtResource("5_bugwk")])
+fill_texture_z_index = 0
+fill_texture_show_behind_parent = false
+fill_mesh_offset = 0.0
+render_offset = 0.0

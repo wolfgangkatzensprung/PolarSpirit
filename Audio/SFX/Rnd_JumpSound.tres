@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://c71wd37fx0xcy"]
+
+[ext_resource type="AudioStream" uid="uid://c0168hun5tykq" path="res://Audio/SFX/PlayerJump3.wav" id="1_egqyh"]
+
+[resource]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("1_egqyh")
+stream_0/weight = 1.0

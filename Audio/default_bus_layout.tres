@@ -1,0 +1,97 @@
+[gd_resource type="AudioBusLayout" load_steps=10 format=3 uid="uid://8tqkqendhbq3"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_abw8c"]
+resource_name = "Limiter"
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_7uggt"]
+resource_name = "LowPassFilter"
+cutoff_hz = 7000.0
+resonance = 0.1
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_okt40"]
+resource_name = "Reverb"
+room_size = 1.0
+damping = 0.25
+hipass = 0.45
+wet = 0.25
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_mr86m"]
+resource_name = "Delay"
+tap1_delay_ms = 180.0
+tap1_level_db = -7.3
+tap2_delay_ms = 630.0
+tap2_pan = -0.27
+feedback_active = true
+feedback_level_db = -20.1
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_ucm6u"]
+resource_name = "Compressor"
+threshold = -20.0
+gain = 1.5
+attack_us = 110.0
+release_ms = 280.0
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_y4spg"]
+resource_name = "Phaser"
+range_min_hz = 523.25
+range_max_hz = 1567.98
+rate_hz = 4.088
+depth = 0.9
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_0fs4h"]
+resource_name = "Chorus"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_6nol3"]
+resource_name = "Reverb"
+room_size = 0.63
+damping = 1.0
+hipass = 0.5
+wet = 0.34
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_7y4ib"]
+resource_name = "HighPassFilter"
+cutoff_hz = 2093.0
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectLimiter_abw8c")
+bus/0/effect/0/enabled = true
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"SFX_Cave"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"SFX"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_7uggt")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectReverb_okt40")
+bus/2/effect/1/enabled = true
+bus/2/effect/2/effect = SubResource("AudioEffectDelay_mr86m")
+bus/2/effect/2/enabled = true
+bus/3/name = &"SFX"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectCompressor_ucm6u")
+bus/3/effect/0/enabled = true
+bus/4/name = &"BubbleShot"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"SFX"
+bus/4/effect/0/effect = SubResource("AudioEffectPhaser_y4spg")
+bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource("AudioEffectChorus_0fs4h")
+bus/4/effect/1/enabled = true
+bus/4/effect/2/effect = SubResource("AudioEffectReverb_6nol3")
+bus/4/effect/2/enabled = true
+bus/4/effect/3/effect = SubResource("AudioEffectHighPassFilter_7y4ib")
+bus/4/effect/3/enabled = true

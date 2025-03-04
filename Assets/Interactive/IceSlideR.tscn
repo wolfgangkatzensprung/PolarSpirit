@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://w46045u6wkj8"]
+
+[ext_resource type="Script" path="res://Scripts/IceSlide.gd" id="1_ni6b7"]
+[ext_resource type="Script" path="res://Scripts/RemoteTrans.gd" id="2_6se3l"]
+[ext_resource type="Texture2D" uid="uid://igw7juoc5dwx" path="res://Sprites/hs_ramp+platformflying_02.png" id="3_3g6m1"]
+
+[sub_resource type="Curve2D" id="Curve2D_xyc7r"]
+_data = {
+"points": PackedVector2Array(-73.6983, -161.932, 73.6983, 161.932, 676, -72, -132.347, 7.10003, 132.347, -7.10003, 1070, 152, -159.753, 123.744, 159.753, -123.744, 1443, -12, -120.858, 23.9881, 120.858, -23.9881, 1696, -203)
+}
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mejq"]
+size = Vector2(226.439, 130.53)
+
+[sub_resource type="Animation" id="Animation_va5w4"]
+resource_name = "SlideJump"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -29, -160, -0.2, 19, 0.2, 23, -5, 0, -44, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EndJump"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ovky"]
+_data = {
+"SlideJump": SubResource("Animation_va5w4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0re5e"]
+size = Vector2(3403, 1122)
+
+[node name="IceSlideR" type="Path2D"]
+position = Vector2(-321, 32)
+curve = SubResource("Curve2D_xyc7r")
+script = ExtResource("1_ni6b7")
+slideSpeed = 0.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(676, -72)
+rotation = 1.14369
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+script = ExtResource("2_6se3l")
+
+[node name="ColorRect" type="ColorRect" parent="PathFollow2D"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EntryPoint" type="Area2D" parent="PathFollow2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/EntryPoint"]
+position = Vector2(24.4026, 18.0435)
+shape = SubResource("RectangleShape2D_3mejq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_6ovky")
+}
+
+[node name="SlideSprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(995, 195)
+texture = ExtResource("3_3g6m1")
+
+[node name="EntryCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryCheck"]
+visible = false
+position = Vector2(934.5, -145)
+shape = SubResource("RectangleShape2D_0re5e")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(500, -194)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-192, -13, -49, -10, 19, -14, 82, -24, 114, -29, 164, -16, 199, 14, 203, 38, 186, 72, 170, 58, 106, 50, 162, 272, 412, 435, 654, 421, 789, 341, 818, 328, 849, 304, 1013, 173, 1126, 87, 1233, 50, 1235, 63, 1235, 210, 1225, 226, 1214, 212, 1202, 112, 1192, 96, 1178, 88, 1168, 89, 1161, 117, 1151, 137, 1144, 135, 1134, 102, 1118, 103, 1095, 137, 1085, 124, 1067, 170, 1061, 146, 1049, 165, 1043, 156, 1029, 174, 1019, 206, 1015, 178, 1007, 182, 992.701, 210.382, 985, 216, 978, 235, 975, 229, 961, 276, 958, 257, 953, 266, 943.701, 246.376, 936, 252, 927, 271, 915, 270, 904, 380, 896, 381, 891, 323, 884, 321, 874, 350, 868, 349, 863, 320, 852, 314, 841, 326, 825, 344, 795, 353, 787, 377, 773, 394, 760, 383, 747, 385, 731, 412, 777, 447, 792, 475, 794, 524, 786, 588, 777, 617, 765, 610, 746, 535, 721, 539, 707, 542, 686, 530, 673, 533, 658, 563, 638, 701, 626, 715, 609, 706, 604, 668, 599, 594, 590, 590, 569, 595, 552, 590, 529, 556, 517, 570, 507, 571, 488, 542, 481, 546, 468, 624, 462, 659, 456, 670, 448, 673, 437, 668, 419, 585, 412, 591, 402, 640, 397, 648, 391, 648, 384, 642, 376, 673, 373, 698, 366, 714, 353, 704, 348, 725, 343, 791, 325, 813, 311, 805, 299, 691, 252, 696, 183, 688, 153, 670, 123, 636, 116, 648, 109, 737, 96, 776, 80, 782, 71, 768, 61, 655, 49, 672, 38, 668, 14, 614, -5, 708, -20, 722, -34, 720, -63, 605, -84, 657, -99, 664, -112, 654, -124, 614, -144, 681, -155, 687, -164, 682, -180, 475, -212, 369, -205, 302, -188, 211, -204, 171, -190, 128, -153, 72, -166, 15, -192, 13)
+
+[connection signal="body_entered" from="PathFollow2D/EntryPoint" to="." method="_on_slide_entry_point_body_entered"]
+[connection signal="body_entered" from="EntryCheck" to="." method="_on_entry_check_body_entered"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

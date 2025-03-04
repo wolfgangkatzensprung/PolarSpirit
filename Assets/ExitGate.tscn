@@ -1,0 +1,304 @@
+[gd_scene load_steps=30 format=3 uid="uid://cqkxd1e0m7yrf"]
+
+[ext_resource type="Texture2D" uid="uid://crpnrneqeh3sm" path="res://Sprites/lightsources/circle01.png" id="3_ek31n"]
+[ext_resource type="Texture2D" uid="uid://dbohpmnoxrfc6" path="res://Sprites/BIG/hs_platform01_b.png" id="4_mpnss"]
+[ext_resource type="Texture2D" uid="uid://bm4kdk5t8rrke" path="res://Sprites/UI Sprites/UI_Bubble-Exit_512x512.png" id="4_u1xju"]
+[ext_resource type="Texture2D" uid="uid://dftwyjki1vu3y" path="res://Sprites/Light_Rays/Transition_Light_2.png" id="5_lq87r"]
+[ext_resource type="Texture2D" uid="uid://w4pvefl2jl4y" path="res://Sprites/ParticleSprites/GoldenBubble_glow_20x20.png" id="5_yp25u"]
+[ext_resource type="Texture2D" uid="uid://d2wxeg1wic1tb" path="res://Sprites/Anim/Golden_Bubble_True.png" id="6_jk6s3"]
+[ext_resource type="Texture2D" uid="uid://m2qptxa7ovfr" path="res://Sprites/LightCookies/LightCookie_Circle.png" id="7_0kf4i"]
+[ext_resource type="Texture2D" uid="uid://becsm7qtkvg3f" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_1.png" id="8_3cghl"]
+[ext_resource type="Texture2D" uid="uid://b6u6o0wwoy8di" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_2.png" id="9_30imo"]
+[ext_resource type="Texture2D" uid="uid://csun7ftg08rt0" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_3.png" id="10_r37i3"]
+[ext_resource type="Texture2D" uid="uid://bkmt03rwbt2hw" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_4.png" id="11_f32la"]
+[ext_resource type="Texture2D" uid="uid://sx3jwfj2o6qy" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_5.png" id="12_u7gkl"]
+[ext_resource type="Texture2D" uid="uid://d0f838hc0y8of" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_6.png" id="13_kw5ov"]
+[ext_resource type="Texture2D" uid="uid://d37untav5wj03" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_7.png" id="14_0ux5m"]
+[ext_resource type="Texture2D" uid="uid://b1apil4ka80pi" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_8.png" id="15_dl62g"]
+[ext_resource type="Texture2D" uid="uid://bjpds0pga38e1" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_9.png" id="16_mq5gh"]
+[ext_resource type="Texture2D" uid="uid://k2joipl6pr5r" path="res://Sprites/VFX Sprites/Gate_Glowing/End_Point_Glow_10.png" id="17_ywbfb"]
+[ext_resource type="Texture2D" uid="uid://78htynf7tsgt" path="res://Sprites/hs_levelend.png" id="18_k14w6"]
+
+[sub_resource type="Curve" id="Curve_v7m1q"]
+max_value = 3.0
+_data = [Vector2(0.021097, 0.0626972), 0.0, 0.0, 0, 0, Vector2(0.639241, 2.90773), 0.0, 0.0, 0, 0, Vector2(0.738397, 0.98541), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pid6b"]
+curve = SubResource("Curve_v7m1q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_575ni"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(3.445, 44.56, 0)
+emission_shape_scale = Vector3(21.225, 63.155, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.595
+velocity_pivot = Vector3(100, 100, 0)
+direction = Vector3(100, 100, 0)
+spread = 0.0
+radial_velocity_min = -1000.0
+radial_velocity_max = 1000.0
+gravity = Vector3(0, -100, 0)
+linear_accel_min = -16.75
+linear_accel_max = 4.55
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.5
+scale_over_velocity_max = 3.0
+scale_over_velocity_curve = SubResource("CurveTexture_pid6b")
+anim_speed_max = 20.15
+turbulence_noise_strength = 16.34
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+
+[sub_resource type="Shader" id="Shader_3mxs3"]
+code = "shader_type canvas_item;
+
+uniform vec4 baseColor = vec4(1.0, 1.0, 1.0, 1.0);
+
+// for circles
+uniform float amplitude: hint_range(0, 2, 0.01) = 2.0;
+uniform float frequency: hint_range(0, 15, 0.01) = 12.69;
+uniform float rippleRate : hint_range(0.5, 150.0, 0.1) = 9.2;
+
+
+// for wave
+uniform float waveAmplitude = 0.1;
+uniform float waveFrequency = 4.0;
+uniform float blendingAmount = 0.6;
+
+
+// other
+uniform sampler2D noise;
+
+
+vec2 wave(vec2 uv, float time) {
+    return vec2(
+        uv.x + sin(uv.y * waveFrequency * 5.0 + time) * waveAmplitude,
+        uv.y + sin(uv.x * waveFrequency + time) * waveAmplitude
+    );
+}
+
+void fragment() {
+	vec2 wave_uv = wave(UV, TIME);
+	vec4 ns = texture(noise, wave_uv);
+	
+	vec2 motion = vec2(0.0, 1.0);
+	float pi = 3.14159265358979323846;
+	vec2 uv = UV * 2.0 - 1.0;
+
+	float dist = length(uv);
+	ns *= 1.4142135;
+	dist += -0.1 * ns.x;
+	float ripple = sin(dist * -frequency * pi + rippleRate * TIME) * amplitude / (dist + 1.0);
+
+
+	vec4 color = vec4(baseColor.x, baseColor.y, baseColor.z, 2.0 * ripple);
+	
+	float alphaScalar = (1.0 - min(dist, 1.0)) * ns.x * 2.5; 
+
+
+	color.a *= 1.0 * alphaScalar * (ripple + ns.x * ns.y);
+	color.a = max(color.a - (ns.y * 0.45), 0.0);
+
+    COLOR = color;
+}"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gulsr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6fx4"]
+shader = SubResource("Shader_3mxs3")
+shader_parameter/baseColor = Vector4(1, 0.845, 0.55, 1)
+shader_parameter/amplitude = 0.12
+shader_parameter/frequency = 0.13
+shader_parameter/rippleRate = 0.7
+shader_parameter/waveAmplitude = 11.48
+shader_parameter/waveFrequency = 11.015
+shader_parameter/blendingAmount = 2.11
+shader_parameter/noise = SubResource("NoiseTexture2D_gulsr")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xalo3"]
+size = Vector2(1676.9, 65.0818)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48f76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3cghl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_30imo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_r37i3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_f32la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u7gkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kw5ov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0ux5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dl62g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mq5gh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ywbfb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="Animation" id="Animation_qu0ug"]
+resource_name = "ExitGateGlow"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.8, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3.52014, 3.34731), Vector2(4.68, 4.45), Vector2(3.52014, 3.34731)]
+}
+
+[sub_resource type="Animation" id="Animation_tt2p1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.52014, 3.34731)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vny4"]
+_data = {
+"ExitGateGlow": SubResource("Animation_qu0ug"),
+"RESET": SubResource("Animation_tt2p1")
+}
+
+[node name="ExitGate" type="Node2D"]
+z_index = 5
+scale = Vector2(0.279086, 0.276575)
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+z_index = 6
+position = Vector2(118.242, -71.6213)
+scale = Vector2(6.853, 3.696)
+amount = 337
+amount_ratio = 0.6112
+process_material = SubResource("ParticleProcessMaterial_575ni")
+texture = ExtResource("5_yp25u")
+lifetime = 0.01
+speed_scale = 0.02
+randomness = 1.0
+fixed_fps = 0
+collision_base_size = 0.0
+
+[node name="Shader Inner Core" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_r6fx4")
+position = Vector2(114.659, 44.0797)
+texture = ExtResource("4_u1xju")
+
+[node name="Shader Outer Core" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_r6fx4")
+position = Vector2(114.659, 44.0797)
+scale = Vector2(2.81331, 2.81331)
+texture = ExtResource("4_u1xju")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+position = Vector2(152.283, 65.0819)
+scale = Vector2(3.52014, 3.34731)
+color = Color(0.905882, 0.584314, 0.454902, 1)
+energy = 2.0
+blend_mode = 2
+texture = ExtResource("3_ek31n")
+
+[node name="Gate Sprite_old" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_mpnss")
+flip_h = true
+
+[node name="TransitionLight2" type="Sprite2D" parent="."]
+modulate = Color(0.752941, 0.533333, 0.109804, 1)
+z_index = -4
+position = Vector2(116.573, 57.5574)
+rotation = 0.220063
+scale = Vector2(2.251, 1.541)
+texture = ExtResource("5_lq87r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(35.8313, 383.26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-39.4144, -14.4626)
+shape = SubResource("RectangleShape2D_xalo3")
+
+[node name="GoldenBubbleTrue" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(125.409, 119.317)
+scale = Vector2(3.00655, 2.88014)
+texture = ExtResource("6_jk6s3")
+
+[node name="GoldenBubbleTrue" type="Sprite2D" parent="GoldenBubbleTrue"]
+modulate = Color(0.831373, 0.52549, 0.341176, 0.533333)
+z_index = -1
+position = Vector2(19.6643, -41.4274)
+scale = Vector2(1.65265, -1.57903)
+texture = ExtResource("6_jk6s3")
+
+[node name="Circle01" type="Sprite2D" parent="."]
+modulate = Color(0.694118, 0.435294, 0.168627, 0.129412)
+position = Vector2(120.035, 112.085)
+scale = Vector2(5.88556, 5.254)
+texture = ExtResource("3_ek31n")
+
+[node name="LightCookieCircle" type="Sprite2D" parent="."]
+modulate = Color(0.423529, 0.423529, 0.423529, 0.603922)
+z_index = -7
+position = Vector2(114.66, 79.5444)
+rotation = 0.378143
+scale = Vector2(0.976959, 1.37798)
+texture = ExtResource("7_0kf4i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -3
+position = Vector2(132.576, 101.238)
+rotation = -2.77961
+scale = Vector2(3.00654, 3.00654)
+sprite_frames = SubResource("SpriteFrames_48f76")
+autoplay = "default"
+frame_progress = 0.422784
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5vny4")
+}
+
+[node name="HsLevelend" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(7.16625, -3.61566)
+scale = Vector2(1.76659, 1.76659)
+texture = ExtResource("18_k14w6")
+flip_h = true

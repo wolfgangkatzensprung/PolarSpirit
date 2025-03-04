@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://du6e8fxtft1th"]
+
+[ext_resource type="Texture2D" uid="uid://cc0n2h8qnt8bp" path="res://Sprites/spike_single.png" id="1_apwat"]
+[ext_resource type="Texture2D" uid="uid://crpnrneqeh3sm" path="res://Sprites/lightsources/circle01.png" id="2_f1iih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4islu"]
+size = Vector2(7.23559, 12.0593)
+
+[node name="SpykeSingle" type="StaticBody2D" groups=["Enemy"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Enemy"]]
+light_mask = 32
+texture = ExtResource("1_apwat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+position = Vector2(-0.5, 8.5)
+scale = Vector2(9.53619, 9.53619)
+shape = SubResource("RectangleShape2D_4islu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.72549, 0, 0.486275, 1)
+energy = 0.95
+texture = ExtResource("2_f1iih")

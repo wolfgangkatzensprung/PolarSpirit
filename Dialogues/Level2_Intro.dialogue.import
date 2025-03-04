@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://c5eefmymlgmbf"
+path="res://.godot/imported/Level2_Intro.dialogue-e39cb35ee6ea9a0127ac68ebf615b447.tres"
+
+[deps]
+
+source_file="res://Dialogues/Level2_Intro.dialogue"
+dest_files=["res://.godot/imported/Level2_Intro.dialogue-e39cb35ee6ea9a0127ac68ebf615b447.tres"]
+
+[params]
+
+defaults=true

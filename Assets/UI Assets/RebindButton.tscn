@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0h0ycn6rqhvi"]
+
+[ext_resource type="Script" path="res://Scripts/HotkeyRebindButton.gd" id="1_and3l"]
+
+[node name="RebindButton" type="Control" groups=["HotkeyButton"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_and3l")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 31.0
+theme_override_constants/separation = 120
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Button"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "ActionKey"
+
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]

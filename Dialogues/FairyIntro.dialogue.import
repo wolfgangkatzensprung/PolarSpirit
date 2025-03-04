@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://bfpswqxmaqkjh"
+path="res://.godot/imported/FairyIntro.dialogue-8d2090cf7b647cec040384f6819762e9.tres"
+
+[deps]
+
+source_file="res://Dialogues/FairyIntro.dialogue"
+dest_files=["res://.godot/imported/FairyIntro.dialogue-8d2090cf7b647cec040384f6819762e9.tres"]
+
+[params]
+
+defaults=true

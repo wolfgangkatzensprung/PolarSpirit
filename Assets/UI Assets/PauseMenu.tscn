@@ -1,0 +1,245 @@
+[gd_scene load_steps=10 format=3 uid="uid://b30m3wwnxsy8n"]
+
+[ext_resource type="Texture2D" uid="uid://ki5pcu3h2hc" path="res://Sprites/Background/BG_Menu-1200x840.jpg" id="1_d6rm5"]
+[ext_resource type="Script" path="res://Scripts/MenuBase.gd" id="1_kqxr0"]
+[ext_resource type="Texture2D" uid="uid://d21t7e4ed5i6s" path="res://Sprites/UI Sprites/UI_Stone_1024x1024.png" id="3_5742r"]
+[ext_resource type="FontFile" uid="uid://e5px4ruhyjrk" path="res://Fonts/Lobster 1.4.otf" id="4_ymmhs"]
+[ext_resource type="Texture2D" uid="uid://ggnqhgx00s4t" path="res://Sprites/UI Sprites/UI_Bubble-Original_512x512.png" id="6_sv4hk"]
+[ext_resource type="Texture2D" uid="uid://d0fhwcgbp2yml" path="res://Sprites/UI Sprites/UI_Bubble-Pressed_512x512.png" id="7_ngg61"]
+[ext_resource type="Script" path="res://Scripts/BackButton.gd" id="9_et5qf"]
+[ext_resource type="Texture2D" uid="uid://b35drs8wy0vfw" path="res://Sprites/UI Sprites/UI_Bubble-Hover_512x512.png" id="9_g4x4d"]
+[ext_resource type="Texture2D" uid="uid://bm4kdk5t8rrke" path="res://Sprites/UI Sprites/UI_Bubble-Exit_512x512.png" id="10_5sr68"]
+
+[node name="PauseMenu" type="Panel" node_paths=PackedStringArray("focusElement")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kqxr0")
+focusElement = NodePath("PauseMenu_Resume/ResumeButton")
+
+[node name="PauseBackground" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.470588)
+z_index = -55
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -600.0
+offset_right = 1000.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d6rm5")
+
+[node name="UiStone1024x1024" type="Sprite2D" parent="PauseBackground"]
+position = Vector2(960, 570)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("3_5742r")
+
+[node name="Pause Text" type="Label" parent="PauseBackground"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 283.0
+offset_right = 1184.0
+offset_bottom = 364.0
+theme_override_fonts/font = ExtResource("4_ymmhs")
+theme_override_font_sizes/font_size = 64
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="PauseMenu_Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -505.0
+offset_top = -418.0
+offset_right = 6.99997
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.42, 0.42)
+
+[node name="MenuButton" type="TextureButton" parent="PauseMenu_Menu"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../SettingsSound/SoundButton_PauseMenu")
+focus_neighbor_bottom = NodePath("../../SettingsSound/SoundButton_PauseMenu")
+texture_normal = ExtResource("6_sv4hk")
+texture_pressed = ExtResource("7_ngg61")
+texture_hover = ExtResource("10_5sr68")
+texture_focused = ExtResource("9_g4x4d")
+flip_h = true
+flip_v = true
+
+[node name="MenuText" type="RichTextLabel" parent="PauseMenu_Menu/MenuButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -89.0
+offset_right = 256.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_ymmhs")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Menu[/center]"
+
+[node name="PauseMenu_Resume" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 315.0
+offset_top = -30.0
+offset_right = 827.0
+offset_bottom = 482.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="ResumeButton" type="TextureButton" parent="PauseMenu_Resume"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../SettingsControls/ControlsButton_PauseMenu")
+focus_neighbor_top = NodePath("../../SettingsControls/ControlsButton_PauseMenu")
+texture_normal = ExtResource("6_sv4hk")
+texture_pressed = ExtResource("7_ngg61")
+texture_hover = ExtResource("10_5sr68")
+texture_focused = ExtResource("9_g4x4d")
+flip_h = true
+flip_v = true
+script = ExtResource("9_et5qf")
+
+[node name="ResumeText" type="RichTextLabel" parent="PauseMenu_Resume/ResumeButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -80.0
+offset_right = 256.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_ymmhs")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Resume[/center]"
+
+[node name="SettingsControls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -317.0
+offset_right = 488.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 0.72)
+
+[node name="ControlsButton_PauseMenu" type="TextureButton" parent="SettingsControls"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../SettingsSound/SoundButton_PauseMenu")
+focus_neighbor_right = NodePath("../../PauseMenu_Resume/ResumeButton")
+focus_neighbor_bottom = NodePath("../../PauseMenu_Resume/ResumeButton")
+texture_normal = ExtResource("6_sv4hk")
+texture_pressed = ExtResource("7_ngg61")
+texture_hover = ExtResource("10_5sr68")
+texture_focused = ExtResource("9_g4x4d")
+flip_h = true
+flip_v = true
+
+[node name="ControlsText" type="RichTextLabel" parent="SettingsControls/ControlsButton_PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_ymmhs")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Controls[/center]"
+
+[node name="SettingsSound" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -109.0
+offset_right = 136.0
+offset_bottom = 403.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 0.72)
+
+[node name="SoundButton_PauseMenu" type="TextureButton" parent="SettingsSound"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../PauseMenu_Menu/MenuButton")
+focus_neighbor_top = NodePath("../../SettingsControls/ControlsButton_PauseMenu")
+focus_neighbor_right = NodePath("../../SettingsControls/ControlsButton_PauseMenu")
+focus_neighbor_bottom = NodePath("../../PauseMenu_Resume/ResumeButton")
+texture_normal = ExtResource("6_sv4hk")
+texture_pressed = ExtResource("7_ngg61")
+texture_hover = ExtResource("10_5sr68")
+texture_focused = ExtResource("9_g4x4d")
+flip_h = true
+flip_v = true
+
+[node name="SoundText" type="RichTextLabel" parent="SettingsSound/SoundButton_PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_ymmhs")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Sound[/center]"

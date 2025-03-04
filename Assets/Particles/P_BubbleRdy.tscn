@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3l44ogivhj8w"]
+
+[ext_resource type="Texture2D" uid="uid://cdgq2sstfxj5v" path="res://Sprites/ParticleSprites/BubbleParticle02.png" id="2_brlcv"]
+[ext_resource type="Script" path="res://Scripts/ParticleSelfDestruct.gd" id="3_ie24t"]
+
+[sub_resource type="Curve" id="Curve_68b71"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_plq0s"]
+curve = SubResource("Curve_68b71")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j5hmj"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_max = 45.0
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 70.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.42
+radial_velocity_min = -5.0
+radial_velocity_max = 12.0
+gravity = Vector3(0, 5, 0)
+radial_accel_min = 30.0
+radial_accel_max = 50.0
+scale_min = 0.01
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_plq0s")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 46
+process_material = SubResource("ParticleProcessMaterial_j5hmj")
+texture = ExtResource("2_brlcv")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.8
+script = ExtResource("3_ie24t")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://p5kmdviaxphy"]
+
+[ext_resource type="Environment" uid="uid://bph6286acx2hj" path="res://Scenes/CaveEnvironment.tres" id="1_efg06"]
+[ext_resource type="Script" path="res://Scripts/EnterCaveEnv.gd" id="2_tp3k5"]
+[ext_resource type="Animation" uid="uid://jjycmh57h4b0" path="res://Anim/EnterCave.tres" id="3_se7vk"]
+[ext_resource type="Script" path="res://Scripts/PlayAnimBySignal.gd" id="4_t8ax0"]
+
+[sub_resource type="Animation" id="Animation_lhckh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.901961, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasModulate:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.901961, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasModulate:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.901961, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasModulate:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jeprn"]
+_data = {
+"EnterCave": ExtResource("3_se7vk"),
+"RESET": SubResource("Animation_lhckh")
+}
+
+[node name="EnterCaveEnvironment" type="WorldEnvironment"]
+environment = ExtResource("1_efg06")
+script = ExtResource("2_tp3k5")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.901961, 0.901961, 0.901961, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jeprn")
+}
+script = ExtResource("4_t8ax0")
+firstAnimation = "EnterCave"

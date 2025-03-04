@@ -1,0 +1,179 @@
+[gd_scene load_steps=14 format=3 uid="uid://qfw4bng680e8"]
+
+[ext_resource type="Texture2D" uid="uid://c0p4xp30to5so" path="res://Sprites/VFX Sprites/Walk_Start/WALK_START.png" id="1_rlowg"]
+[ext_resource type="Script" path="res://Scripts/AnimationSelfDestruct.gd" id="2_wrh3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hssmq"]
+atlas = ExtResource("1_rlowg")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve7wd"]
+atlas = ExtResource("1_rlowg")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtqea"]
+atlas = ExtResource("1_rlowg")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q85h7"]
+atlas = ExtResource("1_rlowg")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir3w3"]
+atlas = ExtResource("1_rlowg")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x65xb"]
+atlas = ExtResource("1_rlowg")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npspy"]
+atlas = ExtResource("1_rlowg")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ss3n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hssmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve7wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtqea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q85h7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir3w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x65xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npspy")
+}],
+"loop": false,
+"name": &"WalkDust",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_ig71w"]
+resource_name = "FadeOutModulation"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.686, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.984, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_4sb7r"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.690196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.690196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.690196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01o8o"]
+_data = {
+"FadeOutModulation": SubResource("Animation_ig71w"),
+"RESET": SubResource("Animation_4sb7r")
+}
+
+[node name="StartWalkDustAnim" type="AnimatedSprite2D"]
+modulate = Color(0.690196, 0.690196, 0.690196, 1)
+z_index = 49
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_3ss3n")
+animation = &"WalkDust"
+frame = 6
+frame_progress = 1.0
+script = ExtResource("2_wrh3t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_01o8o")
+}
+autoplay = "FadeOutModulation"
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

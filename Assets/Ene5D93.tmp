@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://s5ud2c73aio5"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_gl12g"]
+[ext_resource type="Texture2D" uid="uid://bprr8njyehxtp" path="res://Sprites/Enemy_ground.png" id="2_2xynd"]
+[ext_resource type="SpriteFrames" uid="uid://do8ke4o4ae115" path="res://Sprites/Anim/BubbleBurst.tres" id="3_866wl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dc1yn"]
+radius = 95.0
+height = 204.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ul3"]
+size = Vector2(176, 58)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_gl12g")
+speed = 120
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(27.84, -17.37)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_2xynd")
+
+[node name="Sprite2D_Bubble" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-7.62939e-06, 0)
+scale = Vector2(0.437333, 0.437333)
+sprite_frames = ExtResource("3_866wl")
+animation = &"BubbleBurst"
+frame = 9
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_dc1yn")
+
+[node name="BubbleJumpArea" type="Area2D" parent="."]
+position = Vector2(0, -100)
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BubbleJumpArea"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_p1ul3")
+
+[node name="RayCast2D_Vertical" type="RayCast2D" parent="."]
+position = Vector2(-62.16, 38.63)
+target_position = Vector2(-2, 174)
+
+[node name="RayCast2D_Vertical2" type="RayCast2D" parent="."]
+position = Vector2(93.84, 38.63)
+target_position = Vector2(-2, 174)
+
+[node name="RayCast2D_Horizontal" type="RayCast2D" parent="."]
+position = Vector2(0, -2)
+target_position = Vector2(-370, 4)
+
+[node name="DebubbleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="FlipTimer" type="Timer" parent="."]
+wait_time = 0.13
+one_shot = true
+
+[connection signal="animation_finished" from="Sprite2D_Bubble" to="." method="_on_sprite_2d_bubble_animation_finished"]
+[connection signal="body_entered" from="BubbleJumpArea" to="." method="_on_bubble_jump_area_body_entered"]
+[connection signal="timeout" from="DebubbleTimer" to="." method="_on_debubble_timer_timeout"]
+[connection signal="timeout" from="FlipTimer" to="." method="_on_flip_timer_timeout"]

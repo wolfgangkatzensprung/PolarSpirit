@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dydl6no08i27j"]
+
+[ext_resource type="TileSet" uid="uid://du3t7w8xfd4ck" path="res://Assets/TileMaps/TS_Platforms.tres" id="1_als8x"]
+
+[node name="TileMap_Platforms" type="TileMap"]
+scale = Vector2(0.25, 0.25)
+tile_set = ExtResource("1_als8x")
+format = 2

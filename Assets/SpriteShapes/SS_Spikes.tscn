@@ -1,0 +1,106 @@
+[gd_scene load_steps=17 format=3 uid="uid://c4yasjbk8x8q5"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_issoq"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_1okv2"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_4pbtn"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_vqsrj"]
+[ext_resource type="Resource" uid="uid://bko8v8oriwa7b" path="res://Assets/SpriteShapes/SSM_Spikes.tres" id="5_8rnie"]
+
+[sub_resource type="Resource" id="Resource_7avx5"]
+script = ExtResource("2_1okv2")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_nv16l"]
+script = ExtResource("3_4pbtn")
+position = Vector2(-260.961, -647.238)
+point_in = Vector2(-193.406, 136.225)
+point_out = Vector2(185.542, -154.225)
+properties = SubResource("Resource_7avx5")
+
+[sub_resource type="Resource" id="Resource_50jq5"]
+script = ExtResource("2_1okv2")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_hnuto"]
+script = ExtResource("3_4pbtn")
+position = Vector2(-260.961, -647.238)
+point_in = Vector2(-193.406, 136.225)
+point_out = Vector2(185.542, -154.225)
+properties = SubResource("Resource_50jq5")
+
+[sub_resource type="Resource" id="Resource_xlkmd"]
+script = ExtResource("2_1okv2")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_3n4ad"]
+script = ExtResource("3_4pbtn")
+position = Vector2(-870.535, -87.0627)
+point_in = Vector2(26.5, 232)
+point_out = Vector2(-26.5, -232)
+properties = SubResource("Resource_xlkmd")
+
+[sub_resource type="Resource" id="Resource_aeh6b"]
+script = ExtResource("2_1okv2")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_i62r7"]
+script = ExtResource("3_4pbtn")
+position = Vector2(781.369, -123.871)
+point_in = Vector2(96.5, -209)
+point_out = Vector2(-96.5, 209)
+properties = SubResource("Resource_aeh6b")
+
+[sub_resource type="Resource" id="Resource_qvjsh"]
+script = ExtResource("2_1okv2")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_o2cly"]
+script = ExtResource("3_4pbtn")
+position = Vector2(-63.4008, 58.6707)
+point_in = Vector2(272, -1)
+point_out = Vector2(-272, 1)
+properties = SubResource("Resource_qvjsh")
+
+[sub_resource type="Resource" id="Resource_3yxvc"]
+script = ExtResource("4_vqsrj")
+_points = {
+0: SubResource("Resource_nv16l"),
+3: SubResource("Resource_hnuto"),
+16: SubResource("Resource_3n4ad"),
+20: SubResource("Resource_i62r7"),
+21: SubResource("Resource_o2cly")
+}
+_point_order = Array[int]([0, 20, 21, 16, 3])
+_constraints = {
+Array[int]([0, 3]): 15
+}
+_next_key = 22
+_material_overrides = {}
+
+[node name="SS_Spikes" type="StaticBody2D" groups=["Enemy"]]
+z_index = 1
+texture_repeat = 2
+collision_mask = 0
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_issoq")
+_points = SubResource("Resource_3yxvc")
+shape_material = ExtResource("5_8rnie")
+collision_offset = 100.0
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-57.8134, -137.711, -55.7699, -139.182, -52.7642, -140.901, -49.6082, -142.297, -46.1537, -143.445, -39.4729, -144.857, -32.1719, -145.502, -24.4665, -145.438, -16.2356, -144.731, 1.06505, -141.692, 38.6148, -130.273, 77.6456, -113.293, 113.876, -92.8657, 129.949, -81.7773, 143.786, -70.482, 154.903, -59.1635, 159.543, -53.1764, 163.14, -47.3333, 164.711, -44.1056, 165.936, -40.9331, 166.86, -37.6691, 167.439, -34.3104, 167.62, -30.8713, 167.349, -27.3916, 166.59, -23.9383, 165.359, -20.648, 162.752, -15.7681, 159.654, -11.3214, 156.105, -7.26428, 152.162, -3.59083, 147.876, -0.282492, 143.143, 2.76319, 133.361, 7.69316, 122.522, 11.6951, 110.809, 14.8519, 85.9239, 19.0092, -12.398, 21.7302, -112.17, 24.6078, -136.654, 22.1049, -147.885, 19.5925, -153.302, 17.8814, -158.356, 15.875, -163.147, 13.4975, -167.639, 10.6973, -171.775, 7.42311, -175.365, 3.78094, -177.142, 1.56599, -178.656, -0.656257, -180.009, -3.00315, -181.189, -5.46652, -182.187, -8.03627, -182.996, -10.7014, -183.613, -13.4509, -184.045, -16.4114, -184.315, -21.8241, -183.939, -27.2869, -182.942, -32.6192, -181.383, -37.7902, -179.321, -42.7862, -176.718, -47.7539, -170.658, -56.731, -163.214, -65.3496, -154.623, -73.598, -135.408, -88.7667)

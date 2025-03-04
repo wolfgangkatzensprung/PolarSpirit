@@ -1,0 +1,340 @@
+[gd_scene load_steps=19 format=3 uid="uid://beghu7xm5o0yx"]
+
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_m3gdc"]
+[ext_resource type="PackedScene" uid="uid://bltbbu25xxaa1" path="res://Levels/ShowcaseLevel.tscn" id="2_dnpkb"]
+[ext_resource type="PackedScene" uid="uid://cjyucnrnp3hdk" path="res://Levels/SlideTestLevel.tscn" id="2_l5gn3"]
+[ext_resource type="PackedScene" uid="uid://lda7383c6nj6" path="res://Levels/TutorialLevel.tscn" id="3_fqucl"]
+[ext_resource type="AudioStream" uid="uid://i0basduklr8m" path="res://Audio/Music/240125_Pengu Intro.wav" id="6_7bqgc"]
+[ext_resource type="PackedScene" uid="uid://dvwpyvdrh5ay7" path="res://Scenes/WonGame.tscn" id="6_njvmu"]
+[ext_resource type="PackedScene" uid="uid://b6veop7polx4q" path="res://Assets/MainCam.tscn" id="7_6v5on"]
+[ext_resource type="PackedScene" uid="uid://tqi66jlkpeet" path="res://Assets/UI Assets/HealthBar.tscn" id="7_fode0"]
+[ext_resource type="Script" path="res://Scripts/UserInterface.gd" id="7_vwqv2"]
+[ext_resource type="Texture2D" uid="uid://c6x04l10cwmfs" path="res://Sprites/PlattformLarge.png" id="8_xeg2k"]
+[ext_resource type="Script" path="res://Scripts/Overlay.gd" id="9_k42ot"]
+[ext_resource type="Texture2D" uid="uid://cb5hho31uakwp" path="res://Sprites/IMG_0985.png" id="9_o4fal"]
+[ext_resource type="Texture2D" uid="uid://evexfhpox2kb" path="res://Sprites/BG Sky.png" id="10_l8udg"]
+[ext_resource type="Script" path="res://Scripts/VolumeSlider.gd" id="13_lkpqu"]
+
+[sub_resource type="Animation" id="Animation_yww3v"]
+resource_name = "Overlay_FadeIn"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionPanelContainer:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionPanelContainer:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TransitionPanelContainer:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TransitionPanelContainer:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="Animation" id="Animation_q5kc0"]
+resource_name = "Overlay_FadeOut"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionPanelContainer:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionPanelContainer:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TransitionPanelContainer:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TransitionPanelContainer:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w4rw"]
+_data = {
+"Overlay_FadeIn": SubResource("Animation_yww3v"),
+"Overlay_FadeOut": SubResource("Animation_q5kc0")
+}
+
+[sub_resource type="Environment" id="Environment_yg862"]
+glow_enabled = true
+fog_enabled = true
+
+[node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_m3gdc")
+levelScenes = Array[PackedScene]([ExtResource("2_dnpkb"), ExtResource("3_fqucl"), ExtResource("2_l5gn3")])
+wonGameScene = ExtResource("6_njvmu")
+introMusic = ExtResource("6_7bqgc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_vwqv2")
+
+[node name="PlayerStats" type="PanelContainer" parent="CanvasLayer/UserInterface"]
+modulate = Color(1, 1, 1, 0.0431373)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = 193.0
+offset_bottom = 107.0
+
+[node name="HealthBar" parent="CanvasLayer/UserInterface/PlayerStats" instance=ExtResource("7_fode0")]
+visible = false
+layout_mode = 2
+
+[node name="Menus" type="CenterContainer" parent="CanvasLayer/UserInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 478.0
+offset_top = 279.0
+offset_right = 1392.0
+offset_bottom = 777.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus"]
+visible = false
+layout_mode = 2
+
+[node name="Pause Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/PauseMenu"]
+layout_mode = 2
+offset_left = 132.0
+offset_top = -162.0
+offset_right = 419.0
+offset_bottom = -98.0
+text = "Paused"
+
+[node name="Audio Settings" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/PauseMenu"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+offset_right = 500.0
+offset_bottom = 218.0
+
+[node name="Master Slider" type="HSlider" parent="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("13_lkpqu")
+busName = "Master"
+
+[node name="MasterVolume Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Master"
+
+[node name="Sound Slider" type="HSlider" parent="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("13_lkpqu")
+busName = "SFX"
+
+[node name="SoundVolume Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Sound"
+
+[node name="Music Slider" type="HSlider" parent="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("13_lkpqu")
+busName = "Music"
+
+[node name="MusicVolume Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Music"
+
+[node name="EndCard" type="Panel" parent="CanvasLayer/UserInterface/Menus"]
+visible = false
+layout_mode = 2
+
+[node name="End Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/EndCard"]
+layout_mode = 2
+offset_left = -93.0
+offset_top = -94.0
+offset_right = 72.0
+offset_bottom = -15.0
+text = "EndCard Text"
+
+[node name="DeathScreen" type="Panel" parent="CanvasLayer/UserInterface/Menus"]
+visible = false
+layout_mode = 2
+
+[node name="Death Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/DeathScreen"]
+layout_mode = 2
+offset_left = -106.0
+offset_top = -117.0
+offset_right = 89.0
+offset_bottom = 44.0
+text = "You died. Press a button to continue."
+
+[node name="MainMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UserInterface/Menus/MainMenu"]
+z_index = -55
+layout_mode = 2
+offset_left = -2342.0
+offset_top = -1373.0
+offset_right = 2342.0
+offset_bottom = 1373.0
+texture = ExtResource("10_l8udg")
+
+[node name="MainMenuBox" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/MainMenu"]
+layout_mode = 2
+offset_left = -457.0
+offset_top = -249.0
+offset_right = 457.0
+offset_bottom = 249.0
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainMenuBox"]
+layout_mode = 2
+texture_normal = ExtResource("8_xeg2k")
+texture_pressed = ExtResource("9_o4fal")
+
+[node name="Start Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainMenuBox/PlayButton"]
+layout_mode = 2
+offset_left = 305.0
+offset_top = 81.0
+offset_right = 490.0
+offset_bottom = 157.0
+mouse_filter = 2
+text = "Start"
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainMenuBox"]
+layout_mode = 2
+texture_normal = ExtResource("8_xeg2k")
+texture_pressed = ExtResource("9_o4fal")
+flip_h = true
+flip_v = true
+
+[node name="Quit Text" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainMenuBox/QuitButton"]
+layout_mode = 2
+offset_left = 354.0
+offset_top = 106.0
+offset_right = 539.0
+offset_bottom = 182.0
+mouse_filter = 2
+text = "Quit"
+
+[node name="Overlay" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 39.0
+mouse_filter = 2
+script = ExtResource("9_k42ot")
+
+[node name="TransitionPanelContainer" type="PanelContainer" parent="CanvasLayer/Overlay"]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 0
+offset_right = 2081.0
+offset_bottom = 1212.0
+mouse_filter = 2
+
+[node name="TransitionPanel" type="Panel" parent="CanvasLayer/Overlay/TransitionPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Overlay/TransitionPanelContainer/TransitionPanel"]
+layout_mode = 2
+offset_right = 2081.0
+offset_bottom = 1212.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Overlay"]
+libraries = {
+"": SubResource("AnimationLibrary_4w4rw")
+}
+
+[node name="MainCam" parent="." instance=ExtResource("7_6v5on")]
+position = Vector2(2700.22, 1411.55)
+zoom = Vector2(1.10498, 1.10498)
+
+[node name="AudioStreamPlayer_TEST" type="AudioStreamPlayer" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yg862")
+
+[connection signal="value_changed" from="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings/Master Slider" to="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings/Master Slider" method="_on_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings/Sound Slider" to="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings/Sound Slider" method="_on_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings/Music Slider" to="CanvasLayer/UserInterface/Menus/PauseMenu/Audio Settings/Music Slider" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/MainMenu/MainMenuBox/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/MainMenu/MainMenuBox/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Overlay/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

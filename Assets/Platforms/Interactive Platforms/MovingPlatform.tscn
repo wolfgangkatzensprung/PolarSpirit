@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5esjaie47nym"]
+
+[ext_resource type="Script" path="res://Scripts/MovingPlatform.gd" id="1_b8xrn"]
+[ext_resource type="Texture2D" uid="uid://df1wn8dwrq0vk" path="res://Sprites/hs_movingplatform01.png" id="2_7p2x1"]
+[ext_resource type="Texture2D" uid="uid://crpnrneqeh3sm" path="res://Sprites/lightsources/circle01.png" id="3_3khl1"]
+[ext_resource type="Texture2D" uid="uid://x4pfd17t2r0j" path="res://Sprites/lightsources/circle02.png" id="4_v4jrn"]
+[ext_resource type="PackedScene" uid="uid://cuh5s6tj0fig1" path="res://Assets/Particles/P_PlatformParticles.tscn" id="5_yxrci"]
+
+[sub_resource type="Curve2D" id="Curve2D_yol13"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -235, 77, 0, 0, 0, 0, 370, -814)
+}
+point_count = 2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e41c4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8dcx"]
+size = Vector2(15.7096, 117.063)
+
+[node name="MovingPlatform" type="Path2D"]
+curve = SubResource("Curve2D_yol13")
+script = ExtResource("1_b8xrn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-235, 77)
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(-235, 77)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_e41c4")
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("2_7p2x1")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatableBody2D/Sprite2D"]
+position = Vector2(9, 18)
+color = Color(0, 0.929412, 0.666667, 1)
+energy = 0.35
+texture = ExtResource("3_3khl1")
+
+[node name="Circle02" type="Sprite2D" parent="AnimatableBody2D/Sprite2D/PointLight2D"]
+modulate = Color(0, 0.686275, 0.572549, 0.627451)
+z_index = -1
+position = Vector2(16, 10)
+scale = Vector2(-1.22966, -0.637601)
+texture = ExtResource("4_v4jrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(3.62685, -28.9995)
+rotation = 1.57152
+scale = Vector2(3.81923, 3.03066)
+shape = SubResource("RectangleShape2D_j8dcx")
+
+[node name="Platform particles2" parent="AnimatableBody2D" instance=ExtResource("5_yxrci")]

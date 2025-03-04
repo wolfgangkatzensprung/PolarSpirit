@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3wwygpquw530"]
+
+[ext_resource type="Texture2D" uid="uid://crpnrneqeh3sm" path="res://Sprites/lightsources/circle01.png" id="1_7487q"]
+[ext_resource type="PackedScene" uid="uid://8dp3bc2yivg" path="res://Assets/Platforms/spike_round.tscn" id="2_lxrtm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="spikelight32" type="Node2D" parent="."]
+z_index = -4
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.85817, 0.85817)
+
+[node name="Circle11" type="Sprite2D" parent="spikelight32"]
+visible = false
+modulate = Color(1, 0.215686, 0.756863, 0.647059)
+z_index = 3
+texture = ExtResource("1_7487q")
+
+[node name="PointLight2D" type="PointLight2D" parent="spikelight32/Circle11"]
+position = Vector2(1, -1)
+scale = Vector2(1.53345, 1.53345)
+color = Color(1, 0.215686, 0.615686, 1)
+range_item_cull_mask = 3
+texture = ExtResource("1_7487q")
+texture_scale = 1.59
+
+[node name="Circle12" type="Sprite2D" parent="spikelight32"]
+visible = false
+modulate = Color(1, 0.215686, 0.756863, 0.647059)
+z_index = 3
+texture = ExtResource("1_7487q")
+
+[node name="PointLight2D" type="PointLight2D" parent="spikelight32/Circle12"]
+position = Vector2(1, -1)
+scale = Vector2(1.53345, 1.53345)
+color = Color(1, 0.215686, 0.615686, 1)
+range_item_cull_mask = 3
+texture = ExtResource("1_7487q")
+texture_scale = 1.59
+
+[node name="SpykeRound4" parent="spikelight32" instance=ExtResource("2_lxrtm")]
+light_mask = 32
+z_index = 5
+position = Vector2(2.04335, -2.04329)
+rotation = 0.682228
+scale = Vector2(1.59856, 1.59856)

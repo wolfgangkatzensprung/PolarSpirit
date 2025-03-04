@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvwpyvdrh5ay7"]
+
+[ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="1_saj5w"]
+[ext_resource type="Texture2D" uid="uid://ttckl6m6pxbv" path="res://Sprites/Background/BG_ending Screen.jpg" id="4_ff6pp"]
+
+[node name="WinScreen" type="CanvasLayer"]
+script = ExtResource("1_saj5w")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_ff6pp")
+
+[node name="VBoxContainer_Credits" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 543.0
+offset_right = 678.0
+offset_bottom = 973.0
+
+[node name="Label_Name_Antonio" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "Antonio D'Orazio"
+
+[node name="Label_Tasks_Antonio" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "    VFX, 2D Animation"
+
+[node name="HSeparator3" type="HSeparator" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+
+[node name="Label_Name_Chrissi" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "Chrissi Gottsleben"
+
+[node name="Label_Tasks_Chrissi" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "    UI Art, Narrative Illustration"
+
+[node name="HSeparator4" type="HSeparator" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+
+[node name="Label_Name_Fabrizio" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "Fabrizio Maggiacomo"
+
+[node name="Label_Tasks_Fabrizio" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "    Level Design, 3D Modeling & Sculpting, 3D Animation"
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+
+[node name="Label_Name_Jonas" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "Jonas Pabst"
+
+[node name="Label_Tasks_Jonas" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "    Art Lead, Ingame Graphics, Backgrounds, Setdressing, Composition"
+
+[node name="HSeparator5" type="HSeparator" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+
+[node name="Label_Name_Justin" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "Justin Lindner"
+
+[node name="Label_Tasks_Justin" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "    Programming, Music Composition, Sound Design, VFX, Game Design, UI"
+
+[node name="HSeparator6" type="HSeparator" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+
+[node name="Label_Name_Rebecca" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "Rebecca Stolte"
+
+[node name="Label_Tasks_Rebecca" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "    Narrative Design, Game Design"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+
+[node name="Label_Name_Chris" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "Christopher Steffan"
+
+[node name="Label_Tasks_Chris" type="Label" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+text = "    Producer, UI"
+
+[node name="HSeparator7" type="HSeparator" parent="Control/VBoxContainer_Credits"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1398.0
+offset_top = 898.0
+offset_right = 1875.0
+offset_bottom = 1029.0
+
+[node name="Label_External Assets" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Godot Plugins:"
+
+[node name="Label1" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "\"Dialogue Manager\" by Nathan Hoad"
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "\"SmartShape2D\" by Ryan Lloyd, Robert Morse, and Guy Unger"
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "\"PhantomCamera\" by Marcus Skov"
+
+[node name="Label4" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "\"SaveSystem\" by Ádám Kormos"

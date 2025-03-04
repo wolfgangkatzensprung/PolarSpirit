@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://b6dfauvd36n1v"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_kvjei"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_hl30s"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_thjay"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_bsxr7"]
+[ext_resource type="Resource" uid="uid://dsl8svt5htmvo" path="res://Assets/SpriteShapes/SSM_Foreground.tres" id="5_pucil"]
+
+[sub_resource type="Resource" id="Resource_umi3j"]
+script = ExtResource("2_hl30s")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_4tsyt"]
+script = ExtResource("3_thjay")
+position = Vector2(-519.859, -167.918)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_umi3j")
+
+[sub_resource type="Resource" id="Resource_bbpip"]
+script = ExtResource("2_hl30s")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_houm0"]
+script = ExtResource("3_thjay")
+position = Vector2(1054.76, -175.406)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_bbpip")
+
+[sub_resource type="Resource" id="Resource_21htm"]
+script = ExtResource("2_hl30s")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_tecgy"]
+script = ExtResource("3_thjay")
+position = Vector2(-600.979, 836.677)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_21htm")
+
+[sub_resource type="Resource" id="Resource_tygcs"]
+script = ExtResource("2_hl30s")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_0ci8s"]
+script = ExtResource("3_thjay")
+position = Vector2(-519.859, -167.918)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_tygcs")
+
+[sub_resource type="Resource" id="Resource_ctpnr"]
+script = ExtResource("2_hl30s")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_5j10b"]
+script = ExtResource("3_thjay")
+position = Vector2(1005.86, 721.437)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_ctpnr")
+
+[sub_resource type="Resource" id="Resource_hg251"]
+script = ExtResource("4_bsxr7")
+_points = {
+0: SubResource("Resource_4tsyt"),
+1: SubResource("Resource_houm0"),
+2: SubResource("Resource_tecgy"),
+3: SubResource("Resource_0ci8s"),
+4: SubResource("Resource_5j10b")
+}
+_point_order = Array[int]([0, 1, 4, 2, 3])
+_constraints = {
+Array[int]([0, 3]): 15
+}
+_next_key = 5
+_material_overrides = {}
+
+[node name="SS_Foreground" type="StaticBody2D"]
+z_index = 1
+texture_repeat = 2
+collision_mask = 0
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="."]
+texture_repeat = 2
+script = ExtResource("1_kvjei")
+_points = SubResource("Resource_hg251")
+shape_material = ExtResource("5_pucil")
+collision_offset = 42.0
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-530.464, -179.36, 1065.31, -185.442, 1017.18, 732.569, -610.818, 846.428)

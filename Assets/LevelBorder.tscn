@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0tdpepgugnfk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4aeyh"]
+size = Vector2(58, 579)
+
+[node name="LevelBorder" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -65.5)
+shape = SubResource("RectangleShape2D_4aeyh")
+disabled = true

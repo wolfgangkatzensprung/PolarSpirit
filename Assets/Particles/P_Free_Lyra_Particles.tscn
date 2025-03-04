@@ -1,0 +1,186 @@
+[gd_scene load_steps=21 format=3 uid="uid://damky7xcyuwln"]
+
+[ext_resource type="Texture2D" uid="uid://cb5hho31uakwp" path="res://Sprites/ParticleSprites/BlueParticle.png" id="1_tsqk0"]
+[ext_resource type="Texture2D" uid="uid://bl323qioedlnd" path="res://Sprites/ParticleSprites/GoldenBubble_glow_20x20.png" id="2_nrun2"]
+[ext_resource type="Texture2D" uid="uid://ccbs8vsqk8t6a" path="res://Sprites/ParticleSprites/Star_particle_2.png" id="3_fcmxj"]
+
+[sub_resource type="Gradient" id="Gradient_611cf"]
+offsets = PackedFloat32Array(0, 0.491749, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qwfcm"]
+gradient = SubResource("Gradient_611cf")
+
+[sub_resource type="Curve" id="Curve_oskn8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.601208, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0oh4t"]
+curve = SubResource("Curve_oskn8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4jul"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
+angle_min = -720.0
+angle_max = -720.0
+spread = 0.0
+angular_velocity_min = -720.0
+angular_velocity_max = -615.42
+orbit_velocity_min = 2.0
+orbit_velocity_max = 2.0
+radial_velocity_min = 50.67
+radial_velocity_max = 50.67
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -76.53
+radial_accel_min = -100.0
+radial_accel_max = -64.25
+tangential_accel_min = -100.0
+tangential_accel_max = 61.45
+damping_max = 98.883
+scale_min = 0.0
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_0oh4t")
+color = Color(1, 1, 0, 0.431373)
+color_ramp = SubResource("GradientTexture1D_qwfcm")
+turbulence_enabled = true
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 0.0
+turbulence_noise_speed = Vector3(5.975, 0, 0)
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fvy02"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_kgc64"]
+_data = [Vector2(0, 0.00834322), 0.0, 0.0, 0, 0, Vector2(0.528701, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2dbva"]
+curve = SubResource("Curve_kgc64")
+
+[sub_resource type="Curve" id="Curve_las4l"]
+max_value = 805.43
+_data = [Vector2(0.0120846, 0), 0.0, 0.0, 0, 0, Vector2(0.679758, 0), 1.79505, 1.79505, 0, 0, Vector2(0.824773, 661.912), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_krn2b"]
+curve = SubResource("Curve_las4l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e7bm5"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+orbit_velocity_min = 2.0
+orbit_velocity_max = 2.0
+radial_velocity_max = 547.49
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -99.44
+linear_accel_max = 100.0
+radial_accel_min = -92.74
+radial_accel_max = 100.0
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_2dbva")
+scale_over_velocity_curve = SubResource("CurveTexture_krn2b")
+anim_speed_max = 9.48
+anim_offset_max = 0.1341
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 10.0
+turbulence_noise_speed_random = 2.62
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.0
+turbulence_initial_displacement_min = -100.0
+turbulence_initial_displacement_max = 100.0
+collision_mode = 2
+
+[sub_resource type="Curve" id="Curve_xdq0b"]
+_data = [Vector2(0.0513595, 0), 0.0, 0.0, 0, 0, Vector2(0.543807, 0.992253), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jfg2w"]
+curve = SubResource("Curve_xdq0b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uuxds"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+direction = Vector3(1, 1, 0)
+spread = 0.0
+angular_velocity_min = -140.78
+angular_velocity_max = -76.42
+orbit_velocity_min = -2.0
+orbit_velocity_max = -2.0
+radial_velocity_min = -1000.0
+radial_velocity_max = -1000.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+radial_accel_min = -100.0
+radial_accel_max = 94.41
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 6.6
+scale_curve = SubResource("CurveTexture_jfg2w")
+hue_variation_min = 0.23
+hue_variation_max = 0.41
+
+[sub_resource type="Curve" id="Curve_qlqos"]
+max_value = 3.0
+_data = [Vector2(0.0483384, 0.0482717), 0.0, 0.0, 0, 0, Vector2(0.311178, 0.350417), 0.0, 0.0, 0, 0, Vector2(0.380665, 0.675805), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_11qi1"]
+curve = SubResource("Curve_qlqos")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhp6a"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_over_velocity_curve = SubResource("CurveTexture_11qi1")
+color = Color(0.439216, 1, 0.870588, 1)
+hue_variation_min = -1.0
+hue_variation_max = -0.87
+anim_speed_max = 16.0
+
+[node name="Outside_particles" type="GPUParticles2D"]
+modulate = Color(1, 0.737255, 1, 1)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_o4jul")
+texture = ExtResource("1_tsqk0")
+one_shot = true
+speed_scale = 1.35
+explosiveness = 0.85
+
+[node name="InnerParticles2D2" type="GPUParticles2D" parent="."]
+modulate = Color(0, 0.967, 100, 1)
+material = SubResource("CanvasItemMaterial_fvy02")
+emitting = false
+amount = 73
+process_material = SubResource("ParticleProcessMaterial_e7bm5")
+texture = ExtResource("2_nrun2")
+lifetime = 0.6
+one_shot = true
+
+[node name="StarParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_uuxds")
+texture = ExtResource("3_fcmxj")
+lifetime = 3.84
+one_shot = true
+speed_scale = 3.05
+randomness = 0.03
+collision_base_size = 0.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="StarParticles2D"]
+self_modulate = Color(1, 1, 1, 0.313726)
+z_index = -1
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_yhp6a")
+texture = ExtResource("1_tsqk0")
+lifetime = 0.5
+one_shot = true

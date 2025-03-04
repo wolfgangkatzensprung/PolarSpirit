@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://2m5hhrhje4vl"]
+
+[ext_resource type="Script" path="res://Levels/SinkingPlatform.gd" id="1_tg2h7"]
+[ext_resource type="Texture2D" uid="uid://df1wn8dwrq0vk" path="res://Sprites/hs_movingplatform01.png" id="2_57bt2"]
+
+[sub_resource type="Curve2D" id="Curve2D_sl3g7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 43)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oru8n"]
+size = Vector2(166, 24)
+
+[sub_resource type="Animation" id="Animation_dp65f"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_y4cjg"]
+resource_name = "ResetSinkingPlatform"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [1.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_r4u47"]
+resource_name = "SinkingPlatform"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_cubkc"]
+resource_name = "Wobble"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.25, 0.58, 0.42, 0.55, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4xck7"]
+_data = {
+"RESET": SubResource("Animation_dp65f"),
+"ResetSinkingPlatform": SubResource("Animation_y4cjg"),
+"SinkingPlatform": SubResource("Animation_r4u47"),
+"Wobble": SubResource("Animation_cubkc")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7pyw"]
+size = Vector2(170, 26)
+
+[node name="SinkingPlatform" type="Path2D"]
+curve = SubResource("Curve2D_sl3g7")
+script = ExtResource("1_tg2h7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 5.5)
+progress = 37.5
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+z_index = 2
+position = Vector2(0, 5.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+position = Vector2(-1, -33)
+shape = SubResource("RectangleShape2D_oru8n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4xck7")
+}
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(0, 5.5)
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+z_index = 3
+position = Vector2(-1, -17)
+shape = SubResource("RectangleShape2D_t7pyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_57bt2")
+
+[connection signal="body_entered" from="PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PathFollow2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://df7p2ngev41iw"]
+
+[ext_resource type="Material" uid="uid://da3a6tgd5jfs2" path="res://Assets/Particles/PM_MuzzleFlash L.tres" id="1_p8en0"]
+[ext_resource type="Texture2D" uid="uid://cdgq2sstfxj5v" path="res://Sprites/ParticleSprites/BubbleParticle02.png" id="2_dqhd6"]
+[ext_resource type="Script" path="res://Scripts/ParticleSelfDestruct.gd" id="3_5aqwr"]
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 12
+process_material = ExtResource("1_p8en0")
+texture = ExtResource("2_dqhd6")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.8
+script = ExtResource("3_5aqwr")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

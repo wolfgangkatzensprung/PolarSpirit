@@ -1,0 +1,13 @@
+~ this_is_a_node_title
+
+Fairy: [[Hi|Hello|Howdy]], my little Penguin!!11elf
+Fairy: Here are some choices.
+- I am Pengu!!
+	Nathan: Pengu is happy.
+- What do you want from me??!!
+	Nathan: Pengu is enraged.
+- Start again => this_is_a_node_title
+- End the conversation => END
+Nathan: For more information see the online documentation.
+
+=> END

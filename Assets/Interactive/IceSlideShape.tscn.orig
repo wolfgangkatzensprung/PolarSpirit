@@ -1,0 +1,203 @@
+[gd_scene load_steps=26 format=3 uid="uid://pqqb6wmf13co"]
+
+[ext_resource type="Script" path="res://Scripts/IceSlide.gd" id="1_e0weu"]
+[ext_resource type="Script" path="res://Scripts/RemoteTrans.gd" id="2_5tapg"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="4_phrmo"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="5_kf6b6"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="6_7h278"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="7_4vu73"]
+[ext_resource type="Resource" uid="uid://eyjivxl6bixi" path="res://Assets/SpriteShapes/SSM_IceSlide.tres" id="7_fnn51"]
+
+[sub_resource type="Curve2D" id="Curve2D_xyc7r"]
+_data = {
+"points": PackedVector2Array(-175.175, -302.189, 175.175, 302.189, 508, -165, -394.206, 76.9949, 394.206, -76.9949, 1064, 247, 0, 0, 0, 0, 2020, -205)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2jxn"]
+size = Vector2(137.969, 130.53)
+
+[sub_resource type="Animation" id="Animation_ha11k"]
+resource_name = "SlideJump"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -29, -160, -0.2, 19, 0.2, 23, -5, 0, -44, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EndJump"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gogvc"]
+_data = {
+"SlideJump": SubResource("Animation_ha11k")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7rq1"]
+size = Vector2(3403, 1122)
+
+[sub_resource type="Resource" id="Resource_e348a"]
+script = ExtResource("5_kf6b6")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_yv2j5"]
+script = ExtResource("6_7h278")
+position = Vector2(100.063, -19.3555)
+point_in = Vector2(-70.7107, 178.191)
+point_out = Vector2(70.7107, -178.191)
+properties = SubResource("Resource_e348a")
+
+[sub_resource type="Resource" id="Resource_kfsev"]
+script = ExtResource("5_kf6b6")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_kjtba"]
+script = ExtResource("6_7h278")
+position = Vector2(648.175, 176.811)
+point_in = Vector2(-115.965, -265.872)
+point_out = Vector2(115.965, 265.872)
+properties = SubResource("Resource_kfsev")
+
+[sub_resource type="Resource" id="Resource_jhvyd"]
+script = ExtResource("5_kf6b6")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_cksm7"]
+script = ExtResource("6_7h278")
+position = Vector2(453.617, 812.202)
+point_in = Vector2(98.9949, 132.936)
+point_out = Vector2(-98.9949, -132.936)
+properties = SubResource("Resource_jhvyd")
+
+[sub_resource type="Resource" id="Resource_db03v"]
+script = ExtResource("5_kf6b6")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_1nw2k"]
+script = ExtResource("6_7h278")
+position = Vector2(100.063, -19.3555)
+point_in = Vector2(-70.7107, 178.191)
+point_out = Vector2(70.7107, -178.191)
+properties = SubResource("Resource_db03v")
+
+[sub_resource type="Resource" id="Resource_1wk6o"]
+script = ExtResource("5_kf6b6")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_ch6cj"]
+script = ExtResource("6_7h278")
+position = Vector2(1811.16, 24.6641)
+point_in = Vector2(-338.287, 193.719)
+point_out = Vector2(338.287, -193.719)
+properties = SubResource("Resource_1wk6o")
+
+[sub_resource type="Resource" id="Resource_5ua03"]
+script = ExtResource("5_kf6b6")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_4rma3"]
+script = ExtResource("6_7h278")
+position = Vector2(2161.99, 908.369)
+point_in = Vector2(282.843, -246.073)
+point_out = Vector2(-282.843, 246.073)
+properties = SubResource("Resource_5ua03")
+
+[sub_resource type="Resource" id="Resource_6k42h"]
+script = ExtResource("7_4vu73")
+_points = {
+0: SubResource("Resource_yv2j5"),
+1: SubResource("Resource_kjtba"),
+2: SubResource("Resource_cksm7"),
+3: SubResource("Resource_1nw2k"),
+4: SubResource("Resource_ch6cj"),
+5: SubResource("Resource_4rma3")
+}
+_point_order = Array[int]([0, 1, 4, 5, 2, 3])
+_constraints = {
+Array[int]([0, 3]): 15
+}
+_next_key = 6
+_material_overrides = {}
+
+[node name="IceSlideShape" type="Path2D"]
+curve = SubResource("Curve2D_xyc7r")
+script = ExtResource("1_e0weu")
+slideSpeed = 0.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(508, -165)
+rotation = 1.04545
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+script = ExtResource("2_5tapg")
+
+[node name="ColorRect" type="ColorRect" parent="PathFollow2D"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EntryPoint" type="Area2D" parent="PathFollow2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/EntryPoint"]
+position = Vector2(22.0491, 18.0435)
+shape = SubResource("RectangleShape2D_o2jxn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gogvc")
+}
+
+[node name="EntryCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryCheck"]
+visible = false
+position = Vector2(934.5, -145)
+shape = SubResource("RectangleShape2D_r7rq1")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="."]
+texture_repeat = 2
+script = ExtResource("4_phrmo")
+_points = SubResource("Resource_6k42h")
+shape_material = ExtResource("7_fnn51")
+
+[connection signal="body_entered" from="PathFollow2D/EntryPoint" to="." method="_on_slide_entry_point_body_entered"]
+[connection signal="body_entered" from="EntryCheck" to="." method="_on_entry_check_body_entered"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://1t4lcnbhn5wf"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_eprtb"]
+[ext_resource type="Texture2D" uid="uid://diwx2wrl08u3k" path="res://Sprites/Player.png" id="2_senyf"]
+[ext_resource type="Script" path="res://Scripts/BubbleHandler.gd" id="3_4djj1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_608su"]
+radius = 131.0
+height = 412.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwvey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_senyf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["Player", "Windable"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_eprtb")
+gravityMultiplier = 3.6
+maxHealth = null
+speed = 1900.0
+jump_velocity = -2400.0
+afterJump_time = null
+preJump_time = null
+jump_power = 66.0
+max_jump_time = null
+dashSpeed = 900.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_608su")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_gwvey")
+
+[node name="BubbleHolder" type="Node2D" parent="."]
+script = ExtResource("3_4djj1")
+shootVelocity = 230.0
+
+[node name="BubbleCooldown" type="Timer" parent="BubbleHolder"]
+wait_time = 0.23
+one_shot = true
+
+[node name="DamagedCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="BubbleHolder/BubbleCooldown" to="BubbleHolder" method="_on_bubble_cooldown_timeout"]
+[connection signal="timeout" from="DamagedCooldown" to="." method="_on_damaged_cooldown_timeout"]

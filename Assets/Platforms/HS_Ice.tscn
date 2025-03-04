@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bggqep53vhpi5"]
+
+[ext_resource type="Texture2D" uid="uid://cl6f7245xt3r6" path="res://Sprites/hs_ice.png" id="1_sytdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgqe3"]
+size = Vector2(455.182, 43.5435)
+
+[node name="HsIce" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_sytdg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.80549, 3.10244)
+rotation = -0.0554428
+shape = SubResource("RectangleShape2D_rgqe3")

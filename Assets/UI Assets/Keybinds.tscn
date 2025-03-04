@@ -1,0 +1,426 @@
+[gd_scene load_steps=16 format=3 uid="uid://do1rsetwdx1dy"]
+
+[ext_resource type="FontFile" uid="uid://e5px4ruhyjrk" path="res://Fonts/Lobster 1.4.otf" id="1_tvtec"]
+[ext_resource type="PackedScene" uid="uid://d0h0ycn6rqhvi" path="res://Assets/UI Assets/RebindButton.tscn" id="2_w0a7c"]
+[ext_resource type="Texture2D" uid="uid://c0uyl0f5xlkr8" path="res://Sprites/UI Sprites/UI-Button-A_50x50.png" id="3_fg86a"]
+[ext_resource type="Texture2D" uid="uid://ccdg1npbqalub" path="res://Sprites/UI Sprites/UI-Button-X_50x50.png" id="3_hnq8w"]
+[ext_resource type="Texture2D" uid="uid://4rrrt14xhir2" path="res://Sprites/UI Sprites/UI-Button-Stick-Left_100x50.png" id="4_tt6bt"]
+[ext_resource type="Texture2D" uid="uid://it2uaqi3o027" path="res://Sprites/UI Sprites/UI-Button-Stick-Right_100x50.png" id="4_uepi0"]
+[ext_resource type="Texture2D" uid="uid://cifqg51xo2vbr" path="res://Sprites/UI Sprites/UI-Button-RT_100x50.png" id="7_rdvux"]
+[ext_resource type="Texture2D" uid="uid://bnagthdixih5f" path="res://Sprites/UI Sprites/UI-Button-Menu_50x50.png" id="8_k3ggf"]
+[ext_resource type="Texture2D" uid="uid://dbrrv5tx0o7xi" path="res://Sprites/UI Sprites/UI-Button-Mouse-Left_50x75.png" id="8_tqece"]
+[ext_resource type="Texture2D" uid="uid://baerhw6rpy5nk" path="res://Sprites/UI Sprites/UI-Button-Left_50x50.png" id="9_jir21"]
+[ext_resource type="Texture2D" uid="uid://bo5wl75fpp6ph" path="res://Sprites/UI Sprites/UI-Button-Right_50x50.png" id="10_6lya1"]
+[ext_resource type="Texture2D" uid="uid://djstwb3jwn12g" path="res://Sprites/UI Sprites/UI-Button-Space_100x50.png" id="11_y2no3"]
+[ext_resource type="Texture2D" uid="uid://b4iuqdsi5ecqv" path="res://Sprites/UI Sprites/UI-Button-B+Mouse_100x100.png" id="12_i81mr"]
+[ext_resource type="Texture2D" uid="uid://bv3b56pltc8nt" path="res://Sprites/UI Sprites/UI-Button-ESC_100x50.png" id="12_urbsq"]
+[ext_resource type="Texture2D" uid="uid://gm47qa88jida" path="res://Sprites/UI Sprites/UI-Hold_100x50.png" id="15_dn7yn"]
+
+[node name="Keybinds" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 360.0
+
+[node name="Title Controls" type="Label" parent="."]
+layout_mode = 2
+offset_right = 600.0
+offset_bottom = 81.0
+theme_override_fonts/font = ExtResource("1_tvtec")
+theme_override_font_sizes/font_size = 64
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Controls_Keys-Costumized" type="Label" parent="."]
+layout_mode = 2
+offset_top = 93.0
+offset_right = 300.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("1_tvtec")
+theme_override_font_sizes/font_size = 30
+text = "Costum Keybinds"
+horizontal_alignment = 1
+
+[node name="Margin Controls" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 150.0
+offset_right = 330.0
+offset_bottom = 360.0
+scale = Vector2(0.998776, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="Margin Controls"]
+layout_mode = 2
+
+[node name="VBoxContainer_Inputs" type="VBoxContainer" parent="Margin Controls/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 36
+
+[node name="RebindButton2" parent="Margin Controls/BoxContainer/VBoxContainer_Inputs" instance=ExtResource("2_w0a7c")]
+layout_mode = 2
+actionName = "Bubble"
+
+[node name="RebindButton5" parent="Margin Controls/BoxContainer/VBoxContainer_Inputs" instance=ExtResource("2_w0a7c")]
+layout_mode = 2
+actionName = "Left"
+
+[node name="RebindButton3" parent="Margin Controls/BoxContainer/VBoxContainer_Inputs" instance=ExtResource("2_w0a7c")]
+layout_mode = 2
+actionName = "Right"
+
+[node name="RebindButton4" parent="Margin Controls/BoxContainer/VBoxContainer_Inputs" instance=ExtResource("2_w0a7c")]
+layout_mode = 2
+
+[node name="RebindButton6" parent="Margin Controls/BoxContainer/VBoxContainer_Inputs" instance=ExtResource("2_w0a7c")]
+visible = false
+layout_mode = 2
+actionName = "Dash"
+
+[node name="RebindButton7" parent="Margin Controls/BoxContainer/VBoxContainer_Inputs" instance=ExtResource("2_w0a7c")]
+layout_mode = 2
+actionName = "Pause"
+
+[node name="Controls_Keys-Standard" type="Label" parent="."]
+layout_mode = 2
+offset_left = 300.0
+offset_top = 93.0
+offset_right = 600.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("1_tvtec")
+theme_override_font_sizes/font_size = 30
+text = "Standard"
+horizontal_alignment = 1
+
+[node name="Controls_Controller" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 150.0
+offset_right = 480.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer_Controller" type="VBoxContainer" parent="Controls_Controller"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="FixedInput" type="Control" parent="Controls_Controller/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Bubble" type="HBoxContainer" parent="Controls_Controller/VBoxContainer_Controller/FixedInput"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Bubble-Sprite" type="Sprite2D" parent="Controls_Controller/VBoxContainer_Controller/FixedInput/Controller_Bubble"]
+position = Vector2(0, 15)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("7_rdvux")
+
+[node name="FixedInput2" type="Control" parent="Controls_Controller/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Left" type="HBoxContainer" parent="Controls_Controller/VBoxContainer_Controller/FixedInput2"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Left-Sprite" type="Sprite2D" parent="Controls_Controller/VBoxContainer_Controller/FixedInput2/Controller_Left"]
+position = Vector2(14, 15)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("4_tt6bt")
+
+[node name="FixedInput3" type="Control" parent="Controls_Controller/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Right" type="HBoxContainer" parent="Controls_Controller/VBoxContainer_Controller/FixedInput3"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Right-Sprite" type="Sprite2D" parent="Controls_Controller/VBoxContainer_Controller/FixedInput3/Controller_Right"]
+position = Vector2(14, 15)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("4_uepi0")
+
+[node name="FixedInput4" type="Control" parent="Controls_Controller/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Jump" type="HBoxContainer" parent="Controls_Controller/VBoxContainer_Controller/FixedInput4"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+scale = Vector2(1, 1.01401)
+theme_override_constants/separation = 120
+
+[node name="Controller_Jump-Sprite" type="Sprite2D" parent="Controls_Controller/VBoxContainer_Controller/FixedInput4/Controller_Jump"]
+position = Vector2(0, 15)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_fg86a")
+
+[node name="FixedInput5" type="Control" parent="Controls_Controller/VBoxContainer_Controller"]
+visible = false
+layout_mode = 2
+
+[node name="Controller_Float" type="HBoxContainer" parent="Controls_Controller/VBoxContainer_Controller/FixedInput5"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+scale = Vector2(1, 1.01401)
+theme_override_constants/separation = 120
+
+[node name="Controller_Float-Sprite" type="Sprite2D" parent="Controls_Controller/VBoxContainer_Controller/FixedInput5/Controller_Float"]
+position = Vector2(0, 15)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("7_rdvux")
+
+[node name="FixedInput6" type="Control" parent="Controls_Controller/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Menu" type="HBoxContainer" parent="Controls_Controller/VBoxContainer_Controller/FixedInput6"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+scale = Vector2(1.00373, 1)
+theme_override_constants/separation = 120
+
+[node name="Controller_Menu-Sprite" type="Sprite2D" parent="Controls_Controller/VBoxContainer_Controller/FixedInput6/Controller_Menu"]
+position = Vector2(0, 15)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_k3ggf")
+
+[node name="Controls_Keyboard" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 150.0
+offset_right = 600.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer_Keyboard" type="VBoxContainer" parent="Controls_Keyboard"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="FixedInput" type="Control" parent="Controls_Keyboard/VBoxContainer_Keyboard"]
+layout_mode = 2
+
+[node name="Keyboard_Bubble" type="HBoxContainer" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Keyboard_Bubble-Sprite" type="Sprite2D" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput/Keyboard_Bubble"]
+position = Vector2(-3, 12)
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("8_tqece")
+
+[node name="FixedInput2" type="Control" parent="Controls_Keyboard/VBoxContainer_Keyboard"]
+layout_mode = 2
+
+[node name="Keyboard_Left" type="HBoxContainer" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput2"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Keyboard_Left-Sprite" type="Sprite2D" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput2/Keyboard_Left"]
+position = Vector2(0, 15)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_jir21")
+
+[node name="FixedInput3" type="Control" parent="Controls_Keyboard/VBoxContainer_Keyboard"]
+layout_mode = 2
+
+[node name="Keyboard_Right" type="HBoxContainer" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput3"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Keyboard_Right-Sprite" type="Sprite2D" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput3/Keyboard_Right"]
+position = Vector2(0, 15)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("10_6lya1")
+
+[node name="FixedInput4" type="Control" parent="Controls_Keyboard/VBoxContainer_Keyboard"]
+layout_mode = 2
+
+[node name="Keyboard_Jump" type="HBoxContainer" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput4"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+scale = Vector2(1, 1.01401)
+theme_override_constants/separation = 120
+
+[node name="Keyboard_Jump-Sprite" type="Sprite2D" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput4/Keyboard_Jump"]
+position = Vector2(9, 15)
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("11_y2no3")
+
+[node name="FixedInput5" type="Control" parent="Controls_Keyboard/VBoxContainer_Keyboard"]
+visible = false
+layout_mode = 2
+
+[node name="Keyboard_Float" type="HBoxContainer" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput5"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+scale = Vector2(1, 1.01401)
+theme_override_constants/separation = 120
+
+[node name="Keyboard_Float-Sprite" type="Sprite2D" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput5/Keyboard_Float"]
+position = Vector2(9, 12)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_i81mr")
+
+[node name="FixedInput6" type="Control" parent="Controls_Keyboard/VBoxContainer_Keyboard"]
+layout_mode = 2
+
+[node name="Keyboard_Menu" type="HBoxContainer" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput6"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 30.0
+scale = Vector2(1.00373, 1)
+theme_override_constants/separation = 120
+
+[node name="Keyboard_Menu-Sprite" type="Sprite2D" parent="Controls_Keyboard/VBoxContainer_Keyboard/FixedInput6/Keyboard_Menu"]
+position = Vector2(0, 15)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("12_urbsq")
+
+[node name="Controls_Controller_old" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 90.0
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="VBoxContainer_Controller" type="VBoxContainer" parent="Controls_Controller_old"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="FixedInput" type="Control" parent="Controls_Controller_old/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Bubble" type="HBoxContainer" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Bubble-Sprite" type="Sprite2D" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput/Controller_Bubble"]
+position = Vector2(135, 15)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_hnq8w")
+
+[node name="Controller_Bubble-Label" type="Label" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput/Controller_Bubble"]
+layout_mode = 2
+text = "Mouse Left"
+
+[node name="FixedInput2" type="Control" parent="Controls_Controller_old/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Left" type="HBoxContainer" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput2"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Left-Sprite" type="Sprite2D" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput2/Controller_Left"]
+position = Vector2(149, 15)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("4_tt6bt")
+
+[node name="Controller_Left-Label" type="Label" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput2/Controller_Left"]
+layout_mode = 2
+text = "Arrow Left"
+
+[node name="FixedInput3" type="Control" parent="Controls_Controller_old/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Right" type="HBoxContainer" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput3"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Right-Sprite" type="Sprite2D" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput3/Controller_Right"]
+position = Vector2(149, 15)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("4_uepi0")
+
+[node name="Controller_Right-Label" type="Label" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput3/Controller_Right"]
+layout_mode = 2
+text = "Arrow Right"
+
+[node name="FixedInput4" type="Control" parent="Controls_Controller_old/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Jump" type="HBoxContainer" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput4"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Jump-Sprite" type="Sprite2D" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput4/Controller_Jump"]
+position = Vector2(135, 15)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_fg86a")
+
+[node name="Controller_Jump-Label" type="Label" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput4/Controller_Jump"]
+layout_mode = 2
+text = "Arrow Up"
+
+[node name="FixedInput6" type="Control" parent="Controls_Controller_old/VBoxContainer_Controller"]
+layout_mode = 2
+
+[node name="Controller_Menu" type="HBoxContainer" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput6"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 30.0
+theme_override_constants/separation = 120
+
+[node name="Controller_Menu-Sprite" type="Sprite2D" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput6/Controller_Menu"]
+position = Vector2(135, 15)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_k3ggf")
+
+[node name="Controller_Menu-Label" type="Label" parent="Controls_Controller_old/VBoxContainer_Controller/FixedInput6/Controller_Menu"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+visible = false
+layout_mode = 2
+offset_top = 90.0
+offset_right = 3.0
+offset_bottom = 94.0
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 4.01083
+offset_right = 7.01083
+offset_bottom = 4.0
+
+[node name="VSeparator" type="VSeparator" parent="."]
+visible = false
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+offset_left = 4.01083
+offset_right = 284.011
+offset_bottom = 300.0
+mouse_filter = 2
+
+[node name="Ui-hold100x50" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(453, 309)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("15_dn7yn")

@@ -1,0 +1,27 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://b588x2wohbbrb"]
+
+[ext_resource type="Texture2D" uid="uid://m2qptxa7ovfr" path="res://Sprites/LightCookies/LightCookie_Circle.png" id="1_5ksna"]
+
+[sub_resource type="Gradient" id="Gradient_pw3jx"]
+offsets = PackedFloat32Array(0, 0.564, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.678083, 0.498053, 0.678193, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2dohd"]
+gradient = SubResource("Gradient_pw3jx")
+
+[resource]
+resource_local_to_scene = true
+background_mode = 3
+tonemap_exposure = 1.86
+ssao_radius = 0.01
+ssao_intensity = 16.0
+ssao_power = 0.265165
+ssao_detail = 2.8
+ssao_sharpness = 1.0
+glow_enabled = true
+glow_intensity = 0.3
+glow_bloom = 0.05
+glow_map_strength = 1.0
+glow_map = ExtResource("1_5ksna")
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_2dohd")

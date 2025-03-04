@@ -1,0 +1,143 @@
+[gd_scene load_steps=23 format=3 uid="uid://be2rhe17mtbj7"]
+
+[ext_resource type="Script" path="res://Scripts/Wind.gd" id="1_k5ggi"]
+[ext_resource type="Texture2D" uid="uid://cb5hho31uakwp" path="res://Sprites/ParticleSprites/BlueParticle.png" id="2_2kq7h"]
+[ext_resource type="Script" path="res://Scripts/WindParticles.gd" id="3_wk3lr"]
+[ext_resource type="Script" path="res://Scripts/RndAnimation.gd" id="4_71d37"]
+[ext_resource type="Texture2D" uid="uid://cwxpomhausd6p" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_2.png" id="6_bxpdl"]
+[ext_resource type="Texture2D" uid="uid://bkgwjemail7gu" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_3.png" id="7_qyqt1"]
+[ext_resource type="Texture2D" uid="uid://57k1b7ii00gv" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_4.png" id="8_h020s"]
+[ext_resource type="Texture2D" uid="uid://l52mo2gaq0py" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_5.png" id="9_y6akj"]
+[ext_resource type="Texture2D" uid="uid://c2crbid44u7go" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_6.png" id="10_1tfn7"]
+[ext_resource type="Texture2D" uid="uid://cx4glata1q65k" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_7.png" id="11_uj7jt"]
+[ext_resource type="Texture2D" uid="uid://gs0d1225xal5" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_8.png" id="12_l63hs"]
+[ext_resource type="Texture2D" uid="uid://cvi8xgx6nwola" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_9.png" id="13_lnkav"]
+[ext_resource type="Texture2D" uid="uid://dxxt2aitd18ke" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_10.png" id="14_ashoq"]
+[ext_resource type="Texture2D" uid="uid://dvgxn6va1e2wr" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_11.png" id="15_jg7r6"]
+[ext_resource type="AudioStream" uid="uid://klbm7hiyk0cy" path="res://Audio/SFX/Wind.wav" id="16_1ghhg"]
+[ext_resource type="Texture2D" uid="uid://bjhm8ecj4qws7" path="res://Sprites/VFX Sprites/WIND ANIMATION/Wind_New/Wind_True_12.png" id="16_qvraq"]
+[ext_resource type="Script" path="res://Scripts/RandomSoundStartTime.gd" id="17_hcbl4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c57wg"]
+size = Vector2(348, 226)
+
+[sub_resource type="Curve" id="Curve_qf6ew"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.183607, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e3gs3"]
+curve = SubResource("Curve_qf6ew")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qfx8i"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(174, 113, 1)
+direction = Vector3(0.3, 0.7, 0)
+initial_velocity_min = 74.81
+initial_velocity_max = 225.41
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.02
+alpha_curve = SubResource("CurveTexture_e3gs3")
+turbulence_enabled = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qwuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bxpdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qyqt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h020s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_y6akj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1tfn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uj7jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l63hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lnkav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ashoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jg7r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qvraq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Wind" type="Area2D"]
+collision_layer = 0
+collision_mask = 22
+monitorable = false
+script = ExtResource("1_k5ggi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c57wg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 42
+offset_left = -174.0
+offset_top = -113.0
+offset_right = 173.0
+offset_bottom = 114.0
+color = Color(0.596078, 0.960784, 0.894118, 0.196078)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_mode = 3
+amount = 900
+process_material = SubResource("ParticleProcessMaterial_qfx8i")
+texture = ExtResource("2_2kq7h")
+lifetime = 3.0
+preprocess = 1.0
+randomness = 0.3
+visibility_rect = Rect2(-250, -200, 500, 400)
+trail_enabled = true
+trail_lifetime = 0.02
+trail_sections = 15
+trail_section_subdivisions = 5
+script = ExtResource("3_wk3lr")
+
+[node name="RndAnimation" type="Node2D" parent="."]
+modulate = Color(0.945098, 0.847059, 0.686275, 1)
+script = ExtResource("4_71d37")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RndAnimation"]
+position = Vector2(-0.499996, -1.00001)
+sprite_frames = SubResource("SpriteFrames_8qwuy")
+frame_progress = 0.383056
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="RndAnimation"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_8qwuy")
+frame_progress = 0.287583
+flip_v = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_1ghhg")
+autoplay = true
+bus = &"SFX"
+script = ExtResource("17_hcbl4")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+enable_node_path = NodePath("../AudioStreamPlayer2D")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

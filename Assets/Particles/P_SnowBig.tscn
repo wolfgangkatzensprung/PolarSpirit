@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmrji6vet6cop"]
+
+[ext_resource type="Material" uid="uid://di220whh72kaj" path="res://Assets/Particles/PM_SnowBig.tres" id="1_7i5x4"]
+[ext_resource type="Texture2D" uid="uid://be58xcfsnpqro" path="res://Sprites/ParticleSprites/Snow_Particle2.png" id="1_whsa8"]
+
+[node name="P_Snow_Big" type="GPUParticles2D"]
+z_index = 5
+z_as_relative = false
+amount = 300
+process_material = ExtResource("1_7i5x4")
+texture = ExtResource("1_whsa8")
+lifetime = 42.0
+preprocess = 10.0
+speed_scale = 1.68
+visibility_rect = Rect2(-3333, -100, 6666, 4444)
+trail_lifetime = 0.75
+trail_sections = 2
+trail_section_subdivisions = 1

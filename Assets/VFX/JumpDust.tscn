@@ -1,0 +1,183 @@
+[gd_scene load_steps=18 format=3 uid="uid://d305ot3su8yv7"]
+
+[ext_resource type="Texture2D" uid="uid://8h0k8d2m2blh" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_1.png" id="1_otk37"]
+[ext_resource type="Texture2D" uid="uid://dn3nh5sspdqs3" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_2.png" id="2_ctwts"]
+[ext_resource type="Texture2D" uid="uid://bvt1p8bdl0mav" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_3.png" id="3_1esq4"]
+[ext_resource type="Texture2D" uid="uid://cx1pbsrqqmw0b" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_4.png" id="4_j555n"]
+[ext_resource type="Texture2D" uid="uid://h3vxmo036t5p" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_5.png" id="5_iarjs"]
+[ext_resource type="Texture2D" uid="uid://b0achxqbm0qrk" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_6.png" id="6_ce4n6"]
+[ext_resource type="Texture2D" uid="uid://cbw6pktwhedlo" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_7.png" id="7_v7c6j"]
+[ext_resource type="Texture2D" uid="uid://c60li50b7c1pd" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_8.png" id="8_es8r7"]
+[ext_resource type="Texture2D" uid="uid://dkcskaurp6wo8" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_9.png" id="9_anyd3"]
+[ext_resource type="Texture2D" uid="uid://bl8v3eoyif7jr" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_10.png" id="10_6blqh"]
+[ext_resource type="Texture2D" uid="uid://dkrjiym1ovd4p" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_11.png" id="11_4ialk"]
+[ext_resource type="Texture2D" uid="uid://cdhek5nkyciwv" path="res://Sprites/VFX Sprites/Jump_Dust/JUMP_Dust_12.png" id="12_7qj5i"]
+[ext_resource type="Script" path="res://Scripts/AnimationSelfDestruct.gd" id="13_56nm6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yd47e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_otk37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ctwts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1esq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j555n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iarjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ce4n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v7c6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_es8r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_anyd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6blqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4ialk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7qj5i")
+}],
+"loop": false,
+"name": &"JumpDust",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ig71w"]
+resource_name = "FadeOutModulation"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.686275, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.984314, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_4sb7r"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.690196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.690196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.690196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01o8o"]
+_data = {
+"FadeOutModulation": SubResource("Animation_ig71w"),
+"RESET": SubResource("Animation_4sb7r")
+}
+
+[node name="JumpDust" type="AnimatedSprite2D"]
+modulate = Color(0.690196, 0.690196, 0.690196, 1)
+z_index = 51
+position = Vector2(0, 10)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_yd47e")
+animation = &"JumpDust"
+frame = 11
+frame_progress = 1.0
+script = ExtResource("13_56nm6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_01o8o")
+}
+autoplay = "FadeOutModulation"
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

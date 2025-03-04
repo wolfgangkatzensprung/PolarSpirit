@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dvgusrqh05m4q"
+path="res://.godot/imported/Level3_CollectableIntro.dialogue-592db8547cc02bdea2bafb0bff5259b0.tres"
+
+[deps]
+
+source_file="res://Dialogues/Level3_CollectableIntro.dialogue"
+dest_files=["res://.godot/imported/Level3_CollectableIntro.dialogue-592db8547cc02bdea2bafb0bff5259b0.tres"]
+
+[params]
+
+defaults=true

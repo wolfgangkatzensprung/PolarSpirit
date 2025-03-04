@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceglybjolpngb"]
+
+[ext_resource type="TileSet" uid="uid://r7d3ydbcoykj" path="res://Assets/TileMaps/TS_CrystalSpikes.tres" id="1_j8ryv"]
+
+[node name="TM_CrystalSpikes" type="TileMap" groups=["Enemy"]]
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("1_j8ryv")
+format = 2

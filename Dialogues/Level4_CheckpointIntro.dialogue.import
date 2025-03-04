@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://b0jjacoorpg7g"
+path="res://.godot/imported/Level4_CheckpointIntro.dialogue-880d0709b7a6b28134ded3c01e43b24a.tres"
+
+[deps]
+
+source_file="res://Dialogues/Level4_CheckpointIntro.dialogue"
+dest_files=["res://.godot/imported/Level4_CheckpointIntro.dialogue-880d0709b7a6b28134ded3c01e43b24a.tres"]
+
+[params]
+
+defaults=true

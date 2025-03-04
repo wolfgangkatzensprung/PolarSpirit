@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3c8mwhmtvenj"]
+
+[ext_resource type="Script" path="res://Scripts/IceSlide.gd" id="1_xm0p3"]
+[ext_resource type="Script" path="res://Scripts/RemoteTrans.gd" id="2_khejj"]
+[ext_resource type="Texture2D" uid="uid://p6j1ne6nylur" path="res://Sprites/hs_ramp_high_01.png" id="3_lmyis"]
+
+[sub_resource type="Curve2D" id="Curve2D_khopa"]
+_data = {
+"points": PackedVector2Array(-271.787, -171.357, 271.787, 171.357, 515, -125, -132.347, 7.10003, 132.347, -7.10003, 1108, 103, -68.0357, 41.5774, 68.0357, -41.5774, 1467, -1, -120.952, 18.8988, 120.952, -18.8988, 1751, -153)
+}
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2jxn"]
+size = Vector2(137.969, 130.53)
+
+[sub_resource type="Animation" id="Animation_ha11k"]
+resource_name = "SlideJump"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -29, -160, -0.2, 19, 0.2, 23, -5, 0, -44, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EndJump"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gogvc"]
+_data = {
+"SlideJump": SubResource("Animation_ha11k")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7rq1"]
+size = Vector2(3403, 1122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2k1pw"]
+size = Vector2(208, 32)
+
+[node name="IceRampFlyingPillar" type="Path2D"]
+position = Vector2(-315, -5)
+curve = SubResource("Curve2D_khopa")
+script = ExtResource("1_xm0p3")
+slideSpeed = 0.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(517.667, -129.23)
+rotation = 0.562532
+v_offset = -5.0
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+script = ExtResource("2_khejj")
+
+[node name="ColorRect" type="ColorRect" parent="PathFollow2D"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EntryPoint" type="Area2D" parent="PathFollow2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/EntryPoint"]
+position = Vector2(22.0491, 18.0435)
+shape = SubResource("RectangleShape2D_o2jxn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gogvc")
+}
+
+[node name="EntryCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryCheck"]
+visible = false
+position = Vector2(934.5, -145)
+shape = SubResource("RectangleShape2D_r7rq1")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(500, -194)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-124, 78)
+shape = SubResource("RectangleShape2D_2k1pw")
+
+[node name="SlideSprite" type="Sprite2D" parent="StaticBody2D"]
+light_mask = 17
+z_index = -1
+position = Vector2(495, 743)
+texture = ExtResource("3_lmyis")
+
+[connection signal="body_entered" from="PathFollow2D/EntryPoint" to="." method="_on_slide_entry_point_body_entered"]
+[connection signal="body_entered" from="EntryCheck" to="." method="_on_entry_check_body_entered"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

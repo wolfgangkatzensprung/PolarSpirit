@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://djlymmb783cv8"]
+
+[ext_resource type="Texture2D" uid="uid://bfbv8wabsnl88" path="res://Sprites/UI Sprites/UI_Bubble-Original_18x18.png" id="1_dcov8"]
+[ext_resource type="Script" path="res://Scripts/VolumeSlider.gd" id="1_vc0hr"]
+[ext_resource type="Texture2D" uid="uid://dvlfg13gobd66" path="res://Sprites/UI Sprites/UI_Bubble-Rose_18x18.png" id="2_q1hoo"]
+[ext_resource type="FontFile" uid="uid://e5px4ruhyjrk" path="res://Fonts/Lobster 1.4.otf" id="2_w0tmc"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3c8tg"]
+color = Color(0.243137, 0.243137, 0.243137, 1)
+thickness = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkigy"]
+bg_color = Color(0.942533, 0.52197, 0.298699, 0.968627)
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+
+[node name="Audio Settings" type="VBoxContainer"]
+custom_minimum_size = Vector2(384, 100)
+offset_right = 384.0
+offset_bottom = 300.0
+
+[node name="Title Controls" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_w0tmc")
+theme_override_font_sizes/font_size = 64
+text = "Sounds"
+horizontal_alignment = 1
+
+[node name="MasterVolume Text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_w0tmc")
+theme_override_font_sizes/normal_font_size = 30
+text = "Master"
+
+[node name="Master Slider" type="HSlider" parent="."]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_dcov8")
+theme_override_icons/grabber_highlight = ExtResource("2_q1hoo")
+theme_override_icons/grabber_disabled = ExtResource("2_q1hoo")
+theme_override_styles/slider = SubResource("StyleBoxLine_3c8tg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fkigy")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("1_vc0hr")
+busName = "Master"
+
+[node name="SoundVolume Text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_w0tmc")
+theme_override_font_sizes/normal_font_size = 30
+text = "Sound"
+
+[node name="Sound Slider" type="HSlider" parent="."]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_dcov8")
+theme_override_icons/grabber_highlight = ExtResource("2_q1hoo")
+theme_override_icons/grabber_disabled = ExtResource("2_q1hoo")
+theme_override_styles/slider = SubResource("StyleBoxLine_3c8tg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fkigy")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("1_vc0hr")
+busName = "SFX"
+
+[node name="MusicVolume Text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_w0tmc")
+theme_override_font_sizes/normal_font_size = 30
+text = "Music"
+
+[node name="Music Slider" type="HSlider" parent="."]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_dcov8")
+theme_override_icons/grabber_highlight = ExtResource("2_q1hoo")
+theme_override_icons/grabber_disabled = ExtResource("2_q1hoo")
+theme_override_styles/slider = SubResource("StyleBoxLine_3c8tg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fkigy")
+max_value = 0.7
+step = 0.05
+value = 0.5
+script = ExtResource("1_vc0hr")
+busName = "Music"
+
+[connection signal="value_changed" from="Master Slider" to="Master Slider" method="_on_value_changed"]
+[connection signal="value_changed" from="Sound Slider" to="Sound Slider" method="_on_value_changed"]
+[connection signal="value_changed" from="Music Slider" to="Music Slider" method="_on_value_changed"]

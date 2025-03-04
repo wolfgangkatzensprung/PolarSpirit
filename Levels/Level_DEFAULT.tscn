@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://dc1yix2uqe8h0"]
+
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_71qd2"]
+[ext_resource type="PackedScene" uid="uid://1t4lcnbhn5wf" path="res://Assets/Player.tscn" id="2_uxdi5"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="3_27q46"]
+[ext_resource type="PackedScene" uid="uid://dts0nopsl0bmr" path="res://Assets/Triggers/CamTriggerArea.tscn" id="4_6hvqh"]
+[ext_resource type="PackedScene" uid="uid://dauyjxldy4xan" path="res://Assets/TileMaps/TM_Ground.tscn" id="5_jx3oj"]
+[ext_resource type="PackedScene" uid="uid://x3ee21f2pwt6" path="res://Assets/SpriteShapes/SS_Ground.tscn" id="6_ytb25"]
+[ext_resource type="PackedScene" uid="uid://c2egmae43km3g" path="res://Assets/Triggers/EndPoint.tscn" id="7_wbjy2"]
+[ext_resource type="PackedScene" uid="uid://dss1gihla88ut" path="res://Assets/Triggers/DeathZone.tscn" id="8_l4vw7"]
+[ext_resource type="Environment" uid="uid://b588x2wohbbrb" path="res://Scenes/LevelEnvironment01.tres" id="9_n1py7"]
+[ext_resource type="Texture2D" uid="uid://45p8ikjiwh8o" path="res://Sprites/WhiteBox32px.png" id="10_8h6m4"]
+[ext_resource type="Script" path="res://Scripts/ToggleVisibilityOnPlay.gd" id="11_24p1i"]
+
+[sub_resource type="Curve2D" id="Curve2D_evq5c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -537, -212, 0, 0, 0, 0, 2022, -107)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w0c6"]
+size = Vector2(162, 3567)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aya8a"]
+size = Vector2(162.25, 3921)
+
+[node name="LevelDefault" type="Node2D"]
+script = ExtResource("1_71qd2")
+
+[node name="Player" parent="." instance=ExtResource("2_uxdi5")]
+unique_name_in_owner = true
+position = Vector2(21, 63)
+
+[node name="Path2D_pcam1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_evq5c")
+
+[node name="pcam1" type="Node2D" parent="."]
+position = Vector2(31.3273, -188.681)
+script = ExtResource("3_27q46")
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 4
+follow_target = NodePath("../Player")
+follow_path = NodePath("../Path2D_pcam1")
+follow_parameters/damping = false
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="pcamTrigger1" parent="." node_paths=PackedStringArray("pcam") instance=ExtResource("4_6hvqh")]
+position = Vector2(439, 43)
+pcam = NodePath("../pcam1")
+
+[node name="Level Boundaries" type="Node2D" parent="."]
+
+[node name="Boundary_Left" type="StaticBody2D" parent="Level Boundaries"]
+position = Vector2(-1251, -155)
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Boundaries/Boundary_Left"]
+shape = SubResource("RectangleShape2D_4w0c6")
+
+[node name="Boundary_Right" type="StaticBody2D" parent="Level Boundaries"]
+position = Vector2(7023, 186)
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Boundaries/Boundary_Right"]
+shape = SubResource("RectangleShape2D_aya8a")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.01, 0.01)
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 70
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.1, 1.1)
+
+[node name="TM_Ground" parent="." instance=ExtResource("5_jx3oj")]
+
+[node name="SS_Ground" parent="." instance=ExtResource("6_ytb25")]
+position = Vector2(2087, 254)
+
+[node name="EndPoint" parent="." instance=ExtResource("7_wbjy2")]
+position = Vector2(-549, 1847)
+
+[node name="DeathZone" parent="." instance=ExtResource("8_l4vw7")]
+position = Vector2(890, 2898)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("9_n1py7")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="WorldEnvironment"]
+color = Color(0.721569, 0.721569, 0.721569, 1)
+
+[node name="Light_Override_Layer6" type="PointLight2D" parent="WorldEnvironment"]
+visible = false
+position = Vector2(6497, 146)
+scale = Vector2(917.5, 917.5)
+energy = 0.6
+range_item_cull_mask = 32
+texture = ExtResource("10_8h6m4")
+script = ExtResource("11_24p1i")

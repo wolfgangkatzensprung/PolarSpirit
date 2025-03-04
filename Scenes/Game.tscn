@@ -1,0 +1,1575 @@
+[gd_scene load_steps=43 format=3 uid="uid://3hvlq23fqgix"]
+
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_yfs3u"]
+[ext_resource type="AudioStream" uid="uid://c8248lby62ink" path="res://Audio/Music/240222_PenguMenu.wav" id="2_c4vtn"]
+[ext_resource type="Script" path="res://Scripts/UserInterface.gd" id="3_2oh08"]
+[ext_resource type="Texture2D" uid="uid://drxevkcum0c8i" path="res://Sprites/Background/BG_MainTitle-big.jpg" id="5_7tc6b"]
+[ext_resource type="Texture2D" uid="uid://ggnqhgx00s4t" path="res://Sprites/UI Sprites/UI_Bubble-Original_512x512.png" id="5_de040"]
+[ext_resource type="Script" path="res://Scripts/MenuBase.gd" id="5_i23yy"]
+[ext_resource type="Texture2D" uid="uid://d0fhwcgbp2yml" path="res://Sprites/UI Sprites/UI_Bubble-Pressed_512x512.png" id="6_ewn8m"]
+[ext_resource type="PackedScene" uid="uid://m0mvemcwg0hq" path="res://Assets/Particles/P_SnowSmall.tscn" id="7_jxhni"]
+[ext_resource type="Texture2D" uid="uid://b35drs8wy0vfw" path="res://Sprites/UI Sprites/UI_Bubble-Hover_512x512.png" id="7_ppdjl"]
+[ext_resource type="FontFile" uid="uid://e5px4ruhyjrk" path="res://Fonts/Lobster 1.4.otf" id="8_2am8h"]
+[ext_resource type="Texture2D" uid="uid://bm4kdk5t8rrke" path="res://Sprites/UI Sprites/UI_Bubble-Exit_512x512.png" id="9_nf8at"]
+[ext_resource type="Texture2D" uid="uid://drwd8vl8sgyf4" path="res://Sprites/Background/BG_NightDay-2000x1200.jpg" id="10_d0h5c"]
+[ext_resource type="Texture2D" uid="uid://d21t7e4ed5i6s" path="res://Sprites/UI Sprites/UI_Stone_1024x1024.png" id="11_eyf0f"]
+[ext_resource type="PackedScene" uid="uid://do1rsetwdx1dy" path="res://Assets/UI Assets/Keybinds.tscn" id="12_kduki"]
+[ext_resource type="PackedScene" uid="uid://djlymmb783cv8" path="res://Assets/UI Assets/AudioSettings.tscn" id="13_5i1q7"]
+[ext_resource type="Script" path="res://Scripts/Overlay.gd" id="14_0eq1d"]
+[ext_resource type="Script" path="res://Scripts/BackButton.gd" id="14_tvduf"]
+[ext_resource type="PackedScene" uid="uid://b30m3wwnxsy8n" path="res://Assets/UI Assets/PauseMenu.tscn" id="15_8e4yc"]
+[ext_resource type="Texture2D" uid="uid://ki5pcu3h2hc" path="res://Sprites/Background/BG_Menu-1200x840.jpg" id="16_87g2m"]
+[ext_resource type="PackedScene" uid="uid://b6veop7polx4q" path="res://Assets/MainCam.tscn" id="16_tx31f"]
+[ext_resource type="FontFile" uid="uid://cmiuntu71oyl3" path="res://addons/gut/fonts/LobsterTwo-Bold.ttf" id="22_0rl4x"]
+[ext_resource type="Texture2D" uid="uid://l7gagd3bxmd6" path="res://Sprites/freed_pengu.png" id="22_30xh8"]
+[ext_resource type="Texture2D" uid="uid://tjlvljes1cxk" path="res://Sprites/Background/BG_Transition.jpg" id="22_gw5xc"]
+[ext_resource type="Script" path="res://Scripts/TransitionScreen.gd" id="23_k13hk"]
+
+[sub_resource type="Animation" id="Animation_i1fyp"]
+resource_name = "PenguCollected"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qdke3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0jxdm"]
+_data = {
+"PenguCollected": SubResource("Animation_i1fyp"),
+"RESET": SubResource("Animation_qdke3")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0p3g"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfx3m"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ihuu8"]
+resource_name = "EndCutscene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PanelContainer_CutScene_Top:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 140), Vector2(1920, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 140), Vector2(1920, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 941), Vector2(0, 1080)]
+}
+
+[sub_resource type="Animation" id="Animation_vqebi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PanelContainer_CutScene_Top:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1080)]
+}
+
+[sub_resource type="Animation" id="Animation_8qbqg"]
+resource_name = "StartCutscene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PanelContainer_CutScene_Top:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 1), Vector2(1920, 140)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 1), Vector2(1920, 140)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 941)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_olp0t"]
+_data = {
+"EndCutscene": SubResource("Animation_ihuu8"),
+"RESET": SubResource("Animation_vqebi"),
+"StartCutscene": SubResource("Animation_8qbqg")
+}
+
+[sub_resource type="Animation" id="Animation_om284"]
+resource_name = "LoadingDone"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect_LoadingScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect_LoadingScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"is_visible_in_tree"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yww3v"]
+resource_name = "Overlay_FadeIn"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionPanelContainerBG:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionPanelContainerBG:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TransitionPanelContainerBG:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TransitionPanelContainerBG:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 2)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TransitionPanelContainerBG")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"is_visible_in_tree"
+}, {
+"args": [false],
+"method": &"is_visible_in_tree"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AllowPlayerMovement"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_q5kc0"]
+resource_name = "Overlay_FadeOut"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionPanelContainerBG:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionPanelContainerBG:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TransitionPanelContainerBG:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TransitionPanelContainerBG:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TransitionPanelContainerBG")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"is_visible_in_tree"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lrnt2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("TextureRect_LoadingScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vkgn6"]
+resource_name = "ToLoadingScreen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect_LoadingScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect_LoadingScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"is_visible_in_tree"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w4rw"]
+_data = {
+"LoadingDone": SubResource("Animation_om284"),
+"Overlay_FadeIn": SubResource("Animation_yww3v"),
+"Overlay_FadeOut": SubResource("Animation_q5kc0"),
+"RESET": SubResource("Animation_lrnt2"),
+"ToLoadingScreen": SubResource("Animation_vkgn6")
+}
+
+[sub_resource type="Animation" id="Animation_y0q0f"]
+resource_name = "LevelTransition"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 4.3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ShowPengus"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mj5ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8oq3"]
+_data = {
+"LevelTransition": SubResource("Animation_y0q0f"),
+"RESET": SubResource("Animation_mj5ld")
+}
+
+[node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_yfs3u")
+levels = Array[String](["Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8"])
+menuMusic = ExtResource("2_c4vtn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 101
+
+[node name="UserInterface" type="Control" parent="CanvasLayer" groups=["UI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_2oh08")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label_UI Debug" type="Label" parent="CanvasLayer/UserInterface"]
+layout_mode = 2
+offset_left = 1067.0
+offset_top = 601.0
+offset_right = 1614.0
+offset_bottom = 780.0
+text = "ui debug"
+
+[node name="Menus" type="CenterContainer" parent="CanvasLayer/UserInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus" node_paths=PackedStringArray("focusElement")]
+layout_mode = 2
+script = ExtResource("5_i23yy")
+focusElement = NodePath("MainPlay/PlayButton")
+
+[node name="MainBackground" type="TextureRect" parent="CanvasLayer/UserInterface/Menus/MainMenu"]
+z_index = -55
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_7tc6b")
+expand_mode = 3
+
+[node name="P_Snow_Small" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainBackground" instance=ExtResource("7_jxhni")]
+position = Vector2(1003, -18)
+scale = Vector2(0.917845, 0.919827)
+
+[node name="MainPlay" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 256.0
+offset_top = -512.0
+offset_right = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainPlay"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../MainSettings/SettingsButton")
+focus_neighbor_bottom = NodePath("../../MainSettings/SettingsButton")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+
+[node name="PlayText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainPlay/PlayButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -106.0
+offset_right = 256.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.14902, 0.176471, 0.423529, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 180
+bbcode_enabled = true
+text = "[center]Start[/center]"
+
+[node name="MainSettings" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 512.0
+offset_top = -42.0
+offset_right = 1024.0
+offset_bottom = 470.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 0.72)
+
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainSettings"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../MainPlay/PlayButton")
+focus_neighbor_top = NodePath("../../MainPlay/PlayButton")
+focus_neighbor_bottom = NodePath("../../MainQuit/QuitButton")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="SettingsText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainSettings/SettingsButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.14902, 0.176471, 0.423529, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Settings[/center]"
+
+[node name="MainQuit" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = 180.0
+offset_right = 812.0
+offset_bottom = 692.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.51, 0.51)
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainQuit"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../MainSettings/SettingsButton")
+focus_neighbor_right = NodePath("../../MainSettings/SettingsButton")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="QuitText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/MainMenu/MainQuit/QuitButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -106.0
+offset_right = 256.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.14902, 0.176471, 0.423529, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 180
+bbcode_enabled = true
+text = "[center]Quit[/center]"
+
+[node name="SettingsMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus" node_paths=PackedStringArray("focusElement")]
+visible = false
+layout_mode = 2
+script = ExtResource("5_i23yy")
+focusElement = NodePath("SettingsBack/BackButton")
+
+[node name="SettingsBackground" type="TextureRect" parent="CanvasLayer/UserInterface/Menus/SettingsMenu"]
+z_index = -55
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -600.0
+offset_right = 1000.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_d0h5c")
+
+[node name="UiStone1024x1024" type="Sprite2D" parent="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsBackground"]
+position = Vector2(1000, 640)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("11_eyf0f")
+
+[node name="SettingsBack" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/SettingsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -584.0
+offset_top = -408.0
+offset_right = -72.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsBack"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../SettingsSound/SoundButton")
+focus_neighbor_bottom = NodePath("../../SettingsControls/ControlsButton")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+script = ExtResource("14_tvduf")
+
+[node name="BackText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsBack/BackButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -106.0
+offset_right = 256.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Back[/center]"
+
+[node name="SettingsSound" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/SettingsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -450.0
+offset_right = 502.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.84, 0.84)
+
+[node name="SoundButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsSound"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../SettingsBack/BackButton")
+focus_neighbor_bottom = NodePath("../../SettingsControls/ControlsButton")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="SoundText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsSound/SoundButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Sound[/center]"
+
+[node name="SettingsControls" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/SettingsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -120.0
+offset_right = 232.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.84, 0.84)
+
+[node name="ControlsButton" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsControls"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../SettingsBack/BackButton")
+focus_neighbor_top = NodePath("../../SettingsSound/SoundButton")
+focus_neighbor_right = NodePath("../../SettingsSound/SoundButton")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="ControlsText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsControls/ControlsButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Controls[/center]"
+
+[node name="SoundMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus" node_paths=PackedStringArray("focusElement")]
+visible = false
+layout_mode = 2
+script = ExtResource("5_i23yy")
+focusElement = NodePath("SettingsBack/BackButton_SoundMenu")
+
+[node name="ControlsBackground" type="TextureRect" parent="CanvasLayer/UserInterface/Menus/SoundMenu"]
+z_index = -55
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -600.0
+offset_right = 1000.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_d0h5c")
+
+[node name="UiStone1024x1024" type="Sprite2D" parent="CanvasLayer/UserInterface/Menus/SoundMenu/ControlsBackground"]
+position = Vector2(1000, 640)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("11_eyf0f")
+
+[node name="Audio Settings" parent="CanvasLayer/UserInterface/Menus/SoundMenu" instance=ExtResource("13_5i1q7")]
+z_index = 3
+layout_mode = 0
+offset_left = -200.0
+offset_top = -210.0
+offset_right = 184.0
+offset_bottom = 98.0
+
+[node name="Master Slider" parent="CanvasLayer/UserInterface/Menus/SoundMenu/Audio Settings" index="2"]
+focus_neighbor_top = NodePath("../../SettingsBack/BackButton_SoundMenu")
+
+[node name="SettingsControls" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/SoundMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 230.0
+offset_top = -480.0
+offset_right = 742.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.69, 0.69)
+
+[node name="ControlsButton_SoundMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/SoundMenu/SettingsControls"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../SettingsBack/BackButton_SoundMenu")
+focus_neighbor_bottom = NodePath("../../Audio Settings/Master Slider")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="ControlsText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/SoundMenu/SettingsControls/ControlsButton_SoundMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Controls[/center]"
+
+[node name="SettingsBack" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/SoundMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -584.0
+offset_top = -408.0
+offset_right = -72.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="BackButton_SoundMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/SoundMenu/SettingsBack"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../SettingsControls/ControlsButton_SoundMenu")
+focus_neighbor_bottom = NodePath("../../Audio Settings/Master Slider")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+script = ExtResource("14_tvduf")
+
+[node name="BackText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/SoundMenu/SettingsBack/BackButton_SoundMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -106.0
+offset_right = 256.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Back[/center]"
+
+[node name="ControlsMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus" node_paths=PackedStringArray("focusElement")]
+visible = false
+layout_mode = 2
+script = ExtResource("5_i23yy")
+focusElement = NodePath("SettingsBack/BackButton_ControlsMenu")
+
+[node name="ControlsBackground" type="TextureRect" parent="CanvasLayer/UserInterface/Menus/ControlsMenu"]
+z_index = -55
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -600.0
+offset_right = 1000.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_d0h5c")
+
+[node name="UiStone1024x1024" type="Sprite2D" parent="CanvasLayer/UserInterface/Menus/ControlsMenu/ControlsBackground"]
+position = Vector2(1000, 640)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("11_eyf0f")
+
+[node name="Keybinds" parent="CanvasLayer/UserInterface/Menus/ControlsMenu" instance=ExtResource("12_kduki")]
+z_index = 12
+layout_mode = 2
+offset_left = -280.0
+offset_top = -249.0
+offset_right = -280.0
+offset_bottom = -249.0
+
+[node name="SettingsSound" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/ControlsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 230.0
+offset_top = -465.0
+offset_right = 742.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.69, 0.69)
+
+[node name="SoundButton_ControlsMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/ControlsMenu/SettingsSound"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../SettingsBack/BackButton_ControlsMenu")
+focus_neighbor_bottom = NodePath("../../Keybinds/Margin Controls/BoxContainer/VBoxContainer_Inputs/RebindButton2")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="SoundText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/ControlsMenu/SettingsSound/SoundButton_ControlsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Sound[/center]"
+
+[node name="SettingsBack" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/ControlsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -584.0
+offset_top = -408.0
+offset_right = -72.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="BackButton_ControlsMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/ControlsMenu/SettingsBack"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../SettingsSound/SoundButton_ControlsMenu")
+focus_neighbor_bottom = NodePath("../../Keybinds/Margin Controls/BoxContainer/VBoxContainer_Inputs/RebindButton2")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+script = ExtResource("14_tvduf")
+
+[node name="BackText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/ControlsMenu/SettingsBack/BackButton_ControlsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -106.0
+offset_right = 256.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Back[/center]"
+
+[node name="PauseMenu" parent="CanvasLayer/UserInterface/Menus" instance=ExtResource("15_8e4yc")]
+visible = false
+layout_mode = 2
+
+[node name="SoundPauseMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus" node_paths=PackedStringArray("focusElement")]
+visible = false
+layout_mode = 2
+script = ExtResource("5_i23yy")
+focusElement = NodePath("PauseMenu_Resume/ResumeButton_SoundPauseMenu")
+
+[node name="ControlsBackground" type="TextureRect" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu"]
+self_modulate = Color(1, 1, 1, 0.470588)
+z_index = -55
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -600.0
+offset_right = 1000.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_87g2m")
+
+[node name="UiStone1024x1024" type="Sprite2D" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu/ControlsBackground"]
+position = Vector2(1000, 640)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("11_eyf0f")
+
+[node name="PauseMenu_ControlsB" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -420.0
+offset_right = -67.9999
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="ControlsButton_SoundPauseMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu/PauseMenu_ControlsB"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../Audio Settings/Master Slider")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="ControlsText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu/PauseMenu_ControlsB/ControlsButton_SoundPauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Controls[/center]"
+
+[node name="Audio Settings" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu" instance=ExtResource("13_5i1q7")]
+z_index = 3
+layout_mode = 0
+offset_left = -200.0
+offset_top = -210.0
+offset_right = 184.0
+offset_bottom = 98.0
+
+[node name="Master Slider" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu/Audio Settings" index="2"]
+focus_neighbor_left = NodePath("../../PauseMenu_ControlsB/ControlsButton_SoundPauseMenu")
+focus_neighbor_top = NodePath("../../PauseMenu_ControlsB/ControlsButton_SoundPauseMenu")
+focus_neighbor_right = NodePath("../../PauseMenu_Resume/ResumeButton_SoundPauseMenu")
+
+[node name="Music Slider" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu/Audio Settings" index="6"]
+focus_neighbor_bottom = NodePath("../../PauseMenu_Resume/ResumeButton_SoundPauseMenu")
+
+[node name="PauseMenu_Resume" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_right = 862.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.78, 0.78)
+
+[node name="ResumeButton_SoundPauseMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu/PauseMenu_Resume"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../Audio Settings/Master Slider")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+script = ExtResource("14_tvduf")
+
+[node name="ResumeText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/SoundPauseMenu/PauseMenu_Resume/ResumeButton_SoundPauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -80.0
+offset_right = 256.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Resume[/center]"
+
+[node name="ControlsPauseMenu" type="Panel" parent="CanvasLayer/UserInterface/Menus" node_paths=PackedStringArray("focusElement")]
+visible = false
+layout_mode = 2
+script = ExtResource("5_i23yy")
+focusElement = NodePath("ControlsBackground/SettingsResume/ResumeButton_ControlsPauseMenu")
+
+[node name="ControlsBackground" type="TextureRect" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu"]
+self_modulate = Color(1, 1, 1, 0.470588)
+z_index = -55
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -600.0
+offset_right = 1000.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_87g2m")
+
+[node name="UiStone1024x1024" type="Sprite2D" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground"]
+position = Vector2(1000, 640)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("11_eyf0f")
+
+[node name="Keybinds" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground" instance=ExtResource("12_kduki")]
+z_index = 12
+layout_mode = 2
+offset_left = 720.0
+offset_top = 351.0
+offset_right = 720.0
+offset_bottom = 351.0
+
+[node name="SettingsSound" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -420.0
+offset_right = -68.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="SoundButton_ControlsPauseMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground/SettingsSound"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../SettingsResume/ResumeButton_ControlsPauseMenu")
+focus_neighbor_bottom = NodePath("../../SettingsResume/ResumeButton_ControlsPauseMenu")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+
+[node name="SoundText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground/SettingsSound/SoundButton_ControlsPauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -76.0
+offset_right = 256.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Sound[/center]"
+
+[node name="SettingsResume" type="VBoxContainer" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_right = 862.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.78, 0.78)
+
+[node name="ResumeButton_ControlsPauseMenu" type="TextureButton" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground/SettingsResume"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../SettingsSound/SoundButton_ControlsPauseMenu")
+focus_neighbor_top = NodePath("../../SettingsSound/SoundButton_ControlsPauseMenu")
+texture_normal = ExtResource("5_de040")
+texture_pressed = ExtResource("6_ewn8m")
+texture_hover = ExtResource("9_nf8at")
+texture_focused = ExtResource("7_ppdjl")
+flip_h = true
+flip_v = true
+script = ExtResource("14_tvduf")
+
+[node name="ResumeText" type="RichTextLabel" parent="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground/SettingsResume/ResumeButton_ControlsPauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -80.0
+offset_right = 256.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("8_2am8h")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Resume[/center]"
+
+[node name="HBox_Pengus" type="HBoxContainer" parent="CanvasLayer/UserInterface"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 702.0
+offset_top = 391.0
+offset_right = 938.0
+offset_bottom = 501.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 21
+
+[node name="Label_CollectedPengus" type="Label" parent="CanvasLayer/UserInterface/HBox_Pengus"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_0rl4x")
+theme_override_font_sizes/font_size = 64
+text = "0x"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UserInterface/HBox_Pengus"]
+layout_mode = 2
+texture = ExtResource("22_30xh8")
+expand_mode = 3
+
+[node name="AnimationPlayer_Pengus" type="AnimationPlayer" parent="CanvasLayer/UserInterface/HBox_Pengus"]
+libraries = {
+"": SubResource("AnimationLibrary_0jxdm")
+}
+
+[node name="TransitionOverlay" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("14_0eq1d")
+
+[node name="PanelContainer_CutScene_Top" type="PanelContainer" parent="CanvasLayer/TransitionOverlay"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m0p3g")
+
+[node name="PanelContainer_CutScene_Bottom" type="PanelContainer" parent="CanvasLayer/TransitionOverlay"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m0p3g")
+
+[node name="TextureRect_LoadingScreen" type="TextureRect" parent="CanvasLayer/TransitionOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_7tc6b")
+expand_mode = 2
+
+[node name="TransitionPanelContainerBG" type="PanelContainer" parent="CanvasLayer/TransitionOverlay"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lfx3m")
+
+[node name="TextureRect_TransitionScreen" type="TextureRect" parent="CanvasLayer/TransitionOverlay"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_gw5xc")
+script = ExtResource("23_k13hk")
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelComplete" type="Label" parent="CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 105.0
+offset_right = 842.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("22_0rl4x")
+theme_override_font_sizes/font_size = 69
+text = "Level completed!"
+
+[node name="LevelProgress" type="Label" parent="CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 212.0
+offset_right = 861.0
+offset_bottom = 299.0
+theme_override_fonts/font = ExtResource("22_0rl4x")
+theme_override_font_sizes/font_size = 69
+text = "0 / 8"
+
+[node name="HBox_Pengus_TransitionScreen" type="HBoxContainer" parent="CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 186.0
+offset_top = -55.0
+offset_right = 1242.0
+offset_bottom = 55.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 21
+
+[node name="Label_CollectedPengus" type="Label" parent="CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen/HBox_Pengus_TransitionScreen"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_0rl4x")
+theme_override_font_sizes/font_size = 64
+text = "0x"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen/HBox_Pengus_TransitionScreen"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("22_30xh8")
+expand_mode = 3
+
+[node name="AnimationPlayer_Pengus_TransitionScreen" type="AnimationPlayer" parent="CanvasLayer/TransitionOverlay/TextureRect_TransitionScreen/HBox_Pengus_TransitionScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_0jxdm")
+}
+
+[node name="AnimationPlayer_Cutscene" type="AnimationPlayer" parent="CanvasLayer/TransitionOverlay"]
+root_node = NodePath("../PanelContainer_CutScene_Bottom")
+libraries = {
+"": SubResource("AnimationLibrary_olp0t")
+}
+
+[node name="AnimationPlayer_Fade" type="AnimationPlayer" parent="CanvasLayer/TransitionOverlay"]
+libraries = {
+"": SubResource("AnimationLibrary_4w4rw")
+}
+
+[node name="AnimationPlayer_LoadingScreen" type="AnimationPlayer" parent="CanvasLayer/TransitionOverlay"]
+libraries = {
+"": SubResource("AnimationLibrary_4w4rw")
+}
+
+[node name="AnimationPlayer_TransitionScreen" type="AnimationPlayer" parent="CanvasLayer/TransitionOverlay"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_k8oq3")
+}
+
+[node name="MainCam" parent="." instance=ExtResource("16_tx31f")]
+
+[node name="Timer_LevelFinish" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="controllerModeChanged" from="CanvasLayer/UserInterface" to="CanvasLayer/UserInterface/Menus/MainMenu" method="_on_user_interface_controller_mode_changed"]
+[connection signal="controllerModeChanged" from="CanvasLayer/UserInterface" to="CanvasLayer/UserInterface/Menus/SettingsMenu" method="_on_user_interface_controller_mode_changed"]
+[connection signal="controllerModeChanged" from="CanvasLayer/UserInterface" to="CanvasLayer/UserInterface/Menus/SoundMenu" method="_on_user_interface_controller_mode_changed"]
+[connection signal="controllerModeChanged" from="CanvasLayer/UserInterface" to="CanvasLayer/UserInterface/Menus/ControlsMenu" method="_on_user_interface_controller_mode_changed"]
+[connection signal="controllerModeChanged" from="CanvasLayer/UserInterface" to="CanvasLayer/UserInterface/Menus/PauseMenu" method="_on_user_interface_controller_mode_changed"]
+[connection signal="controllerModeChanged" from="CanvasLayer/UserInterface" to="CanvasLayer/UserInterface/Menus/SoundPauseMenu" method="_on_user_interface_controller_mode_changed"]
+[connection signal="controllerModeChanged" from="CanvasLayer/UserInterface" to="CanvasLayer/UserInterface/Menus/ControlsPauseMenu" method="_on_user_interface_controller_mode_changed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/MainMenu/MainPlay/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/MainMenu/MainSettings/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/MainMenu/MainQuit/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsBack/BackButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsSound/SoundButton" to="." method="_on_sound_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/SettingsMenu/SettingsControls/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/SoundMenu/SettingsControls/ControlsButton_SoundMenu" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/SoundMenu/SettingsBack/BackButton_SoundMenu" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/ControlsMenu/SettingsSound/SoundButton_ControlsMenu" to="." method="_on_sound_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/ControlsMenu/SettingsBack/BackButton_ControlsMenu" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/PauseMenu/PauseMenu_Menu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/PauseMenu/PauseMenu_Resume/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/PauseMenu/SettingsControls/ControlsButton_PauseMenu" to="." method="_on_controls_button_pause_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/PauseMenu/SettingsSound/SoundButton_PauseMenu" to="." method="_on_sound_button_pause_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/SoundPauseMenu/PauseMenu_ControlsB/ControlsButton_SoundPauseMenu" to="." method="_on_controls_button_pause_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/SoundPauseMenu/PauseMenu_Resume/ResumeButton_SoundPauseMenu" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground/SettingsSound/SoundButton_ControlsPauseMenu" to="." method="_on_sound_button_pause_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/UserInterface/Menus/ControlsPauseMenu/ControlsBackground/SettingsResume/ResumeButton_ControlsPauseMenu" to="." method="_on_resume_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/TransitionOverlay/AnimationPlayer_Fade" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayer/TransitionOverlay/AnimationPlayer_LoadingScreen" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayer/TransitionOverlay/AnimationPlayer_TransitionScreen" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer_LevelFinish" to="." method="_on_timer_level_finish_timeout"]
+
+[editable path="CanvasLayer/UserInterface/Menus/SoundMenu/Audio Settings"]
+[editable path="CanvasLayer/UserInterface/Menus/ControlsMenu/Keybinds"]
+[editable path="CanvasLayer/UserInterface/Menus/PauseMenu"]
+[editable path="CanvasLayer/UserInterface/Menus/SoundPauseMenu/Audio Settings"]

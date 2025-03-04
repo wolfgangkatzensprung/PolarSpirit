@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8dp3bc2yivg"]
+
+[ext_resource type="Texture2D" uid="uid://bdjmh8yoggp27" path="res://Sprites/crystal_round.png" id="1_xp1d6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vo4i5"]
+
+[node name="SpykeRound" type="StaticBody2D" groups=["Enemy"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Enemy"]]
+light_mask = 32
+texture = ExtResource("1_xp1d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+scale = Vector2(9.53619, 9.53619)
+shape = SubResource("CircleShape2D_vo4i5")

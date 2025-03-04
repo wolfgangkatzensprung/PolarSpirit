@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdqyyucnkwwx7"]
+
+[ext_resource type="Script" path="res://Scripts/Pengu.gd" id="1_6ocrh"]
+[ext_resource type="Texture2D" uid="uid://xfg716tvu724" path="res://Sprites/pingucube/pingu_ice01.png" id="2_7uj6m"]
+[ext_resource type="Texture2D" uid="uid://dabr4cl8k6fnm" path="res://Sprites/pingucube/pingu_ice02.png" id="3_lvar4"]
+[ext_resource type="Texture2D" uid="uid://bthdr2b81oy2k" path="res://Sprites/pingucube/pingu_ice03.png" id="4_0me8u"]
+[ext_resource type="Texture2D" uid="uid://cbedalvymybug" path="res://Sprites/pingucube/pingu_ice04.png" id="5_0e2ig"]
+[ext_resource type="Texture2D" uid="uid://crpnrneqeh3sm" path="res://Sprites/lightsources/circle01.png" id="6_xe3qf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhu5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7uj6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lvar4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0me8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0e2ig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b84gu"]
+size = Vector2(127, 179)
+
+[node name="CollectablePengu" type="StaticBody2D" groups=["Pengu"]]
+position = Vector2(0, 1)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_6ocrh")
+
+[node name="Pingucage02" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.42857, 20)
+scale = Vector2(0.657142, 0.657142)
+sprite_frames = SubResource("SpriteFrames_bhu5p")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10.5, 29.5)
+shape = SubResource("RectangleShape2D_b84gu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(0.457525, 0.457525)
+color = Color(0.360784, 0.85098, 0.984314, 1)
+energy = 0.8
+range_item_cull_mask = 3
+texture = ExtResource("6_xe3qf")
+texture_scale = 1.59

@@ -1,0 +1,63 @@
+[gd_scene load_steps=14 format=3 uid="uid://comvopmba3gck"]
+
+[ext_resource type="Texture2D" uid="uid://dcq273bvu4154" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_1.png" id="1_pnwlv"]
+[ext_resource type="Texture2D" uid="uid://e1h22qbifiti" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_2.png" id="2_isv85"]
+[ext_resource type="Texture2D" uid="uid://c3ygcgtunxdeh" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_3.png" id="3_j8off"]
+[ext_resource type="Texture2D" uid="uid://lo7l2pcshvi1" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_4.png" id="4_g12n3"]
+[ext_resource type="Texture2D" uid="uid://dh4fiqlnpmhcm" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_5.png" id="5_83c3n"]
+[ext_resource type="Texture2D" uid="uid://d1las0ng6t3n3" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_6.png" id="6_oxbhr"]
+[ext_resource type="Texture2D" uid="uid://dls18jwr1rjst" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_7.png" id="7_k13c4"]
+[ext_resource type="Texture2D" uid="uid://thaml8esd64a" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_8.png" id="8_mprau"]
+[ext_resource type="Texture2D" uid="uid://u1kkme7x7jdm" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_9.png" id="9_nf673"]
+[ext_resource type="Texture2D" uid="uid://lhwrtq7b01o5" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_10.png" id="10_cgk0i"]
+[ext_resource type="Texture2D" uid="uid://vl1a68dkxh61" path="res://Sprites/VFX Sprites/JUmp_Animation/Jump_Animation_11.png" id="11_2ffv1"]
+[ext_resource type="Script" path="res://Scripts/AnimationSelfDestruct.gd" id="12_2farx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbsi6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pnwlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_isv85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j8off")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g12n3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_83c3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oxbhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k13c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mprau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nf673")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cgk0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2ffv1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_cbsi6")
+autoplay = "default"
+script = ExtResource("12_2farx")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

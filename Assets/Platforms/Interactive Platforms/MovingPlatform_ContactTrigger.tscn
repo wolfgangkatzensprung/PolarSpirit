@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckvi81a0v8l0f"]
+
+[ext_resource type="Script" path="res://Scripts/MovingPlatform.gd" id="1_b30i1"]
+[ext_resource type="Texture2D" uid="uid://br8iwq5cwuo6s" path="res://Sprites/hs_contactAmovingplatform01_b_.png" id="2_4kyfr"]
+[ext_resource type="PackedScene" uid="uid://cuh5s6tj0fig1" path="res://Assets/Particles/P_PlatformParticles.tscn" id="3_ypvj1"]
+
+[sub_resource type="Curve2D" id="Curve2D_7r58k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4, -1, 0, 0, 0, 0, 4, -197)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21bo0"]
+size = Vector2(97, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp0v2"]
+size = Vector2(16.4907, 104.001)
+
+[node name="MovingPlatform_ContactTrigger" type="Path2D"]
+curve = SubResource("Curve2D_7r58k")
+script = ExtResource("1_b30i1")
+contactTrigger = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(4, -1)
+rotates = false
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+position = Vector2(3.5, -8.5)
+shape = SubResource("RectangleShape2D_21bo0")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(4, -1)
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(5, -3)
+scale = Vector2(0.47, 0.4)
+texture = ExtResource("2_4kyfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(4.00018, -1.75393)
+rotation = 1.57152
+shape = SubResource("RectangleShape2D_yp0v2")
+
+[node name="Platform particles2" parent="AnimatableBody2D" instance=ExtResource("3_ypvj1")]
+
+[connection signal="body_entered" from="PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PathFollow2D/Area2D" to="." method="_on_area_2d_body_exited"]

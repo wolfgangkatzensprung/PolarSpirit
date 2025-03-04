@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c75dp4x0a5vg1"]
+
+[ext_resource type="PackedScene" uid="uid://djlymmb783cv8" path="res://Assets/UI Assets/AudioSettings.tscn" id="1_ikw0o"]
+
+[node name="Audio Settings" instance=ExtResource("1_ikw0o")]

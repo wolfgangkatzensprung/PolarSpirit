@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2hwo1n0fkr7h"]
+
+[ext_resource type="Texture2D" uid="uid://yjnshibv1qp1" path="res://Sprites/hs_platform01.png" id="1_x7a6j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4xyja"]
+radius = 23.0
+height = 819.999
+
+[node name="hs_platform01" type="StaticBody2D"]
+position = Vector2(2, 5)
+
+[node name="HsPlatform01" type="Sprite2D" parent="."]
+position = Vector2(54, -10.5)
+texture = ExtResource("1_x7a6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(51, 180.5)
+rotation = 1.57131
+shape = SubResource("CapsuleShape2D_4xyja")

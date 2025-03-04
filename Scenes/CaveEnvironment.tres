@@ -1,0 +1,10 @@
+[gd_resource type="Environment" format=3 uid="uid://bph6286acx2hj"]
+
+[resource]
+background_mode = 3
+glow_enabled = true
+fog_light_energy = 3.58
+fog_sun_scatter = 1.3
+fog_density = 0.2565
+fog_height = -162.22
+fog_height_density = 3.802

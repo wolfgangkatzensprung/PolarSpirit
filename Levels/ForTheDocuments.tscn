@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://f37rxmcut4wd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 192.0
+text = "Vielen Dank für die schöne Zusammenarbeit
+Thank you for the lovely collaboration :)"

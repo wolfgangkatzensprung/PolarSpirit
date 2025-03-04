@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo3l76qhb28w0"]
+
+[ext_resource type="Texture2D" uid="uid://cfmj7f8itmtfa" path="res://Sprites/hs_pillarplatform.png" id="1_cg2wp"]
+
+[node name="hs_pillarplatform" type="StaticBody2D"]
+
+[node name="HsPillarplatform" type="Sprite2D" parent="."]
+texture = ExtResource("1_cg2wp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-927, -1158)
+polygon = PackedVector2Array(672, 857, 925, 870, 1129, 859, 1184, 856, 1166, 890, 1128, 948, 947, 1027, 775, 929)

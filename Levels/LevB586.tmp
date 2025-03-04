@@ -1,0 +1,152 @@
+[gd_scene load_steps=24 format=3 uid="uid://qrvcl4xrahxh"]
+
+[ext_resource type="Script" path="res://Levels/LevelHandler.gd" id="1_2rf8i"]
+[ext_resource type="Texture2D" uid="uid://evexfhpox2kb" path="res://Sprites/BG Sky.png" id="1_l5okw"]
+[ext_resource type="Texture2D" uid="uid://bf3ryrnrbr6cu" path="res://Sprites/BG Mountains.png" id="2_g7drg"]
+[ext_resource type="Texture2D" uid="uid://baf0ol5eyf126" path="res://Sprites/BG Middle.png" id="3_7qpxe"]
+[ext_resource type="Texture2D" uid="uid://d3lkhdxcyk5g6" path="res://Sprites/BG Fog.png" id="4_hr1xq"]
+[ext_resource type="PackedScene" uid="uid://sy7ge5ca7dp1" path="res://Assets/plattform_small_1.tscn" id="5_wn0g3"]
+[ext_resource type="PackedScene" uid="uid://b35tyck5oq6g6" path="res://Assets/plattform_small_2.tscn" id="6_2qpoa"]
+[ext_resource type="PackedScene" uid="uid://dohr8cwhqwieu" path="res://Assets/platform_middle.tscn" id="7_xmcef"]
+[ext_resource type="PackedScene" uid="uid://ht72fhsatpgo" path="res://Assets/Platform.tscn" id="8_chncw"]
+[ext_resource type="PackedScene" uid="uid://b72vsbgrxh43n" path="res://Assets/platform_huge.tscn" id="9_udn6f"]
+[ext_resource type="PackedScene" uid="uid://1t4lcnbhn5wf" path="res://Assets/Player.tscn" id="10_8umno"]
+[ext_resource type="Texture2D" uid="uid://b8hdas7cyr2xy" path="res://Sprites/EuleSpirit.png" id="11_rmd25"]
+[ext_resource type="PackedScene" uid="uid://dss1gihla88ut" path="res://Assets/DeathZone.tscn" id="12_qqb0h"]
+[ext_resource type="PackedScene" uid="uid://be2rhe17mtbj7" path="res://Assets/Wind.tscn" id="13_gr5i2"]
+[ext_resource type="PackedScene" uid="uid://bxljgvjuyew87" path="res://Assets/FlyingEnemy.tscn" id="14_y0fvm"]
+[ext_resource type="PackedScene" uid="uid://s5ud2c73aio5" path="res://Assets/Enemy.tscn" id="15_q0orw"]
+[ext_resource type="Texture2D" uid="uid://do743hlnvbtg5" path="res://Sprites/UI_Health.png" id="16_0ylkg"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="17_s0vpj"]
+[ext_resource type="Texture2D" uid="uid://dkt1ghqdahy6l" path="res://Sprites/Wind2.png" id="18_2cxdm"]
+[ext_resource type="PackedScene" uid="uid://d0jiq3dm66ia4" path="res://Assets/FallingPlatform.tscn" id="19_x62je"]
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="20_q0wde"]
+[ext_resource type="Script" path="res://Scripts/EndPoint.gd" id="21_vepwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ed1q"]
+size = Vector2(239, 89)
+
+[node name="Level1" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_2rf8i")
+
+[node name="BgSky" type="Sprite2D" parent="."]
+position = Vector2(960, 538.5)
+scale = Vector2(0.407771, 0.389294)
+texture = ExtResource("1_l5okw")
+
+[node name="BgMountains" type="Sprite2D" parent="."]
+position = Vector2(957.5, 538)
+scale = Vector2(0.410547, 0.390386)
+texture = ExtResource("2_g7drg")
+
+[node name="BgMiddle" type="Sprite2D" parent="."]
+position = Vector2(960, 535)
+scale = Vector2(0.408625, 0.390386)
+texture = ExtResource("3_7qpxe")
+
+[node name="BgFog" type="Sprite2D" parent="."]
+position = Vector2(959.5, 537)
+scale = Vector2(0.408839, 0.391114)
+texture = ExtResource("4_hr1xq")
+
+[node name="PlattformSmall1" parent="." instance=ExtResource("5_wn0g3")]
+position = Vector2(179, 941)
+scale = Vector2(0.578777, 0.43608)
+
+[node name="PlattformSmall2" parent="." instance=ExtResource("5_wn0g3")]
+position = Vector2(205, 725)
+scale = Vector2(0.578777, 0.43608)
+
+[node name="plattform_small_2" parent="." instance=ExtResource("6_2qpoa")]
+position = Vector2(78, 902)
+scale = Vector2(0.6, 0.639999)
+
+[node name="plattform_small_6" parent="." instance=ExtResource("6_2qpoa")]
+position = Vector2(829, 473)
+scale = Vector2(0.6, 0.639999)
+
+[node name="plattform_small_3" parent="." instance=ExtResource("6_2qpoa")]
+position = Vector2(940, 834)
+scale = Vector2(0.4875, 0.519999)
+
+[node name="PlatformMiddle" parent="." instance=ExtResource("7_xmcef")]
+position = Vector2(433, 695)
+scale = Vector2(0.82334, 0.6052)
+
+[node name="PlatformMiddle2" parent="." instance=ExtResource("7_xmcef")]
+position = Vector2(400, 325)
+rotation = 0.262479
+scale = Vector2(0.551252, 0.4052)
+
+[node name="Platform" parent="." instance=ExtResource("8_chncw")]
+position = Vector2(1751, 382)
+scale = Vector2(0.4, 0.4)
+
+[node name="platform_huge" parent="." instance=ExtResource("9_udn6f")]
+position = Vector2(1625, 876)
+
+[node name="Player" parent="." instance=ExtResource("10_8umno")]
+position = Vector2(287, 916)
+speed = 400.0
+jump_velocity = -800.0
+
+[node name="EuleSpirit" type="Sprite2D" parent="."]
+position = Vector2(1721, 902)
+scale = Vector2(0.0750733, 0.074585)
+texture = ExtResource("11_rmd25")
+
+[node name="DeathZone" parent="." instance=ExtResource("12_qqb0h")]
+
+[node name="Wind" parent="." instance=ExtResource("13_gr5i2")]
+position = Vector2(1315, 193)
+scale = Vector2(1.2289, 0.26296)
+windForce = Vector2(500, 0)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("14_y0fvm")]
+position = Vector2(2108, 581)
+
+[node name="Enemy" parent="." instance=ExtResource("15_q0orw")]
+position = Vector2(778, 563)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 345.0
+offset_bottom = 132.0
+max_value = 3.0
+value = 3.0
+texture_progress = ExtResource("16_0ylkg")
+script = ExtResource("17_s0vpj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.309804)
+position = Vector2(1347.5, 34.5)
+scale = Vector2(1.25201, 0.43101)
+texture = ExtResource("18_2cxdm")
+
+[node name="FallingPlatform" parent="." instance=ExtResource("19_x62je")]
+position = Vector2(1085, 970)
+scale = Vector2(0.4, 0.4)
+
+[node name="CameraController" type="Node2D" parent="."]
+script = ExtResource("20_q0wde")
+
+[node name="MainCam" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(273.231, 502.327)
+rotation = -2.66425
+scale = Vector2(1, 1)
+
+[node name="EndPoint" type="Area2D" parent="."]
+position = Vector2(1721, 920)
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("21_vepwu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndPoint"]
+position = Vector2(64.5, -0.5)
+shape = SubResource("RectangleShape2D_4ed1q")
+
+[connection signal="healthChanged" from="Player" to="TextureProgressBar" method="_on_player_health_changed"]
+[connection signal="body_entered" from="EndPoint" to="EndPoint" method="_on_body_entered"]

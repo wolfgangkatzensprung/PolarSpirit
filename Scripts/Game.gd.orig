@@ -1,0 +1,172 @@
+extends Node2D
+
+@export var levels:Array[String] = [
+	"IntroLevel 1",
+	"IntroLevel 2",
+]
+@export var menuMusic:AudioStream
+
+@onready var userInterface = $CanvasLayer/UserInterface
+@onready var overlay = $CanvasLayer/TransitionOverlay
+
+var gameStarted = false	# game started for the first time
+var levelPaused = false
+
+var currentLevel:Level
+var levelIndex:int = 0
+
+var playerSpawnPos:Vector2
+
+func _input(_event):
+	if Input.is_action_just_released("Pause"):
+		TogglePause()
+		
+func _ready():
+	if menuMusic:
+		AudioManager.PlayMusic(menuMusic)
+
+func Start():
+	print("Start Game!")
+	LoadLevel(levels[levelIndex])
+	call_deferred("LoadingDone")
+	
+func LoadLevel(level):
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
+	var levelPath = "res://Levels/" + level + ".tscn"
+	var levelScene = load(levelPath)
+	overlay.FadeIn()
+	print("Load Level ", level)
+	currentLevel = levelScene.instantiate()
+	print("Current Level: ", currentLevel)
+	add_child(currentLevel)
+	userInterface.Reset()
+	
+	var endPoint = currentLevel.GetEndPoint()
+	var player = currentLevel.GetPlayer()
+	
+	if (player != null):
+		print("Player: ", player)
+		player.death.connect(_on_player_death)
+		if playerSpawnPos:
+			player.global_position = playerSpawnPos
+		
+		
+	if (endPoint != null):
+		print("End Point: ", endPoint)
+		print("End Point Signal: ", endPoint.reached)
+		endPoint.reached.connect(_on_end_point_reached)
+	else: print("Next Level doesnt have EndPoint!")
+		
+	call_deferred("ResumeLevel")
+	
+func LoadingDone():
+	overlay.LoadingDone()
+
+func LoadScene(nextScene):
+	overlay.FadeIn()
+	print("Load Scene ", nextScene)
+	add_child(nextScene)
+	userInterface.Reset()
+
+func GameWon():
+	LoadScene(load("res://Scenes/WonGame.tscn"))
+
+func Quit():
+	get_tree().quit()
+	
+func _on_end_point_reached():
+	call_deferred("FinishLevel")
+
+func _on_player_death():
+	overlay.FadeOut()
+	await get_tree().create_timer(1).timeout
+	call_deferred("ReloadFromCheckpoint")
+
+func UnloadLevel(level):
+	if level and not level.is_queued_for_deletion():
+		print("Unload Level ", level)
+		ResetPcamHost()
+		playerSpawnPos = level.GetPlayerSpawn()
+		level.Unload()
+	else:
+		print("Tried unloading Level but there is no level assigned or it is already queued")
+	currentLevel = null
+
+func ResetPcamHost(): # PhantomCamera Hack to prevent null reference
+	var pcamHost:PhantomCameraHost = $MainCam.get_child(0)
+	pcamHost._active_pcam = null
+	pcamHost._active_pcam_missing = true
+	pcamHost._active_pcam_priority = -1
+
+func FinishLevel():
+	overlay.FadeOut()
+	#userInterface.ShowMenu("EndCard")
+	PauseLevel()
+	print("Level Finished!")
+	UnloadLevel(currentLevel)
+	levelIndex += 1
+	if (levels.size() == levelIndex):
+		GameWon()
+	else:
+		LoadLevel(levels[levelIndex])
+
+func GetCurrentLevelScene():
+	return currentLevel
+	
+func TogglePause():
+	if currentLevel != null:
+		userInterface.Toggle("PauseMenu")
+		if (levelPaused):
+			ResumeLevel()
+		else:
+			PauseLevel()
+	
+func PauseLevel():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	levelPaused = true
+	currentLevel.get_tree().paused = levelPaused
+
+func ResumeLevel():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	levelPaused = false
+	currentLevel.get_tree().paused = levelPaused
+
+func ReloadFromCheckpoint():
+	currentLevel.queue_free()
+	LoadLevel(levels[levelIndex])
+	#get_tree().reload_current_scene()
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name.contains("Fade"):
+		print("Fade Anim Finished")
+	elif anim_name == "ToLoadingScreen":
+		Start()	# when Loading Screen is completely visible, start load Level
+		
+func _on_play_button_pressed():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	AudioManager.PlayUISound()
+	overlay.ToLoadingScreen()
+
+func _on_quit_button_pressed():
+	AudioManager.PlayUISound()
+	Quit()
+
+func _on_mainmenu_button_pressed():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	AudioManager.PlayUISound()
+	get_tree().reload_current_scene()
+
+func _on_continue_button_pressed():
+	AudioManager.PlayUISound()
+	TogglePause()
+
+func _on_settings_button_pressed():
+	AudioManager.PlayUISound()
+	userInterface.Toggle("SettingsMenu")
+
+func _on_back_to_menu_button_pressed():
+	AudioManager.PlayUISound()
+	userInterface.HideAllMenus()
+	userInterface.Toggle("MainMenu")
+	UnloadLevel(currentLevel)

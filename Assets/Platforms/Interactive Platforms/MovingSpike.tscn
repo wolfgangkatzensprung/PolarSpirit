@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0vxeqf76wufq"]
+
+[ext_resource type="Script" path="res://Scripts/MovingPlatform.gd" id="1_5c4b8"]
+[ext_resource type="Texture2D" uid="uid://c7iqju8t7mk0q" path="res://Sprites/BIG/crystal_round_B.png" id="2_8pwfw"]
+[ext_resource type="Texture2D" uid="uid://crpnrneqeh3sm" path="res://Sprites/lightsources/circle01.png" id="3_doer4"]
+
+[sub_resource type="Curve2D" id="Curve2D_sl3g7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -67.6084, 76.5089, 0, 0, 0, 0, -68.6172, -343.547)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3eohc"]
+
+[node name="MovingSpike" type="Path2D" groups=["Enemy"]]
+curve = SubResource("Curve2D_sl3g7")
+script = ExtResource("1_5c4b8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." groups=["Enemy"]]
+position = Vector2(-67.6084, 76.5089)
+rotates = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 2
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D" groups=["Enemy"]]
+position = Vector2(4, 8)
+scale = Vector2(0.298611, 0.284743)
+texture = ExtResource("2_8pwfw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D" groups=["Enemy"]]
+position = Vector2(6.6084, 8.4911)
+rotation = 1.57152
+scale = Vector2(9.57986, 9.57986)
+shape = SubResource("CircleShape2D_3eohc")
+
+[node name="Circle11" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D"]
+modulate = Color(1, 0.215686, 0.756863, 0.647059)
+z_index = -1
+position = Vector2(6.6084, 5.4911)
+texture = ExtResource("3_doer4")
+
+[node name="PointLight2D" type="PointLight2D" parent="PathFollow2D/AnimatableBody2D/Circle11"]
+position = Vector2(1, -1)
+scale = Vector2(1.53345, 1.53345)
+color = Color(1, 0.215686, 0.615686, 1)
+energy = 1.62
+range_item_cull_mask = 3
+texture = ExtResource("3_doer4")
+texture_scale = 1.59

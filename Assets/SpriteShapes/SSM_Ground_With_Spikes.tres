@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="SS2D_Material_Shape" load_steps=21 format=3 uid="uid://c3xwb7vmt0mh5"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="1_jdrk8"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="1_yq14c"]
+[ext_resource type="Texture2D" uid="uid://u56snb1oo8wk" path="res://Sprites/Smart Shape/smartshape_ice.png" id="2_jxnua"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="3_6jsxv"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="4_t3lvx"]
+[ext_resource type="Texture2D" uid="uid://b5lt7ojd4pn7y" path="res://Sprites/TileSets/tiles_crystal_for_SSpng.png" id="5_ldk5m"]
+[ext_resource type="Texture2D" uid="uid://k3b281tweb1e" path="res://Sprites/Smart Shape/smartshape_fill.png" id="5_w023y"]
+[ext_resource type="Texture2D" uid="uid://brxhrfjlv3aac" path="res://Sprites/TileSets/tiles_crystal_for_SSpng2.png" id="6_w3eio"]
+[ext_resource type="Texture2D" uid="uid://so0ekmc4b8lk" path="res://Sprites/TileSets/tiles_crystal_for_SSpng3.png" id="7_xswch"]
+[ext_resource type="Texture2D" uid="uid://bw7bn3oxdnmei" path="res://Sprites/TileSets/tiles_crystal_for_SSpng4.png" id="8_boij1"]
+[ext_resource type="Texture2D" uid="uid://t3psx15v5oad" path="res://Sprites/Smart Shape/spike01.png" id="9_5gf2p"]
+
+[sub_resource type="Resource" id="Resource_t6u0d"]
+script = ExtResource("1_yq14c")
+textures = Array[Texture2D]([ExtResource("2_jxnua")])
+textures_corner_outer = Array[Texture2D]([])
+textures_corner_inner = Array[Texture2D]([])
+textures_taper_left = Array[Texture2D]([])
+textures_taper_right = Array[Texture2D]([])
+randomize_texture = false
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id="Resource_8n8xn"]
+script = ExtResource("3_6jsxv")
+begin = 0.0
+distance = 360.0
+edgeRendering = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_li5jl"]
+script = ExtResource("4_t3lvx")
+edge_material = SubResource("Resource_t6u0d")
+normal_range = SubResource("Resource_8n8xn")
+weld = true
+render = true
+z_index = 1
+z_as_relative = true
+offset = 0.0
+
+[sub_resource type="Resource" id="Resource_xew6n"]
+script = ExtResource("1_yq14c")
+textures = Array[Texture2D]([ExtResource("5_ldk5m"), ExtResource("6_w3eio"), ExtResource("7_xswch"), ExtResource("8_boij1")])
+textures_corner_outer = Array[Texture2D]([])
+textures_corner_inner = Array[Texture2D]([])
+textures_taper_left = Array[Texture2D]([])
+textures_taper_right = Array[Texture2D]([])
+randomize_texture = true
+use_corner_texture = false
+use_taper_texture = false
+fit_mode = 0
+
+[sub_resource type="Resource" id="Resource_ygq37"]
+script = ExtResource("3_6jsxv")
+begin = 0.0
+distance = 360.0
+edgeRendering = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_op8i8"]
+script = ExtResource("4_t3lvx")
+edge_material = SubResource("Resource_xew6n")
+normal_range = SubResource("Resource_ygq37")
+weld = true
+render = true
+z_index = -1
+z_as_relative = true
+offset = 1.0
+
+[sub_resource type="Resource" id="Resource_ko2ci"]
+script = ExtResource("1_yq14c")
+textures = Array[Texture2D]([ExtResource("9_5gf2p")])
+textures_corner_outer = Array[Texture2D]([])
+textures_corner_inner = Array[Texture2D]([])
+textures_taper_left = Array[Texture2D]([])
+textures_taper_right = Array[Texture2D]([])
+randomize_texture = true
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id="Resource_7tp47"]
+script = ExtResource("3_6jsxv")
+begin = 0.0
+distance = 360.0
+edgeRendering = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_1flay"]
+script = ExtResource("4_t3lvx")
+edge_material = SubResource("Resource_ko2ci")
+normal_range = SubResource("Resource_7tp47")
+weld = true
+render = true
+z_index = 0
+z_as_relative = true
+offset = 0.0
+
+[resource]
+script = ExtResource("1_jdrk8")
+_edge_meta_materials = Array[ExtResource("4_t3lvx")]([SubResource("Resource_li5jl"), SubResource("Resource_op8i8"), SubResource("Resource_1flay")])
+fill_textures = Array[Texture2D]([ExtResource("5_w023y")])
+fill_texture_z_index = -10
+fill_texture_show_behind_parent = false
+fill_mesh_offset = 0.0
+render_offset = 0.0

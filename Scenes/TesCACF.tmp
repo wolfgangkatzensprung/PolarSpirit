@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3tureekjn2mw"]
+
+[ext_resource type="PackedScene" uid="uid://bbnivfx1tguxl" path="res://Assets/Player.tscn" id="1_lu8r8"]
+[ext_resource type="PackedScene" uid="uid://be2rhe17mtbj7" path="res://Assets/Wind.tscn" id="3_2fwpw"]
+[ext_resource type="PackedScene" uid="uid://ht72fhsatpgo" path="res://Assets/Platform.tscn" id="3_dvxt5"]
+[ext_resource type="Texture2D" uid="uid://b2ld1mn2vlgvh" path="res://Sprites/Background.png" id="4_8ymtt"]
+[ext_resource type="PackedScene" uid="uid://ctdykhihbruln" path="res://Scenes/test_rigidbody.tscn" id="5_hg4br"]
+[ext_resource type="PackedScene" uid="uid://s5ud2c73aio5" path="res://Assets/Enemy.tscn" id="6_6nq1d"]
+[ext_resource type="Script" path="res://Scenes/CharacterBody2D.gd" id="7_8nnkf"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(8.5, 9.5)
+scale = Vector2(9.96823, 9.90278)
+texture = ExtResource("4_8ymtt")
+
+[node name="Player" parent="." instance=ExtResource("1_lu8r8")]
+position = Vector2(-3767, 1319)
+
+[node name="Platform" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-231, 1038)
+
+[node name="Platform2" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-1348, 1375)
+
+[node name="Platform3" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-2545, 1657)
+
+[node name="Platform5" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-1616, 3024)
+scale = Vector2(3.6, 1)
+
+[node name="Platform4" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-3756, 2007)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.1, 0.1)
+
+[node name="Wind" parent="." instance=ExtResource("3_2fwpw")]
+position = Vector2(298, 51)
+windForce = Vector2(1000, 0)
+
+[node name="Test Rigidbody" parent="." instance=ExtResource("5_hg4br")]
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(-3762.75, 5138.25)
+scale = Vector2(3.16953, 1.69283)
+texture = ExtResource("4_8ymtt")
+region_enabled = true
+region_rect = Rect2(1058.94, 299.781, 233.437, 223.062)
+
+[node name="Enemy" parent="." instance=ExtResource("6_6nq1d")]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("7_8nnkf")

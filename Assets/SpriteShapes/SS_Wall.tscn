@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://1ubdujm7ndm1"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_58rj5"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_gm78m"]
+[ext_resource type="Resource" uid="uid://cbdyypy51av7o" path="res://Assets/SpriteShapes/SSM_Wall.tres" id="2_n3oxa"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_tnlkg"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_wfjka"]
+
+[sub_resource type="Resource" id="Resource_54g8g"]
+script = ExtResource("2_gm78m")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_c5div"]
+script = ExtResource("3_tnlkg")
+position = Vector2(1085.28, -712.204)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_54g8g")
+
+[sub_resource type="Resource" id="Resource_6vhmi"]
+script = ExtResource("2_gm78m")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_brkyt"]
+script = ExtResource("3_tnlkg")
+position = Vector2(6137.28, -848.204)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_6vhmi")
+
+[sub_resource type="Resource" id="Resource_ctqeq"]
+script = ExtResource("2_gm78m")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_ldyvj"]
+script = ExtResource("3_tnlkg")
+position = Vector2(3965.28, 2747.8)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_ctqeq")
+
+[sub_resource type="Resource" id="Resource_djvy5"]
+script = ExtResource("2_gm78m")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_r5s2u"]
+script = ExtResource("3_tnlkg")
+position = Vector2(1085.28, -712.204)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_djvy5")
+
+[sub_resource type="Resource" id="Resource_p3xw2"]
+script = ExtResource("4_wfjka")
+_points = {
+0: SubResource("Resource_c5div"),
+1: SubResource("Resource_brkyt"),
+2: SubResource("Resource_ldyvj"),
+3: SubResource("Resource_r5s2u")
+}
+_point_order = Array[int]([0, 1, 2, 3])
+_constraints = {
+Array[int]([0, 3]): 15
+}
+_next_key = 4
+_material_overrides = {}
+
+[node name="SS_Wall" type="StaticBody2D"]
+z_index = 1
+texture_repeat = 2
+collision_mask = 0
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_58rj5")
+_points = SubResource("Resource_p3xw2")
+shape_material = ExtResource("2_n3oxa")
+collision_offset = 42.0
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(215.334, -143.22, 1229.24, -170.681, 793.243, 552.031)

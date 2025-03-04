@@ -1,0 +1,81 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://do8ke4o4ae115"]
+
+[ext_resource type="Texture2D" uid="uid://cy0pffy2euack" path="res://Sprites/Anim/Ball_Explosion_COMPLETE_2.png" id="1_lefq0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehh31"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(0, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb5jv"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(189, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajlya"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(378, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7r31"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(567, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwy5u"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(756, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdny7"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(945, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl2ed"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(1134, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afl1k"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(1323, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcung"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(1512, 0, 189, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x54cg"]
+atlas = ExtResource("1_lefq0")
+region = Rect2(1701, 0, 189, 188)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehh31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb5jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajlya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7r31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwy5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdny7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl2ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afl1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcung")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x54cg")
+}],
+"loop": false,
+"name": &"BubbleBurst",
+"speed": 24.0
+}]

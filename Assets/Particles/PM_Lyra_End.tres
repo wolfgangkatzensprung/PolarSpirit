@@ -1,0 +1,56 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://d0gybhc6dgetr"]
+
+[sub_resource type="Curve" id="Curve_evqy8"]
+_data = [Vector2(0.253333, 0.10989), 0.0, 0.0, 0, 0, Vector2(0.486667, 0.769231), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4gv7n"]
+curve = SubResource("Curve_evqy8")
+
+[sub_resource type="Gradient" id="Gradient_myjad"]
+offsets = PackedFloat32Array(0, 0.327869, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.573244, 0.155845, 0.167698, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k776n"]
+gradient = SubResource("Gradient_myjad")
+
+[sub_resource type="Curve" id="Curve_r5f45"]
+_data = [Vector2(0.0506329, 0.072161), 0.0, 0.111168, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1m80w"]
+curve = SubResource("Curve_r5f45")
+
+[sub_resource type="Curve" id="Curve_n872n"]
+max_value = 3.0
+_data = [Vector2(0.0866667, 0.395605), 0.0, 0.0, 0, 0, Vector2(0.386667, 2.01099), 0.0, 0.0, 0, 0, Vector2(0.68, 2.7033), 0.0, 0.0, 0, 0, Vector2(1, 1.94506), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_tcaoi"]
+curve = SubResource("Curve_n872n")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(120, 120, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 23.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.2
+direction = Vector3(0, 0, 0)
+spread = 9.388
+flatness = 1.0
+initial_velocity_max = 104.8
+gravity = Vector3(0, -5.2, 0)
+scale_min = 0.0
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_1m80w")
+scale_over_velocity_max = 0.55
+scale_over_velocity_curve = SubResource("CurveTexture_tcaoi")
+color_ramp = SubResource("GradientTexture1D_k776n")
+alpha_curve = SubResource("CurveTexture_4gv7n")
+anim_speed_max = 16.0
+turbulence_enabled = true
+turbulence_noise_scale = 0.13
+turbulence_noise_speed_random = 1.38
+collision_mode = 2

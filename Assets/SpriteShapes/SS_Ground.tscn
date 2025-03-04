@@ -1,0 +1,189 @@
+[gd_scene load_steps=29 format=3 uid="uid://x3ee21f2pwt6"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_xmbgl"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_1vs8d"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_govby"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_gfw7u"]
+[ext_resource type="Resource" uid="uid://dshrlujc80al8" path="res://Assets/SpriteShapes/SSM_Ground.tres" id="5_ri6s1"]
+
+[sub_resource type="Resource" id="Resource_iy2o5"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_nv16l"]
+script = ExtResource("3_govby")
+position = Vector2(-260.961, -647.238)
+point_in = Vector2(-193.406, 136.225)
+point_out = Vector2(185.542, -154.225)
+properties = SubResource("Resource_iy2o5")
+
+[sub_resource type="Resource" id="Resource_3nenu"]
+script = ExtResource("2_1vs8d")
+texture_idx = 2
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_124l5"]
+script = ExtResource("3_govby")
+position = Vector2(6039.31, 15.5934)
+point_in = Vector2(-158.224, -130.274)
+point_out = Vector2(132.862, 100.908)
+properties = SubResource("Resource_3nenu")
+
+[sub_resource type="Resource" id="Resource_n3rt8"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_hnuto"]
+script = ExtResource("3_govby")
+position = Vector2(-260.961, -647.238)
+point_in = Vector2(-193.406, 136.225)
+point_out = Vector2(185.542, -154.225)
+properties = SubResource("Resource_n3rt8")
+
+[sub_resource type="Resource" id="Resource_d7w0p"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_tu5nm"]
+script = ExtResource("3_govby")
+position = Vector2(4080.16, 958.622)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_d7w0p")
+
+[sub_resource type="Resource" id="Resource_l0dv4"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_oop71"]
+script = ExtResource("3_govby")
+position = Vector2(1079.36, 1218.77)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_l0dv4")
+
+[sub_resource type="Resource" id="Resource_l45pa"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_yl64o"]
+script = ExtResource("3_govby")
+position = Vector2(2623.6, -642.247)
+point_in = Vector2(-220.315, -36.9995)
+point_out = Vector2(220.315, 36.9995)
+properties = SubResource("Resource_l45pa")
+
+[sub_resource type="Resource" id="Resource_87dyg"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_3n4ad"]
+script = ExtResource("3_govby")
+position = Vector2(-870.535, -87.0627)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_87dyg")
+
+[sub_resource type="Resource" id="Resource_s032q"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_ywdl7"]
+script = ExtResource("3_govby")
+position = Vector2(-428.239, 386.78)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_s032q")
+
+[sub_resource type="Resource" id="Resource_klmf5"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_lriw1"]
+script = ExtResource("3_govby")
+position = Vector2(-481.212, 354.996)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_klmf5")
+
+[sub_resource type="Resource" id="Resource_arc37"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_yrrxe"]
+script = ExtResource("3_govby")
+position = Vector2(673.106, -209.397)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_arc37")
+
+[sub_resource type="Resource" id="Resource_cdp6j"]
+script = ExtResource("2_1vs8d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_i62r7"]
+script = ExtResource("3_govby")
+position = Vector2(1603.63, -545.013)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_cdp6j")
+
+[sub_resource type="Resource" id="Resource_3yxvc"]
+script = ExtResource("4_gfw7u")
+_points = {
+0: SubResource("Resource_nv16l"),
+1: SubResource("Resource_124l5"),
+3: SubResource("Resource_hnuto"),
+7: SubResource("Resource_tu5nm"),
+8: SubResource("Resource_oop71"),
+15: SubResource("Resource_yl64o"),
+16: SubResource("Resource_3n4ad"),
+17: SubResource("Resource_ywdl7"),
+18: SubResource("Resource_lriw1"),
+19: SubResource("Resource_yrrxe"),
+20: SubResource("Resource_i62r7")
+}
+_point_order = Array[int]([0, 19, 20, 15, 1, 7, 8, 17, 18, 16, 3])
+_constraints = {
+Array[int]([0, 3]): 15
+}
+_next_key = 21
+_material_overrides = {}
+
+[node name="SS_Ground" type="StaticBody2D"]
+z_index = 1
+texture_repeat = 2
+collision_mask = 0
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_xmbgl")
+_points = SubResource("Resource_3yxvc")
+shape_material = ExtResource("5_ri6s1")
+collision_offset = 42.0
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-54.8564, -132.686, -52.6521, -134.304, -50.2597, -135.665, -47.7206, -136.761, -45.0546, -137.603, -42.2768, -138.206, -39.3275, -138.589, -33.3703, -138.732, -26.9796, -138.152, -20.2025, -136.901, -5.91068, -132.715, 25.1062, -119.044, 57.3649, -100.781, 135.11, -45.5893, 319.71, -113.056, 405.68, -125.668, 473.954, -132.72, 503.268, -133.936, 515.438, -133.639, 525.306, -132.606, 1094.8, -31.5049, 1172.29, -13.7732, 1196.82, -6.54174, 1204.96, -3.35999, 1208.08, -1.77337, 1210.61, -0.0105629, 1212.41, 2.31556, 1213.18, 5.41393, 1212.65, 8.36352, 1211.32, 10.8907, 1209.47, 13.2163, 1207.12, 15.5642, 1201.04, 20.459, 1159.81, 44.8116, 1023.62, 108.825, 817.029, 195.753, 215.038, 247.689, -87.7429, 80.9954, -98.8996, 74.1888, -177.132, -17.5724)

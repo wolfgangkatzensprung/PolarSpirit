@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://d74x3t2gcp8i"
+path="res://.godot/imported/Level5_MonsterIntro.dialogue-b350272982a2c2171663e5d7bd840314.tres"
+
+[deps]
+
+source_file="res://Dialogues/Level5_MonsterIntro.dialogue"
+dest_files=["res://.godot/imported/Level5_MonsterIntro.dialogue-b350272982a2c2171663e5d7bd840314.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,53 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://di220whh72kaj"]
+
+[sub_resource type="Curve" id="Curve_5i3gr"]
+min_value = 0.99
+_data = [Vector2(0.0634441, 0), 0.0, 0.0, 0, 0, Vector2(0.359517, 0.998915), 0.0, 0.0, 0, 0, Vector2(0.47432, 0.744338), -0.0625454, -0.0625454, 0, 0, Vector2(0.522659, 0.998993), 0.0, 0.0, 0, 0, Vector2(0.767372, 0.994422), 0.0, 0.0, 0, 0, Vector2(0.888218, 0), 0.0, 0.0, 0, 0, Vector2(0.984894, 0.99), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_h1mi3"]
+curve = SubResource("Curve_5i3gr")
+
+[sub_resource type="Curve" id="Curve_v00mu"]
+_data = [Vector2(0.172205, 0), 0.0, 0.0, 0, 0, Vector2(0.450151, 0.473182), 0.0, 0.0, 0, 0, Vector2(0.598187, 0.171037), 0.47385, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_xlfuc"]
+curve_x = SubResource("Curve_v00mu")
+
+[sub_resource type="Curve" id="Curve_tme6p"]
+max_value = 200.0
+_data = [Vector2(0.0422961, 1.66867), 0.0, 0.0, 0, 0, Vector2(0.486405, 14.0644), 0.0, 0.0, 0, 0, Vector2(0.930514, -1.43027), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o1ut8"]
+curve = SubResource("Curve_tme6p")
+
+[resource]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-8.93, 0, 0)
+emission_shape_scale = Vector3(3.625, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(300, 1, 1)
+inherit_velocity_ratio = 0.274
+direction = Vector3(8.67, 0, 0)
+spread = 51.27
+directional_velocity_min = -200.12
+directional_velocity_max = 177.98
+directional_velocity_curve = SubResource("CurveXYZTexture_xlfuc")
+gravity = Vector3(0, 9.65, 0)
+linear_accel_curve = SubResource("CurveTexture_o1ut8")
+attractor_interaction_enabled = false
+scale_min = 0.01
+scale_max = 0.2
+color = Color(0.905882, 0.968627, 1, 0.705882)
+alpha_curve = SubResource("CurveTexture_h1mi3")
+turbulence_noise_strength = 3.24
+turbulence_noise_scale = 3.243
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.016
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = -10.8
+turbulence_initial_displacement_max = -10.8
+collision_mode = 2

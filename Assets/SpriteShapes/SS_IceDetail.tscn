@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://dfyda1v8v5fso"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_81jlj"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_poc2d"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_wbw8c"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_t0esd"]
+[ext_resource type="Resource" uid="uid://becopfl1v0hg2" path="res://Assets/SpriteShapes/SSM_IceDetails.tres" id="5_78e02"]
+
+[sub_resource type="Resource" id="Resource_6v5y1"]
+script = ExtResource("2_poc2d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_sq3vu"]
+script = ExtResource("3_wbw8c")
+position = Vector2(-519.859, -167.918)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_6v5y1")
+
+[sub_resource type="Resource" id="Resource_sqde7"]
+script = ExtResource("2_poc2d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_b7tex"]
+script = ExtResource("3_wbw8c")
+position = Vector2(1054.76, -175.406)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_sqde7")
+
+[sub_resource type="Resource" id="Resource_t3bpj"]
+script = ExtResource("2_poc2d")
+texture_idx = -5
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_wb631"]
+script = ExtResource("3_wbw8c")
+position = Vector2(-600.979, 836.677)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_t3bpj")
+
+[sub_resource type="Resource" id="Resource_fahmy"]
+script = ExtResource("2_poc2d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_pjli6"]
+script = ExtResource("3_wbw8c")
+position = Vector2(-519.859, -167.918)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_fahmy")
+
+[sub_resource type="Resource" id="Resource_7238j"]
+script = ExtResource("2_poc2d")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_qlkxk"]
+script = ExtResource("3_wbw8c")
+position = Vector2(1005.86, 721.437)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_7238j")
+
+[sub_resource type="Resource" id="Resource_kug3u"]
+script = ExtResource("4_t0esd")
+_points = {
+0: SubResource("Resource_sq3vu"),
+1: SubResource("Resource_b7tex"),
+2: SubResource("Resource_wb631"),
+3: SubResource("Resource_pjli6"),
+4: SubResource("Resource_qlkxk")
+}
+_point_order = Array[int]([0, 1, 4, 2, 3])
+_constraints = {
+Array[int]([0, 3]): 15
+}
+_next_key = 5
+_material_overrides = {}
+
+[node name="SS_IceDetail" type="StaticBody2D"]
+z_index = 1
+texture_repeat = 2
+collision_mask = 0
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="."]
+texture_repeat = 2
+script = ExtResource("1_81jlj")
+_points = SubResource("Resource_kug3u")
+shape_material = ExtResource("5_78e02")
+collision_offset = 42.0
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-530.464, -179.36, 1065.31, -185.442, 1017.18, 732.569, -610.818, 846.428)

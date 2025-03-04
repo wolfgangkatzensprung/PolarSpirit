@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5wgkbsfq4cii"]
+
+[ext_resource type="Script" path="res://Scripts/ZoomTesting.gd" id="1_jvtks"]
+[ext_resource type="PackedScene" uid="uid://1t4lcnbhn5wf" path="res://Assets/Player.tscn" id="2_6cgys"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="3_mdqyx"]
+[ext_resource type="PackedScene" uid="uid://b6veop7polx4q" path="res://Assets/MainCam.tscn" id="4_nih6p"]
+[ext_resource type="PackedScene" uid="uid://dauyjxldy4xan" path="res://Assets/TileMaps/TM_Ground.tscn" id="5_gwd7h"]
+
+[node name="ZoomZoomTestLevel" type="Node2D"]
+script = ExtResource("1_jvtks")
+
+[node name="Player" parent="." instance=ExtResource("2_6cgys")]
+position = Vector2(539, 448)
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+position = Vector2(789, 505)
+script = ExtResource("3_mdqyx")
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="MainCam" parent="." instance=ExtResource("4_nih6p")]
+position = Vector2(789, 505)
+
+[node name="TileMap" parent="." instance=ExtResource("5_gwd7h")]

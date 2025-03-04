@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://beghu7xm5o0yx"]
+
+[ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_y4bci"]
+[ext_resource type="PackedScene" uid="uid://qrvcl4xrahxh" path="res://Levels/Level1.tscn" id="2_qfprb"]
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_y4bci")
+levelScene = ExtResource("2_qfprb")
+
+[node name="StartScreenUI" type="Node2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StartScreenUI"]
+offset_left = 603.0
+offset_top = 343.0
+offset_right = 1309.0
+offset_bottom = 631.0
+text = "Press Any Key"
+
+[node name="Camera2D" type="Camera2D" parent="StartScreenUI"]
+anchor_mode = 0
+
+[node name="PausePanelUI" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Panel" type="Panel" parent="PausePanelUI"]
+visible = false
+offset_left = 174.0
+offset_top = 96.0
+offset_right = 778.0
+offset_bottom = 530.0
+
+[node name="EndCardUI" type="Node2D" parent="."]
+
+[node name="Panel" type="Panel" parent="EndCardUI"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt4gv71tdnehi"]
+
+[ext_resource type="Script" path="res://Scripts/PenguGate.gd" id="1_vmm5h"]
+[ext_resource type="Texture2D" uid="uid://bid2dvcvyuen2" path="res://PlaceholderSprites/ui-background-stone-placeholder-2.png" id="2_gw3ch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64vy7"]
+
+[node name="PenguGate" type="Node2D"]
+script = ExtResource("1_vmm5h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gw3ch")
+
+[node name="Title" type="Label" parent="."]
+offset_left = -197.0
+offset_top = -107.0
+offset_right = 318.0
+offset_bottom = 189.0
+text = "Free all Penguins!!!"
+
+[node name="PenguAmount" type="Label" parent="."]
+offset_left = -148.0
+offset_top = 174.0
+offset_right = 367.0
+offset_bottom = 470.0
+text = "0 / 12
+"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_64vy7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

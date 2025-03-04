@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3tureekjn2mw"]
+
+[ext_resource type="PackedScene" uid="uid://bbnivfx1tguxl" path="res://Assets/Player.tscn" id="1_lu8r8"]
+[ext_resource type="PackedScene" uid="uid://be2rhe17mtbj7" path="res://Assets/Wind.tscn" id="3_2fwpw"]
+[ext_resource type="PackedScene" uid="uid://ht72fhsatpgo" path="res://Assets/Platform.tscn" id="3_dvxt5"]
+[ext_resource type="Texture2D" uid="uid://b2ld1mn2vlgvh" path="res://Sprites/Background.png" id="4_8ymtt"]
+[ext_resource type="PackedScene" uid="uid://ctdykhihbruln" path="res://Scenes/test_rigidbody.tscn" id="5_hg4br"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(8.5, 9.5)
+scale = Vector2(9.96823, 9.90278)
+texture = ExtResource("4_8ymtt")
+
+[node name="Player" parent="." instance=ExtResource("1_lu8r8")]
+position = Vector2(-3767, 1319)
+
+[node name="Platform" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-231, 1038)
+
+[node name="Platform2" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-1348, 1375)
+
+[node name="Platform3" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-2545, 1657)
+
+[node name="Platform4" parent="." instance=ExtResource("3_dvxt5")]
+position = Vector2(-3756, 2007)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.1, 0.1)
+
+[node name="Wind" parent="." instance=ExtResource("3_2fwpw")]
+position = Vector2(298, 51)
+
+[node name="Test Rigidbody" parent="." instance=ExtResource("5_hg4br")]
