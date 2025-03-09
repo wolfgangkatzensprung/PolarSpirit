@@ -1,3 +1,4 @@
+# Polar Spirit
 ![PolarSpirit](https://github.com/user-attachments/assets/bd190bb7-cf72-484b-bbb3-caa053c251dd)
 
 Polar Spirit is a 2D Platformer Adventure made with Godot 4.2. It was developed in 10 weeks in the beginning of 2024 as a student project in the S4G School for Games. For version control, we used [Mercurial](https://www.mercurial-scm.org/).
@@ -18,11 +19,11 @@ The main character combining innovative mechanics (e.g. BubbleFly) with establis
 
 **[Bubbles](https://github.com/wolfgangkatzensprung/PolarSpirit/blob/main/Scripts/Bubbles.gd)**
 
-The player can use bubbles are as projectiles, but also for flying. The can grow larger in size and thus become slower. See [Bubble](https://github.com/wolfgangkatzensprung/PolarSpirit/blob/main/Scripts/Bubble.gd) for the individual bubble node.
+The player can use bubbles as projectiles, but also for flying. They can grow larger in size and thus become slower. See [Bubble](https://github.com/wolfgangkatzensprung/PolarSpirit/blob/main/Scripts/Bubble.gd) for the individual bubble node.
 
 **[Enemy](https://github.com/wolfgangkatzensprung/PolarSpirit/blob/main/Scripts/Enemy.gd)**
 
-A dangerous, classic platforming enemy the player can encase in his bubbles, using them as jump pads.
+A dangerous, classic platforming enemy that the player can encase in bubbles, using them as jump pads.
 
 **[Wind](https://github.com/wolfgangkatzensprung/PolarSpirit/blob/main/Scripts/Wind.gd)**
 
