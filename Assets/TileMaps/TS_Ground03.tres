@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=51 format=3 uid="uid://dsbnka1vlm5j8"]
 
 [ext_resource type="Texture2D" uid="uid://b4o412blf4e7u" path="res://Sprites/TileSets/new_tileset02.png" id="1_amvou"]
-[ext_resource type="Texture2D" uid="uid://dlkgcsqr3vgbc" path="res://courser_32x32.png" id="1_buyu6"]
+[ext_resource type="Texture2D" uid="uid://dlkgcsqr3vgbc" path="res://Img/courser_32x32.png" id="1_buyu6"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_5w7uf"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 2, 1, 65536, 0, 65537, 131072, 1, 131073, 131072, 1, 196609, 131072, 1, 262145, 65536, 2, 2, 196608, 0, 65538, 196608, 1, 131074, 196608, 1, 196610, 196608, 1, 262146, 196608, 2)
